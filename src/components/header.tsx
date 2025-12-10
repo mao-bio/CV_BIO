@@ -34,7 +34,7 @@ export function Header() {
       <div className="container flex h-16 items-center px-4 md:px-6">
         <Link href="#" className="mr-6 flex items-center gap-2" prefetch={false}>
           <BrainCircuit className="h-6 w-6 text-primary" />
-          <span className="font-headline text-lg font-semibold">Alex Hartman</span>
+          <span className="font-headline text-lg font-semibold">Mario Hernández</span>
         </Link>
         <nav className="hidden flex-1 items-center justify-end gap-6 text-sm font-medium md:flex">
           {navLinks.map((link) => (
@@ -59,7 +59,7 @@ export function Header() {
             <nav className="grid gap-6 text-lg font-medium">
               <Link href="#" className="flex items-center gap-2 text-lg font-semibold" prefetch={false}>
                 <BrainCircuit className="h-6 w-6 text-primary" />
-                <span className="sr-only">Alex Hartman</span>
+                <span className="sr-only">Mario Hernández</span>
               </Link>
               {navLinks.map((link) => (
                  <Link key={link.href} href={link.href} className="text-muted-foreground hover:text-foreground" prefetch={false}>
