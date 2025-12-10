@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="!scroll-smooth dark">
+    <html lang="es" className="!scroll-smooth">
       <body className={cn('bg-background font-body antialiased', inter.variable, spaceGrotesk.variable)}>
         {children}
         <Toaster />
