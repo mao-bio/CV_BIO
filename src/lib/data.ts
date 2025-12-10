@@ -1,11 +1,11 @@
 export const cvData = {
     name: "Mario Andrés Hernández Moreno",
     title: "Ingeniero Biomédico | Especialista en IA",
-    summary: "Científico de Datos experto en transformar datos complejos en conocimiento accionable, con experiencia en modelos predictivos, machine learning y visualización de datos para el sector salud.",
+    summary: "Ingeniero Biomédico con experiencia en gestión tecnológica hospitalaria, análisis de datos y desarrollo de soluciones de IA para el sector salud. Apasionado por la innovación para optimizar la seguridad, eficiencia y calidad en los entornos clínicos.",
     contact: {
       email: "marioandretybio@gmail.com",
       phone: "+573188189647",
-      linkedin: "https://www.linkedin.com/in/marioandreshernandez/",
+      linkedin: "https://www.linkedin.com/in/mao-bio/",
       github: "https://github.com/mao-bio",
     },
     location: "Pasto, Nariño, Colombia",
@@ -32,10 +32,10 @@ export const experienceData = [
       periodo: 'Mar 2025 - Nov 2025',
       ubicacion: 'Ipiales, Nariño',
       logros: [
-        'Implementación de sistemas SQL y dashboards en Power BI con un 95% de disponibilidad para análisis de datos de mantenimiento.',
-        'Desarrollo de un modelo de IA para la predicción de fallos en equipos, optimizando la asignación de recursos de mantenimiento.',
-        'Automatización de procesos de reporte técnico con Python y AppSheet, reduciendo los tiempos de generación en un 40%.',
-        'Análisis estadístico de datos técnicos para fundamentar decisiones estratégicas en la adquisición y retiro de tecnología.'
+        'Gestión de inventarios de equipos y suministros en clínicas e IPS, con enfoque en el sector odontológico.',
+        'Ejecución de mantenimientos preventivos y correctivos, logrando un 95% de disponibilidad de equipos.',
+        'Implementación de aplicaciones de IA para optimizar la gestión de mantenimiento biomédico.',
+        'Apoyo en procesos de habilitación de servicios de salud y cumplimiento del estándar de dotación.'
       ]
     },
     {
@@ -44,10 +44,39 @@ export const experienceData = [
       periodo: 'Mar 2024 - Nov 2025',
       ubicacion: 'Ipiales, Nariño',
       logros: [
-        'Análisis del desempeño estudiantil aplicando técnicas estadísticas para identificar patrones de aprendizaje.',
-        'Desarrollo de herramientas de evaluación automatizada basadas en IA para medir el progreso en la pronunciación y gramática.',
-        'Creación de reportes analíticos para la dirección sobre la efectividad de las metodologías de enseñanza.'
+        'Desarrollo de materiales didácticos y evaluación personalizada de estudiantes.',
+        'Integración de herramientas basadas en IA para el diseño de actividades interactivas y seguimiento del progreso.'
       ]
+    },
+    {
+        puesto: 'Ingeniero de Apoyo en Coordinación Biomédica',
+        empresa: 'TechMedic S.A.S',
+        periodo: 'Nov 2023 – Dic 2023',
+        ubicacion: 'Pasto, Nariño',
+        logros: [
+            'Gestión de seguimiento a proveedores y preparación de documentación para auditorías.',
+            'Capacitación al personal de salud en el uso seguro de equipos biomédicos.'
+        ]
+    },
+    {
+        puesto: 'Practicante de Ingeniería Biomédica',
+        empresa: 'TechMedic S.A.S',
+        periodo: 'Ago 2023 – Nov 2023',
+        ubicacion: 'Pasto, Nariño',
+        logros: [
+            'Ejecución de mantenimientos preventivos y correctivos en la Fundación Hospital San Pedro.',
+            'Elaboración de listas de chequeo y apoyo en la digitalización de guías rápidas con códigos QR.'
+        ]
+    },
+    {
+        puesto: 'Practicante de Ingeniería Biomédica',
+        empresa: 'Clínica Cardioneurovascular Pabón S.A.S',
+        periodo: 'Ene 2023 – Jun 2023',
+        ubicacion: 'Pasto, Nariño',
+        logros: [
+            'Apoyo en mantenimientos de equipos médicos y actualización de hojas de vida.',
+            'Capacitación en tecnovigilancia y participación en rondas hospitalarias.'
+        ]
     },
     {
       puesto: 'Joven Investigador - Nanociencia y Nanotecnología',
@@ -55,43 +84,45 @@ export const experienceData = [
       periodo: '2021 - 2024',
       ubicacion: 'Manizales, Caldas',
       logros: [
-        'Desarrollo de algoritmos de simulación molecular utilizando Python y C++ para modelar interacciones de nanopartículas.',
-        'Análisis estadístico de resultados experimentales de nanopartículas, generando visualizaciones científicas para publicaciones.',
-        'Coautor de un artículo de investigación y ponente en el XIV encuentro de la Red Regional de Semilleros de Investigación (RREDSI).'
+        'Desarrollo de algoritmo de Simulación de Nanopartículas de Magnetita por Dinámica Molecular (Python y C++).',
+        'Participación como ponente en el XIV encuentro departamental de semilleros de investigación RREDSI.'
       ]
     }
 ];
 
 export const skillsData = {
     programacion: {
-      title: "Lenguajes de Programación",
-      items: ['Python', 'R', 'SQL', 'C++', 'Matlab'],
+      title: "Software y Herramientas",
+      items: ['Python', 'C++', 'Matlab', 'Arduino', 'SQL', 'R', 'Power BI', 'Looker Studio', 'AppSheet', 'Firebase'],
       style: "bg-blue-600/10 border-blue-400/50 hover:bg-blue-600/30",
     },
-    visualizacion: {
-      title: "Visualización y BI",
-      items: ['Power BI', 'Looker Studio', 'Tableau', 'Excel Avanzado'],
-      style: "bg-cyan-600/10 border-cyan-400/50 hover:bg-cyan-600/30",
-    },
     ia: {
-      title: "Machine Learning e IA",
-      items: ['Machine Learning', 'Deep Learning', 'Análisis Predictivo', 'ChatGPT/Claude/Gemini'],
+      title: "Inteligencia Artificial",
+      items: ['Machine Learning', 'Deep Learning', 'Análisis Predictivo', 'Modelos Supervisados y No Supervisados', 'ChatGPT/Gemini/Claude'],
       style: "bg-purple-600/10 border-purple-400/50 hover:bg-purple-600/30",
     },
-    desarrollo: {
-      title: "Desarrollo y Automatización",
-      items: ['AppSheet', 'Arduino', 'ETL', 'APIs', 'Firebase'],
-      style: "bg-green-600/10 border-green-400/50 hover:bg-green-600/30",
+    profesionales: {
+      title: "Competencias Profesionales",
+      items: ['Gestión Tecnológica', 'Mantenimiento Equipos Médicos', 'Calibración', 'Tecnovigilancia', 'Evaluación Tecnológica', 'Análisis de Datos Clínicos', 'Biomateriales'],
+      style: "bg-cyan-600/10 border-cyan-400/50 hover:bg-cyan-600/30",
+    },
+    blandas: {
+        title: "Habilidades Blandas",
+        items: ['Liderazgo', 'Comunicación Asertiva', 'Resolución de Conflictos', 'Pensamiento Estratégico', 'Adaptabilidad'],
+        style: "bg-green-600/10 border-green-400/50 hover:bg-green-600/30",
     }
 };
 
 export const certificationsData = [
-    'Gestión de Datos Clínicos con IA - UAM (2024)',
     'Diplomado en Habilitación de Servicios de Salud (2025)',
-    'Fundamentos en Analítica de Datos - Correlation One (2022)',
+    'Seminario de Metrología Biomédica (2025)',
     'Programa Nacional de Tecnovigilancia - INVIMA (2025)',
-    'Matlab - Machine Learning - MathWorks',
-    'Programa DELFIN - Universidad de Guadalajara (2023)'
+    'Gestión de Datos Clínicos con IA - UAM (2024)',
+    'Participación en verano de investigación - Programa DELFIN (2023)',
+    'Fundamentos en Analítica de Datos - Correlation One (2022)',
+    'Certificación en Machine Learning with Matlab - MathWorks',
+    'Matrícula de Honor - Ingeniería Biomédica (2024)',
+    'Mención de Honor - Ingeniería Biomédica (2020-2024)'
 ];
   
 export const projectsData = [

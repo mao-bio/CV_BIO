@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useScrollspy } from '@/hooks/use-scrollspy';
 import { cn } from '@/lib/utils';
 import { cvData, skillsData, experienceData, certificationsData, projectsData } from '@/lib/data';
@@ -345,8 +345,10 @@ export default function Portfolio() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {Object.entries(skillsData).map(([category, skills]) => (
                 <Card key={category} className="bg-card/50 border-border">
-                  <CardContent className="p-6">
-                    <h3 className="text-2xl font-bold text-accent mb-4 font-headline">{skills.title}</h3>
+                  <CardHeader>
+                    <CardTitle className="text-2xl font-bold text-accent mb-4 font-headline">{skills.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
                     <div className="flex flex-wrap gap-3">
                       {skills.items.map((skill, i) => (
                         <span key={i} className={cn("px-4 py-2 rounded-lg border transition-all duration-300 hover:scale-110 hover:shadow-md", skills.style)}>
@@ -387,13 +389,13 @@ export default function Portfolio() {
             Certificaciones y Logros
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {certificationsData.map((cert, index) => (
               <Card key={index} className="bg-card/50 border-border hover:border-accent/50 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-accent/10">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-3">
                     <Award className="text-accent flex-shrink-0 mt-1" size={20} />
-                    <p className="text-foreground">{cert}</p>
+                    <p className="text-foreground text-sm">{cert}</p>
                   </div>
                 </CardContent>
               </Card>
