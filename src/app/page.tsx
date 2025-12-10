@@ -138,6 +138,7 @@ export default function Portfolio() {
   };
   
   const getImage = (id: string) => PlaceHolderImages.find(p => p.id === id);
+  const profileImage = getImage('profile');
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -187,6 +188,18 @@ export default function Portfolio() {
         <ParticleBackground />
         <div className="max-w-4xl mx-auto text-center z-10">
           <div className="mb-8">
+            {profileImage && (
+              <div className="flex justify-center mb-6">
+                <Image
+                  src={profileImage.imageUrl}
+                  alt="Foto de perfil de Mario Hernández"
+                  width={150}
+                  height={150}
+                  className="rounded-full border-4 border-primary/50 shadow-lg"
+                  data-ai-hint={profileImage.imageHint}
+                />
+              </div>
+            )}
             <h1 className="text-5xl md:text-7xl font-bold mb-4 gradient-text font-headline">
               {cvData.name}
             </h1>
