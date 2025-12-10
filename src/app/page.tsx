@@ -227,12 +227,12 @@ export default function Portfolio() {
                             </DropdownMenuTrigger>
                             <DropdownMenuContent>
                                 <DropdownMenuItem asChild>
-                                    <a href="https://drive.google.com/uc?export=download&id=1kk3UyCjmz1SQpJdVucjCx-mpMV-OYlxN" download>
+                                    <a href="https://drive.google.com/uc?export=download&id=1tXlXo8psiKUyFIF75CWkFhvZu1OrfxNX" download>
                                         <FileText className="mr-2" /> CV Analista de Datos
                                     </a>
                                 </DropdownMenuItem>
                                 <DropdownMenuItem asChild>
-                                    <a href="https://drive.google.com/uc?export=download&id=1kk3UyCjmz1SQpJdVucjCx-mpMV-OYlxN" download>
+                                    <a href="https://drive.google.com/uc?export=download&id=1r9OgNObhdZu3niT-rHVqfJ1LMPZBlx2k" download>
                                         <Activity className="mr-2" /> CV Ing. Biomédico
                                     </a>
                                 </DropdownMenuItem>
