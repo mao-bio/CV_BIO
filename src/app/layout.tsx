@@ -15,8 +15,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'AI-Powered Biomedical Portfolio',
-  description: 'CV, experience and portfolio of a Biomedical Engineer specialized in AI and data analysis.',
+  title: 'Mario Hernández | Ingeniero Biomédico & Especialista en IA',
+  description: 'Portafolio de Mario Andrés Hernández Moreno, Ingeniero Biomédico especialista en Inteligencia Artificial, Ciencia de Datos y Business Intelligence.',
 };
 
 export default function RootLayout({
@@ -25,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="!scroll-smooth">
-      <body className={cn('font-body antialiased', inter.variable, spaceGrotesk.variable)}>
+    <html lang="es" className="!scroll-smooth dark">
+      <body className={cn('bg-background font-body antialiased', inter.variable, spaceGrotesk.variable)}>
         {children}
         <Toaster />
       </body>
