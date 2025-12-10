@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "1",
+      "description": "Abstract AI heart visualization",
+      "imageUrl": "https://images.unsplash.com/photo-1760389276344-d1b83848e66a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhYnN0cmFjdCUyMGhlYXJ0fGVufDB8fHx8MTc2NTM4NzYyOHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract heart"
+    },
+    {
+      "id": "2",
+      "description": "Brain MRI scan with AI overlay",
+      "imageUrl": "https://images.unsplash.com/photo-1738707060236-42d641096f96?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxicmFpbiUyMHNjYW58ZW58MHx8fHwxNzY1Mjk0NDQxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "brain scan"
+    },
+    {
+      "id": "3",
+      "description": "DNA helix and data visualization",
+      "imageUrl": "https://images.unsplash.com/photo-1638215274200-1b8d88e72ec7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkbmElMjBkYXRhfGVufDB8fHx8MTc2NTM4NzYyOHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dna data"
+    },
+    {
+      "id": "4",
+      "description": "Robotic arm in a lab setting",
+      "imageUrl": "https://images.unsplash.com/photo-1563968743333-044cef800494?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxyb2JvdGljJTIwYXJtfGVufDB8fHx8MTc2NTMzNzE2NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "robotic arm"
+    },
+    {
+      "id": "hero-bg",
+      "description": "Abstract background for hero section",
+      "imageUrl": "https://images.unsplash.com/photo-1684503830683-108f3e0fd03f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YWJzdHJhY3QlMjB0ZWNobm9sb2d5fGVufDB8fHx8MTc2NTM3OTQ3M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract technology"
+    }
+  ]
 }
