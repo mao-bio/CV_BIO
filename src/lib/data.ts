@@ -1,7 +1,8 @@
+
 export const cvData = {
     name: "Mario Andrés Hernández Moreno",
     title: "Ingeniero Biomédico | Especialista en IA",
-    summary: "Ingeniero Biomédico con experiencia en gestión tecnológica hospitalaria, mantenimiento de equipos médicos, tecnovigilancia y apoyo en procesos de habilitación y acreditación en instituciones de salud. Especialista en el análisis, optimización y mantenimiento de dispositivos biomédicos, así como en la evaluación tecnológica y el uso seguro de equipos médicos. Cuento con experiencia en el desarrollo de algoritmos y soluciones basadas en inteligencia artificial para el análisis de datos clínicos, así como en la creación, planificación y ejecución de proyectos de investigación. Me caracterizo por un liderazgo colaborativo, comunicación asertiva, capacidad para la toma de decisiones y una fuerte orientación a resultados. Soy adaptable, proactivo, con aprendizaje continuo, y apasionado por la innovación en tecnología médica para optimizar la seguridad, eficiencia y calidad en los entornos de salud.",
+    summary: "Ingeniero Biomédico con experiencia en gestión tecnológica hospitalaria, mantenimiento de equipos médicos, tecnovigilancia y apoyo en habilitación y acreditación de instituciones de salud. Especialista en análisis, optimización y mantenimiento de dispositivos biomédicos, con enfoque en evaluación tecnológica y uso seguro de equipos médicos. Cuento con experiencia en desarrollo de algoritmos y soluciones de inteligencia artificial aplicadas al análisis de datos clínicos, así como en la planificación y ejecución de proyectos de investigación. Me destaco por mi liderazgo colaborativo, comunicación asertiva, toma de decisiones y orientación a resultados. Soy adaptable, proactivo y comprometido con la innovación en tecnología médica para mejorar la seguridad, eficiencia y calidad en los entornos de salud.",
     contact: {
       email: "marioandretybio@gmail.com",
       phone: "+573188189647",
@@ -104,7 +105,7 @@ export const experienceData = [
 export const skillsData = {
     programacion: {
       title: "Software y Herramientas",
-      items: ['Python', 'C++', 'Matlab', 'Arduino', 'SQL', 'R', 'Excel', 'Power BI', 'Google Workspace', 'AppSheet', 'Tinkercad', 'OriginLab', 'Canva', 'Looker Studio', 'ChatGPT', 'Gemini', 'Claude', 'Firebase'],
+      items: ['Python', 'C++', 'Matlab', 'Arduino', 'SQL', 'R', 'Excel', 'Power BI', 'Google Workspace', 'AppSheet', 'Tinkercad', 'OriginLab', 'Canva', 'Looker Studio', 'ChatGPT', 'Gemini', 'Claude', 'Firebase', 'Colab'],
       style: "bg-blue-600/10 border-blue-400/50 hover:bg-blue-600/30",
     },
     ia: {
