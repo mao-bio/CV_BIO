@@ -218,7 +218,7 @@ export default function Portfolio() {
                             </a>
                         </Button>
                          <Button asChild variant="secondary" size="lg" className="transition-transform duration-300 hover:scale-105">
-                            <a href="/Mario-Hernandez-CV.pdf" download>
+                            <a href="https://drive.google.com/uc?export=download&id=1kk3UyCjmz1SQpJdVucjCx-mpMV-OYlxN" download>
                                 <Download className="mr-2" /> Descargar CV
                             </a>
                         </Button>
