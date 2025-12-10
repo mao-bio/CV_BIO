@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin } from 'lucide-react';
+import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useScrollspy } from '@/hooks/use-scrollspy';
@@ -215,6 +215,11 @@ export default function Portfolio() {
                         <Button asChild size="lg" className="transition-transform duration-300 hover:scale-105">
                             <a href="#contacto">
                                 <Mail className="mr-2" /> Contactar
+                            </a>
+                        </Button>
+                         <Button asChild variant="secondary" size="lg" className="transition-transform duration-300 hover:scale-105">
+                            <a href="/Mario-Hernandez-CV.pdf" download>
+                                <Download className="mr-2" /> Descargar CV
                             </a>
                         </Button>
                         <Button asChild variant="secondary" size="lg" className="transition-transform duration-300 hover:scale-105">
@@ -448,7 +453,7 @@ export default function Portfolio() {
                   <MapPin size={32} className="flex-shrink-0" />
                   <div>
                     <p className="font-semibold">Ubicación</p>
-                    <p className="text-sm text-muted-foreground">{cvData.location}</p>
+                    <p className="text-muted-foreground">{cvData.location}</p>
                   </div>
                 </div>
               </div>
@@ -476,3 +481,5 @@ export default function Portfolio() {
     </div>
   );
 }
+
+    
