@@ -1,7 +1,7 @@
 export const cvData = {
     name: "Mario Andrés Hernández Moreno",
     title: "Ingeniero Biomédico | Especialista en IA",
-    summary: "Ingeniero Biomédico con experiencia en gestión tecnológica hospitalaria, análisis de datos y desarrollo de soluciones de IA para el sector salud. Apasionado por la innovación para optimizar la seguridad, eficiencia y calidad en los entornos clínicos.",
+    summary: "Ingeniero Biomédico con experiencia en gestión tecnológica hospitalaria, mantenimiento de equipos médicos, tecnovigilancia y apoyo en procesos de habilitación y acreditación en instituciones de salud. Especialista en el análisis, optimización y mantenimiento de dispositivos biomédicos, así como en la evaluación tecnológica y el uso seguro de equipos médicos. Cuento con experiencia en el desarrollo de algoritmos y soluciones basadas en inteligencia artificial para el análisis de datos clínicos, así como en la creación, planificación y ejecución de proyectos de investigación. Me caracterizo por un liderazgo colaborativo, comunicación asertiva, capacidad para la toma de decisiones y una fuerte orientación a resultados. Soy adaptable, proactivo, con aprendizaje continuo, y apasionado por la innovación en tecnología médica para optimizar la seguridad, eficiencia y calidad en los entornos de salud.",
     contact: {
       email: "marioandretybio@gmail.com",
       phone: "+573188189647",
@@ -87,28 +87,39 @@ export const experienceData = [
         'Desarrollo de algoritmo de Simulación de Nanopartículas de Magnetita por Dinámica Molecular (Python y C++).',
         'Participación como ponente en el XIV encuentro departamental de semilleros de investigación RREDSI.'
       ]
-    }
+    },
+    {
+      puesto: 'Monitor',
+      empresa: 'Universidad Autónoma de Manizales',
+      periodo: '2021 – 2023',
+      ubicacion: 'Manizales, Caldas',
+      logros: [
+          'Capacitación y acompañamiento de tutorías en las materias de Diseño y Simulación de circuitos biomédicos.',
+          'Formación mediante mentorías en programación (Arduino, Python).',
+          'Supervisión de laboratorios y apoyo de proyectos de investigación biomédica.'
+      ]
+  }
 ];
 
 export const skillsData = {
     programacion: {
       title: "Software y Herramientas",
-      items: ['Python', 'C++', 'Matlab', 'Arduino', 'SQL', 'R', 'Power BI', 'Looker Studio', 'AppSheet', 'Firebase'],
+      items: ['Python', 'C++', 'Matlab', 'Arduino', 'SQL', 'R', 'Excel', 'Power BI', 'Google Workspace', 'AppSheet', 'Tinkercad', 'OriginLab', 'Canva', 'Looker Studio', 'ChatGPT', 'Gemini', 'Claude', 'Firebase'],
       style: "bg-blue-600/10 border-blue-400/50 hover:bg-blue-600/30",
     },
     ia: {
       title: "Inteligencia Artificial",
-      items: ['Machine Learning', 'Deep Learning', 'Análisis Predictivo', 'Modelos Supervisados y No Supervisados', 'ChatGPT/Gemini/Claude'],
+      items: ['Machine Learning', 'Deep Learning', 'Análisis Predictivo', 'Modelos Supervisados y No Supervisados', 'Validación y optimización de modelos'],
       style: "bg-purple-600/10 border-purple-400/50 hover:bg-purple-600/30",
     },
     profesionales: {
       title: "Competencias Profesionales",
-      items: ['Gestión Tecnológica', 'Mantenimiento Equipos Médicos', 'Calibración', 'Tecnovigilancia', 'Evaluación Tecnológica', 'Análisis de Datos Clínicos', 'Biomateriales'],
+      items: ['Gestión Tecnológica', 'Mantenimiento Equipos Médicos', 'Calibración', 'Tecnovigilancia', 'Evaluación Tecnológica', 'Análisis de Datos Clínicos', 'Biomateriales', 'Nanotecnología', 'Regulaciones y Normativas', 'Primeros Auxilios Psicológicos'],
       style: "bg-cyan-600/10 border-cyan-400/50 hover:bg-cyan-600/30",
     },
     blandas: {
         title: "Habilidades Blandas",
-        items: ['Liderazgo', 'Comunicación Asertiva', 'Resolución de Conflictos', 'Pensamiento Estratégico', 'Adaptabilidad'],
+        items: ['Liderazgo', 'Comunicación Asertiva', 'Resolución de Conflictos', 'Pensamiento Estratégico', 'Adaptabilidad', 'Trabajo en equipo', 'Innovación y Creatividad'],
         style: "bg-green-600/10 border-green-400/50 hover:bg-green-600/30",
     }
 };
@@ -120,9 +131,12 @@ export const certificationsData = [
     'Gestión de Datos Clínicos con IA - UAM (2024)',
     'Participación en verano de investigación - Programa DELFIN (2023)',
     'Fundamentos en Analítica de Datos - Correlation One (2022)',
+    'Competencias Digitales - Google Activate (2022)',
+    'V Simposio Biomédica SENA (2022)',
     'Certificación en Machine Learning with Matlab - MathWorks',
     'Matrícula de Honor - Ingeniería Biomédica (2024)',
-    'Mención de Honor - Ingeniería Biomédica (2020-2024)'
+    'Mención de Honor - Ingeniería Biomédica (2020-2024)',
+    'Curso de Inglés - Universidad de Nariño (2016-2018)'
 ];
   
 export const projectsData = [
