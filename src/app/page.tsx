@@ -186,73 +186,74 @@ export default function Portfolio() {
 
       <section id="inicio" className="min-h-screen flex items-center justify-center px-4 pt-16 relative overflow-hidden">
         <ParticleBackground />
-        <div className="max-w-4xl mx-auto text-center z-10">
-          <div className="mb-8">
-            {profileImage && (
-              <div className="flex justify-center mb-6">
-                <Image
-                  src={profileImage.imageUrl}
-                  alt="Foto de perfil de Mario Hernández"
-                  width={150}
-                  height={150}
-                  className="rounded-full border-4 border-primary/50 shadow-lg"
-                  data-ai-hint={profileImage.imageHint}
-                />
-              </div>
-            )}
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 gradient-text font-headline">
-              {cvData.name}
-            </h1>
-            <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
-            <p className="text-2xl md:text-3xl text-accent mb-4 font-headline">
-              {cvData.title}
-            </p>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              {cvData.summary}
-            </p>
-          </div>
+        <div className="max-w-6xl mx-auto z-10 w-full">
+            <div className="grid md:grid-cols-3 gap-8 md:gap-12 items-center">
+                <div className="md:col-span-1 flex justify-center">
+                    {profileImage && (
+                        <Image
+                            src={profileImage.imageUrl}
+                            alt="Foto de perfil de Mario Hernández"
+                            width={250}
+                            height={250}
+                            className="rounded-full border-4 border-primary/50 shadow-lg"
+                            data-ai-hint={profileImage.imageHint}
+                        />
+                    )}
+                </div>
+                <div className="md:col-span-2 text-center md:text-left">
+                    <h1 className="text-5xl md:text-7xl font-bold mb-4 gradient-text font-headline">
+                        {cvData.name}
+                    </h1>
+                    <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mb-6 mx-auto md:mx-0"></div>
+                    <p className="text-2xl md:text-3xl text-accent mb-4 font-headline">
+                        {cvData.title}
+                    </p>
+                    <p className="text-lg text-muted-foreground mb-8 max-w-2xl">
+                        {cvData.summary}
+                    </p>
+                    <div className="flex flex-wrap justify-center md:justify-start gap-4">
+                        <Button asChild size="lg" className="transition-transform duration-300 hover:scale-105">
+                            <a href="#contacto">
+                                <Mail className="mr-2" /> Contactar
+                            </a>
+                        </Button>
+                        <Button asChild variant="secondary" size="lg" className="transition-transform duration-300 hover:scale-105">
+                            <a href={cvData.contact.github} target="_blank" rel="noopener noreferrer">
+                                <Github className="mr-2" /> GitHub
+                            </a>
+                        </Button>
+                        <Button asChild variant="secondary" size="lg" className="transition-transform duration-300 hover:scale-105">
+                            <a href={cvData.contact.linkedin} target="_blank" rel="noopener noreferrer">
+                                <Linkedin className="mr-2" /> LinkedIn
+                            </a>
+                        </Button>
+                    </div>
+                </div>
+            </div>
 
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <Button asChild size="lg" className="transition-transform duration-300 hover:scale-105">
-              <a href="#contacto">
-                <Mail className="mr-2" /> Contactar
-              </a>
-            </Button>
-            <Button asChild variant="secondary" size="lg" className="transition-transform duration-300 hover:scale-105">
-              <a href={cvData.contact.github} target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2" /> GitHub
-              </a>
-            </Button>
-             <Button asChild variant="secondary" size="lg" className="transition-transform duration-300 hover:scale-105">
-              <a href={cvData.contact.linkedin} target="_blank" rel="noopener noreferrer">
-                <Linkedin className="mr-2" /> LinkedIn
-              </a>
-            </Button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-            <Card className="bg-card/50 border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2">
-              <CardContent className="p-6">
-                <Brain className="text-accent mb-3" size={32} />
-                <h3 className="text-xl font-semibold mb-2 font-headline">Inteligencia Artificial</h3>
-                <p className="text-muted-foreground text-sm">Especialización en IA aplicada a datos clínicos y gestión biomédica.</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-card/50 border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2">
-              <CardContent className="p-6">
-                <Database className="text-accent mb-3" size={32} />
-                <h3 className="text-xl font-semibold mb-2 font-headline">Análisis de Datos</h3>
-                <p className="text-muted-foreground text-sm">Transformación de datos en insights con Python, SQL y Power BI.</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-card/50 border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2">
-              <CardContent className="p-6">
-                <Briefcase className="text-accent mb-3" size={32} />
-                <h3 className="text-xl font-semibold mb-2 font-headline">Ingeniería Biomédica</h3>
-                <p className="text-muted-foreground text-sm">Gestión tecnológica hospitalaria y mantenimiento de equipos médicos.</p>
-              </CardContent>
-            </Card>
-          </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mt-20">
+              <Card className="bg-card/50 border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2">
+                <CardContent className="p-6">
+                  <Brain className="text-accent mb-3" size={32} />
+                  <h3 className="text-xl font-semibold mb-2 font-headline">Inteligencia Artificial</h3>
+                  <p className="text-muted-foreground text-sm">Especialización en IA aplicada a datos clínicos y gestión biomédica.</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-card/50 border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2">
+                <CardContent className="p-6">
+                  <Database className="text-accent mb-3" size={32} />
+                  <h3 className="text-xl font-semibold mb-2 font-headline">Análisis de Datos</h3>
+                  <p className="text-muted-foreground text-sm">Transformación de datos en insights con Python, SQL y Power BI.</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-card/50 border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2">
+                <CardContent className="p-6">
+                  <Briefcase className="text-accent mb-3" size={32} />
+                  <h3 className="text-xl font-semibold mb-2 font-headline">Ingeniería Biomédica</h3>
+                  <p className="text-muted-foreground text-sm">Gestión tecnológica hospitalaria y mantenimiento de equipos médicos.</p>
+                </CardContent>
+              </Card>
+            </div>
         </div>
       </section>
 
