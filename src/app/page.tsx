@@ -1,9 +1,11 @@
+
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download } from 'lucide-react';
+import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download, FileText, Activity } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useScrollspy } from '@/hooks/use-scrollspy';
 import { cn } from '@/lib/utils';
 import { cvData, skillsData, experienceData, certificationsData, projectsData } from '@/lib/data';
@@ -217,11 +219,25 @@ export default function Portfolio() {
                                 <Mail className="mr-2" /> Contactar
                             </a>
                         </Button>
-                         <Button asChild variant="secondary" size="lg" className="transition-transform duration-300 hover:scale-105">
-                            <a href="https://drive.google.com/uc?export=download&id=1kk3UyCjmz1SQpJdVucjCx-mpMV-OYlxN" download>
-                                <Download className="mr-2" /> Descargar CV
-                            </a>
-                        </Button>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button variant="secondary" size="lg" className="transition-transform duration-300 hover:scale-105">
+                                    <Download className="mr-2" /> Descargar CV
+                                </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent>
+                                <DropdownMenuItem asChild>
+                                    <a href="https://drive.google.com/uc?export=download&id=1kk3UyCjmz1SQpJdVucjCx-mpMV-OYlxN" download>
+                                        <FileText className="mr-2" /> CV Analista de Datos
+                                    </a>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem asChild>
+                                    <a href="https://drive.google.com/uc?export=download&id=1kk3UyCjmz1SQpJdVucjCx-mpMV-OYlxN" download>
+                                        <Activity className="mr-2" /> CV Ing. Biomédico
+                                    </a>
+                                </DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
                         <Button asChild variant="secondary" size="lg" className="transition-transform duration-300 hover:scale-105">
                             <a href={cvData.contact.github} target="_blank" rel="noopener noreferrer">
                                 <Github className="mr-2" /> GitHub
@@ -483,5 +499,3 @@ export default function Portfolio() {
     </div>
   );
 }
-
-    
