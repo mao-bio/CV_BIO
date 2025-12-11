@@ -1,4 +1,5 @@
 
+
 export const cvData = {
     name: "Mario Andrés Hernández Moreno",
     title: "Ingeniero Biomédico | Especialista en IA",
@@ -105,23 +106,23 @@ export const experienceData = [
 export const skillsData = {
     programacion: {
       title: "Software y Herramientas",
+      icon: "programacion",
       items: ['Python', 'C++', 'Matlab', 'Arduino', 'SQL', 'R', 'Excel', 'Power BI', 'Google Workspace', 'AppSheet', 'Tinkercad', 'OriginLab', 'Canva', 'Looker Studio', 'ChatGPT', 'Gemini', 'Claude', 'Firebase', 'Colab'],
-      style: "bg-blue-600/10 border-blue-400/50 hover:bg-blue-600/30",
     },
     ia: {
       title: "Inteligencia Artificial",
+      icon: "ia",
       items: ['Machine Learning', 'Deep Learning', 'Análisis Predictivo', 'Modelos Supervisados y No Supervisados', 'Validación y optimización de modelos'],
-      style: "bg-purple-600/10 border-purple-400/50 hover:bg-purple-600/30",
     },
     profesionales: {
       title: "Competencias Profesionales",
+      icon: "profesionales",
       items: ['Gestión Tecnológica', 'Mantenimiento Equipos Médicos', 'Calibración', 'Tecnovigilancia', 'Evaluación Tecnológica', 'Análisis de Datos Clínicos', 'Biomateriales', 'Nanotecnología', 'Regulaciones y Normativas', 'Primeros Auxilios Psicológicos'],
-      style: "bg-cyan-600/10 border-cyan-400/50 hover:bg-cyan-600/30",
     },
     blandas: {
         title: "Habilidades Blandas",
+        icon: "blandas",
         items: ['Liderazgo', 'Comunicación Asertiva', 'Resolución de Conflictos', 'Pensamiento Estratégico', 'Adaptabilidad', 'Trabajo en equipo', 'Innovación y Creatividad'],
-        style: "bg-green-600/10 border-green-400/50 hover:bg-green-600/30",
     }
 };
 

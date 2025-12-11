@@ -1,8 +1,9 @@
 
+
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download, FileText, Activity } from 'lucide-react';
+import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download, FileText, Activity, Users, Star, Cpu, HeartPulse } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
@@ -74,7 +75,7 @@ const ParticleBackground = () => {
 
     let animationFrameId: number;
     const particles: any[] = [];
-    const particleCount = 75;
+    const particleCount = 150;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -88,8 +89,8 @@ const ParticleBackground = () => {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.7,
-          vy: (Math.random() - 0.5) * 0.7,
+          vx: (Math.random() - 0.5) * 1.0,
+          vy: (Math.random() - 0.5) * 1.0,
           size: Math.random() * 2 + 1,
           color: Math.random() > 0.5 ? `hsla(${accentColor}, 0.6)`: `hsla(${primaryColor}, 0.6)`,
         });
@@ -141,6 +142,17 @@ export default function Portfolio() {
   
   const getImage = (id: string) => PlaceHolderImages.find(p => p.id === id);
   const profileImage = getImage('profile');
+
+  const SkillIcon = ({ iconName }: { iconName: string }) => {
+    const icons: { [key: string]: React.ElementType } = {
+      programacion: Code,
+      ia: Brain,
+      profesionales: HeartPulse,
+      blandas: Users,
+    };
+    const Icon = icons[iconName] || Star;
+    return <Icon className="mr-3 text-accent" size={28} />;
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -354,30 +366,29 @@ export default function Portfolio() {
       <AnimatedSection id="habilidades">
         <div className="max-w-6xl mx-auto w-full">
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center font-headline gradient-text">
-            <Code className="inline mr-3 text-accent" size={40} />
+            <Cpu className="inline mr-3 text-accent" size={40} />
             Habilidades Técnicas
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div className="space-y-10">
             {Object.entries(skillsData).map(([category, skills]) => (
-                <Card key={category} className="bg-card/50 border-border">
-                  <CardHeader>
-                    <CardTitle className="text-2xl font-bold text-accent mb-4 font-headline">{skills.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-3">
-                      {skills.items.map((skill, i) => (
-                        <span key={i} className={cn("px-4 py-2 rounded-lg border transition-all duration-300 hover:scale-110 hover:shadow-md", skills.style)}>
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+              <div key={category}>
+                <h3 className="flex items-center text-2xl font-bold text-accent mb-4 font-headline">
+                  <SkillIcon iconName={skills.icon} />
+                  {skills.title}
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {skills.items.map((skill, i) => (
+                    <span key={i} className="px-4 py-2 rounded-full border border-border bg-card/50 text-muted-foreground hover:bg-accent/10 hover:text-accent transition-all duration-300 cursor-default">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
 
-          <Card className="bg-gradient-to-r from-primary/10 to-accent/10 backdrop-blur-sm p-8 border-border">
+          <Card className="bg-gradient-to-r from-primary/10 to-accent/10 backdrop-blur-sm p-8 border-border mt-16">
             <CardContent className="p-0">
               <h3 className="text-3xl font-bold text-accent mb-6 flex items-center gap-3 font-headline">
                 <GraduationCap size={32} />
