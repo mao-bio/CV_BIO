@@ -33,6 +33,7 @@ export const experienceData = [
       empresa: 'Bimtho Ingeniería S.A.S',
       periodo: 'Mar 2025 - Nov 2025',
       ubicacion: 'Ipiales, Nariño',
+      icon: 'corporate',
       logros: [
         'Gestión de inventarios de equipos y suministros en clínicas e IPS, con enfoque en el sector odontológico.',
         'Ejecución de mantenimientos preventivos y correctivos, logrando un 95% de disponibilidad de equipos.',
@@ -45,6 +46,7 @@ export const experienceData = [
       empresa: 'Smart English Academy',
       periodo: 'Mar 2024 - Nov 2025',
       ubicacion: 'Ipiales, Nariño',
+      icon: 'academic',
       logros: [
         'Desarrollo de materiales didácticos y evaluación personalizada de estudiantes.',
         'Integración de herramientas basadas en IA para el diseño de actividades interactivas y seguimiento del progreso.'
@@ -55,6 +57,7 @@ export const experienceData = [
         empresa: 'TechMedic S.A.S',
         periodo: 'Nov 2023 – Dic 2023',
         ubicacion: 'Pasto, Nariño',
+        icon: 'corporate',
         logros: [
             'Gestión de seguimiento a proveedores y preparación de documentación para auditorías.',
             'Capacitación al personal de salud en el uso seguro de equipos biomédicos.'
@@ -65,6 +68,7 @@ export const experienceData = [
         empresa: 'TechMedic S.A.S',
         periodo: 'Ago 2023 – Nov 2023',
         ubicacion: 'Pasto, Nariño',
+        icon: 'corporate',
         logros: [
             'Ejecución de mantenimientos preventivos y correctivos en la Fundación Hospital San Pedro.',
             'Elaboración de listas de chequeo y apoyo en la digitalización de guías rápidas con códigos QR.'
@@ -75,6 +79,7 @@ export const experienceData = [
         empresa: 'Clínica Cardioneurovascular Pabón S.A.S',
         periodo: 'Ene 2023 – Jun 2023',
         ubicacion: 'Pasto, Nariño',
+        icon: 'corporate',
         logros: [
             'Apoyo en mantenimientos de equipos médicos y actualización de hojas de vida.',
             'Capacitación en tecnovigilancia y participación en rondas hospitalarias.'
@@ -85,6 +90,7 @@ export const experienceData = [
       empresa: 'Universidad Autónoma de Manizales',
       periodo: '2021 - 2024',
       ubicacion: 'Manizales, Caldas',
+      icon: 'research',
       logros: [
         'Desarrollo de algoritmo de Simulación de Nanopartículas de Magnetita por Dinámica Molecular (Python y C++).',
         'Participación como ponente en el XIV encuentro departamental de semilleros de investigación RREDSI.'
@@ -95,6 +101,7 @@ export const experienceData = [
       empresa: 'Universidad Autónoma de Manizales',
       periodo: '2021 – 2023',
       ubicacion: 'Manizales, Caldas',
+      icon: 'academic',
       logros: [
           'Capacitación y acompañamiento de tutorías en las materias de Diseño y Simulación de circuitos biomédicos.',
           'Formación mediante mentorías en programación (Arduino, Python).',
@@ -171,4 +178,3 @@ export const projectsData = [
       tags: ["Power BI", "Business Intelligence", "SQL"],
     },
   ];
-  

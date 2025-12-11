@@ -3,7 +3,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download, FileText, Activity, Users, Star, Cpu, HeartPulse } from 'lucide-react';
+import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download, FileText, Activity, Users, Star, Cpu, HeartPulse, FlaskConical, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -76,7 +76,7 @@ const ParticleBackground = () => {
 
     let animationFrameId: number;
     const particles: any[] = [];
-    const particleCount = 200;
+    const particleCount = 250;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -90,10 +90,10 @@ const ParticleBackground = () => {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 1.2,
-          vy: (Math.random() - 0.5) * 1.2,
-          size: Math.random() * 2 + 1,
-          color: Math.random() > 0.5 ? `hsla(${accentColor}, 0.6)`: `hsla(${primaryColor}, 0.6)`,
+          vx: (Math.random() - 0.5) * 1.5,
+          vy: (Math.random() - 0.5) * 1.5,
+          size: Math.random() * 2.5 + 1,
+          color: Math.random() > 0.5 ? `hsla(${accentColor}, 0.7)`: `hsla(${primaryColor}, 0.7)`,
         });
       }
     };
@@ -153,6 +153,16 @@ export default function Portfolio() {
     };
     const Icon = icons[iconName] || Star;
     return <Icon className="mr-3 text-accent" size={28} />;
+  };
+  
+  const ExperienceIcon = ({ iconName }: { iconName: string | undefined }) => {
+    const icons: { [key: string]: React.ElementType } = {
+      corporate: Briefcase,
+      research: FlaskConical,
+      academic: BookOpen,
+    };
+    const Icon = iconName ? icons[iconName] : Briefcase;
+    return <Icon className="text-accent" />;
   };
 
   return (
@@ -299,43 +309,63 @@ export default function Portfolio() {
           </h2>
           
           <div className="relative">
-            <div className="absolute left-1/2 -translate-x-1/2 h-full w-[2px] bg-border"></div>
-            <Accordion type="single" collapsible className="w-full space-y-12">
+             <div className="absolute left-1/2 -translate-x-1/2 h-full w-1 bg-border/50 hidden md:block"></div>
+              <Accordion type="single" collapsible className="w-full space-y-12">
               {experienceData.map((exp, index) => (
                 <AccordionItem key={index} value={`item-${index}`} className="border-none">
-                  <div className="flex items-center justify-center relative">
-                    <div className="z-10 bg-background p-2 rounded-full border-2 border-accent">
-                      <Briefcase className="text-accent" />
+                  <div className={cn(
+                      "flex md:items-center w-full",
+                      index % 2 === 0 ? "md:flex-row-reverse" : ""
+                  )}>
+                    <div className="hidden md:flex flex-col items-center w-1/3">
+                       <div className="z-10 bg-background p-3 rounded-full border-2 border-accent shadow-lg">
+                          <ExperienceIcon iconName={exp.icon} />
+                        </div>
+                    </div>
+                    <div className="w-full md:w-2/3">
+                      <AccordionTrigger className="w-full hover:no-underline p-0">
+                        <Card className="w-full bg-card/50 border-border transition-all duration-300 hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 hover:scale-[1.01]">
+                          <CardContent className="p-6 text-left">
+                              <div className="flex items-start gap-4">
+                                <div className="md:hidden z-10 bg-background p-2 rounded-full border-2 border-accent flex-shrink-0 mt-1">
+                                    <ExperienceIcon iconName={exp.icon} />
+                                </div>
+                                <div>
+                                    <h3 className="text-2xl font-bold text-accent mb-1 font-headline">{exp.puesto}</h3>
+                                    <p className="text-lg text-foreground">{exp.empresa}</p>
+                                    <div className="text-sm text-muted-foreground mt-2 flex flex-wrap gap-x-4 gap-y-1">
+                                      <span>{exp.periodo}</span>
+                                      <span className="flex items-center gap-1">
+                                        <MapPin size={14} />
+                                        {exp.ubicacion}
+                                      </span>
+                                    </div>
+                                </div>
+                              </div>
+                          </CardContent>
+                        </Card>
+                      </AccordionTrigger>
                     </div>
                   </div>
-                  <AccordionTrigger className="w-full hover:no-underline">
-                    <Card className="w-full bg-card/50 border-border transition-all duration-300 hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 hover:scale-[1.02]">
-                      <CardContent className="p-6 text-left">
-                          <h3 className="text-2xl font-bold text-accent mb-1 font-headline">{exp.puesto}</h3>
-                          <p className="text-lg text-foreground">{exp.empresa}</p>
-                          <div className="text-sm text-muted-foreground mt-2 flex flex-wrap gap-x-4 gap-y-1">
-                            <span>{exp.periodo}</span>
-                            <span className="flex items-center gap-1">
-                              <MapPin size={14} />
-                              {exp.ubicacion}
-                            </span>
-                          </div>
-                      </CardContent>
-                    </Card>
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <Card className="w-full bg-card/50 border-border mt-2">
-                       <CardContent className="p-6">
-                        <ul className="space-y-3">
-                          {exp.logros.map((logro, i) => (
-                            <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                              <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />
-                              <span>{logro}</span>
-                            </li>
-                          ))}
-                        </ul>
-                       </CardContent>
-                    </Card>
+                  <AccordionContent className={cn(
+                      "flex w-full",
+                       index % 2 === 0 ? "md:flex-row-reverse" : ""
+                  )}>
+                    <div className="hidden md:block w-1/3"></div>
+                    <div className="w-full md:w-2/3">
+                      <Card className="w-full bg-card/50 border-border mt-2">
+                         <CardContent className="p-6">
+                          <ul className="space-y-3">
+                            {exp.logros.map((logro, i) => (
+                              <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                                <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />
+                                <span>{logro}</span>
+                              </li>
+                            ))}
+                          </ul>
+                         </CardContent>
+                      </Card>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -354,7 +384,7 @@ export default function Portfolio() {
                 {projectsData.map((project) => {
                   const image = getImage(project.imageUrlId);
                   return(
-                    <Card key={project.id} className="bg-card/50 border-border transition-all duration-300 transform hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-2 flex flex-col overflow-hidden">
+                    <Card key={project.id} className="bg-card/50 border-border transition-all duration-300 transform hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-2 flex flex-col overflow-hidden animated-gradient-border">
                         {image && <Image
                           src={image.imageUrl}
                           alt={`visual del proyecto ${project.title}`}
@@ -433,7 +463,7 @@ export default function Portfolio() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {certificationsData.map((cert, index) => (
-              <Card key={index} className="bg-card/50 border-border transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-accent/10">
+              <Card key={index} className="bg-card/50 border-border transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-3">
                     <Award className="text-accent flex-shrink-0 mt-1" size={20} />
@@ -525,5 +555,3 @@ export default function Portfolio() {
     </div>
   );
 }
-
-    
