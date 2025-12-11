@@ -75,7 +75,7 @@ const ParticleBackground = () => {
 
     let animationFrameId: number;
     const particles: any[] = [];
-    const particleCount = 350;
+    const particleCount = 450;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -89,8 +89,8 @@ const ParticleBackground = () => {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 1.8,
-          vy: (Math.random() - 0.5) * 1.8,
+          vx: (Math.random() - 0.5) * 2.2,
+          vy: (Math.random() - 0.5) * 2.2,
           size: Math.random() * 2.5 + 1,
           color: Math.random() > 0.5 ? `hsla(${accentColor}, 0.7)`: `hsla(${primaryColor}, 0.7)`,
         });
@@ -518,7 +518,3 @@ export default function Portfolio() {
     </div>
   );
 }
-
-    
-
-    
