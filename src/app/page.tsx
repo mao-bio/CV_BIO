@@ -1,11 +1,11 @@
 
-
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download, FileText, Activity, Users, Star, Cpu, HeartPulse, FlaskConical, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useScrollspy } from '@/hooks/use-scrollspy';
 import { cn } from '@/lib/utils';
@@ -301,61 +301,39 @@ export default function Portfolio() {
       </section>
       
       <AnimatedSection id="experiencia">
-        <div className="max-w-6xl mx-auto w-full">
-          <h2 className="text-4xl md:text-5xl font-bold mb-20 text-center font-headline gradient-text">
+        <div className="max-w-4xl mx-auto w-full">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center font-headline gradient-text">
             <Briefcase className="inline mr-3 text-accent" size={40} />
             Experiencia Profesional
           </h2>
-          
-          <div className="relative">
-            {/* <!-- The vertical line --> */}
-            <div className="absolute left-1/2 -translate-x-1/2 w-0.5 h-full bg-border" aria-hidden="true"></div>
-
-            <div className="space-y-16">
-              {experienceData.map((exp, index) => (
-                <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                  {/* <!-- Left or Right Content --> */}
-                  <div className={cn("flex flex-col items-center", index % 2 === 0 ? 'md:items-end' : 'md:items-start md:col-start-2')}>
-                    <div className={cn("w-full max-w-md relative", index % 2 === 0 ? 'md:text-right' : 'md:text-left')}>
-                      {/* <!-- Connector line --> */}
-                      <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-5 w-1/2 border-t-2 border-border/70 border-dashed" aria-hidden="true"></div>
-
-                      <Card className="bg-card/50 border-border transition-all duration-300 hover:shadow-xl hover:shadow-accent/10 hover:scale-[1.01] hover:border-accent/50 animated-gradient-border w-full">
-                        <CardContent className="p-6">
-                          <h3 className="text-2xl font-bold text-accent mb-1 font-headline">{exp.puesto}</h3>
-                          <p className="text-lg text-foreground">{exp.empresa}</p>
-                          <div className="text-sm text-muted-foreground mt-2 mb-4 flex flex-wrap gap-x-4 gap-y-1" >
-                            <span>{exp.periodo}</span>
-                            <span className="flex items-center gap-1">
-                              <MapPin size={14} />
-                              {exp.ubicacion}
-                            </span>
-                          </div>
-                          <ul className="space-y-3 text-left">
-                            {exp.logros.map((logro, i) => (
-                              <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                                <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />
-                                <span>{logro}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </CardContent>
-                      </Card>
-                      
-                       {/* <!-- Timeline Node --> */}
-                       <div className={cn(
-                          "absolute top-2 w-10 h-10 bg-background rounded-full border-2 border-accent shadow-lg flex items-center justify-center",
-                          index % 2 === 0 ? 'left-1/2 -translate-x-[202%]' : 'left-1/2 translate-x-[98%]'
-                        )}>
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            {experienceData.map((exp, index) => (
+              <AccordionItem key={index} value={`item-${index}`} className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border">
+                <AccordionTrigger className="p-6 text-left hover:no-underline">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-accent/10 p-3 rounded-full">
                         <ExperienceIcon iconName={exp.icon} />
-                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-accent font-headline">{exp.puesto}</h3>
+                      <p className="text-md text-foreground">{exp.empresa}</p>
+                      <p className="text-sm text-muted-foreground mt-1">{exp.periodo} &middot; {exp.ubicacion}</p>
                     </div>
                   </div>
-                  <div className="hidden md:block"></div>
-                </div>
-              ))}
-            </div>
-          </div>
+                </AccordionTrigger>
+                <AccordionContent className="p-6 pt-0">
+                  <ul className="space-y-3 pl-4 border-l-2 border-accent/50 ml-6">
+                    {exp.logros.map((logro, i) => (
+                      <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                        <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />
+                        <span>{logro}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </AnimatedSection>
       
@@ -540,3 +518,5 @@ export default function Portfolio() {
     </div>
   );
 }
+
+    
