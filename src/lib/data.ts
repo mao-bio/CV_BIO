@@ -3,14 +3,14 @@
 export const cvData = {
     name: "Mario Hernández",
     title: "Ingeniero Biomédico | Especialista en IA",
-    summary: "Ingeniero Biomédico con experiencia en gestión tecnológica hospitalaria, mantenimiento de equipos médicos, tecnovigilancia y apoyo en habilitación y acreditación de instituciones de salud. Especialista en análisis, optimización y mantenimiento de dispositivos biomédicos, con enfoque en evaluación tecnológica y uso seguro de equipos médicos. Cuento con experiencia en desarrollo de algoritmos y soluciones de inteligencia artificial aplicadas al análisis de datos clínicos, así como en la planificación y ejecución de proyectos de investigación. Me destaco por mi liderazgo colaborativo, comunicación asertiva, toma de decisiones y orientación a resultados. Soy adaptable, proactivo y comprometido con la innovación en tecnología médica para mejorar la seguridad, eficiencia y calidad en los entornos de salud.",
+    summary: "Ingeniero Biomédico con más de un año de experiencia en gestión tecnológica hospitalaria, mantenimiento de equipos médicos, tecnovigilancia y apoyo en procesos de habilitación y acreditación en instituciones de salud. Especialista en el análisis, optimización y mantenimiento de dispositivos biomédicos, así como en la evaluación tecnológica y el uso seguro de equipos médicos. Experiencia en el desarrollo de algoritmos y soluciones basadas en inteligencia artificial para el análisis de datos clínicos, así como en la creación, planificación y ejecución de proyectos de investigación. Me caracterizo por un liderazgo colaborativo, comunicación asertiva, capacidad para la toma de decisiones y una fuerte orientación a resultados. Adaptable, proactivo, con aprendizaje continuo, y apasionado por la innovación en tecnología médica para optimizar la seguridad, eficiencia y calidad en los entornos de salud.",
     contact: {
       email: "marioandretybio@gmail.com",
-      phone: "573188189647",
+      phone: "+573188189647",
       linkedin: "https://www.linkedin.com/in/mao-bio/",
       github: "https://github.com/mao-bio",
     },
-    location: "Pasto, Nariño, Colombia",
+    location: "Pasto, Nariño / Ipiales, Nariño, Colombia",
     education: [
       {
         degree: "Especialización en Inteligencia Artificial",
@@ -35,10 +35,12 @@ export const experienceData = [
       ubicacion: 'Ipiales, Nariño',
       icon: 'corporate',
       logros: [
-        'Gestión de inventarios de equipos y suministros en clínicas e IPS, con enfoque en el sector odontológico.',
-        'Ejecución de mantenimientos preventivos y correctivos, logrando un 95% de disponibilidad de equipos.',
-        'Implementación de aplicaciones de IA para optimizar la gestión de mantenimiento biomédico.',
-        'Apoyo en procesos de habilitación de servicios de salud y cumplimiento del estándar de dotación.'
+        'Gestión de inventarios de equipos y suministros en clínicas e IPS, asegurando disponibilidad y trazabilidad del 100%.',
+        'Ejecución de más de 70 mantenimientos preventivos y correctivos, logrando un 95% de disponibilidad de equipos.',
+        'Diseño e implementación de sistemas de gestión de inventarios con SQL y Power BI.',
+        'Implementación de soluciones de IA para predecir necesidades de mantenimiento.',
+        'Automatización de procesos documentales con Python y AppSheet, reduciendo tiempos en un 40%.',
+        'Apoyo en la implementación de la Resolución 3100 de 2019 para habilitación de servicios de salud.'
       ]
     },
     {
@@ -49,7 +51,8 @@ export const experienceData = [
       icon: 'academic',
       logros: [
         'Desarrollo de materiales didácticos y evaluación personalizada de estudiantes.',
-        'Integración de herramientas basadas en IA para el diseño de actividades interactivas y seguimiento del progreso.'
+        'Análisis de datos de desempeño estudiantil para personalizar estrategias de enseñanza.',
+        'Integración de herramientas de IA (ChatGPT, Gemini) para diseñar actividades interactivas y dar retroalimentación automatizada.'
       ]
     },
     {
@@ -59,8 +62,10 @@ export const experienceData = [
         ubicacion: 'Pasto, Nariño',
         icon: 'corporate',
         logros: [
-            'Gestión de seguimiento a proveedores y preparación de documentación para auditorías.',
-            'Capacitación al personal de salud en el uso seguro de equipos biomédicos.'
+            'Gestión del seguimiento a proveedores y preparación de documentación para auditorías.',
+            'Análisis de datos de proveedores y generación de reportes para auditorías con Excel y BI.',
+            'Capacitación al personal de salud en el uso seguro de equipos biomédicos.',
+            'Desarrollo de dashboards dinámicos para control de inventarios usando Looker Studio y Python.'
         ]
     },
     {
@@ -71,7 +76,8 @@ export const experienceData = [
         icon: 'corporate',
         logros: [
             'Ejecución de mantenimientos preventivos y correctivos en la Fundación Hospital San Pedro.',
-            'Elaboración de listas de chequeo y apoyo en la digitalización de guías rápidas con códigos QR.'
+            'Digitalización de guías rápidas mediante códigos QR.',
+            'Desarrollo de aplicaciones móviles para gestión de inventarios con AppSheet.'
         ]
     },
     {
@@ -93,8 +99,10 @@ export const experienceData = [
         ubicacion: 'Pasto, Nariño',
         icon: 'corporate',
         logros: [
-            'Apoyo en mantenimientos de equipos médicos y actualización de hojas de vida.',
-            'Capacitación en tecnovigilancia y participación en rondas hospitalarias.'
+            'Apoyo en la ejecución de mantenimientos preventivos y correctivos de equipos médicos de alta complejidad.',
+            'Actualización sistemática de hojas de vida de equipos conforme a normativas INVIMA.',
+            'Liderazgo en capacitación de rondas hospitalarias para garantizar el uso seguro de dispositivos.',
+            'Pionero en la digitalización de procesos para la optimización de inventarios médicos.'
         ]
     },
     {
@@ -105,58 +113,59 @@ export const experienceData = [
       icon: 'research',
       logros: [
         'Desarrollo de algoritmo de Simulación de Nanopartículas de Magnetita por Dinámica Molecular (Python y C++).',
-        'Participación como ponente en el XIV encuentro departamental de semilleros de investigación RREDSI.'
+        'Análisis estadístico avanzado del comportamiento de nanopartículas y generación de visualizaciones científicas.',
+        'Presentación de resultados en el XIV encuentro departamental de semilleros de investigación RREDSI.'
       ]
     },
     {
-      puesto: 'Monitor',
+      puesto: 'Monitor Académico',
       empresa: 'Universidad Autónoma de Manizales',
       periodo: '2021 – 2023',
       ubicacion: 'Manizales, Caldas',
       icon: 'academic',
       logros: [
-          'Capacitación y acompañamiento de tutorías en las materias de Diseño y Simulación de circuitos biomédicos.',
-          'Formación mediante mentorías en programación (Arduino, Python).',
-          'Supervisión de laboratorios y apoyo de proyectos de investigación biomédica.'
+          'Tutor académico en Diseño y Simulación de Circuitos Biomédicos y desarrollo de dispositivos médicos.',
+          'Análisis y visualización de datos de simulaciones de circuitos con Matlab.',
+          'Mentoría a estudiantes en programación con Arduino y Python para aplicaciones clínicas.'
       ]
   }
 ];
 
 export const skillsData = {
     programacion: {
-      title: "Software y Herramientas",
+      title: "Lenguajes, BI y Cloud",
       icon: "programacion",
-      items: ['Python', 'C++', 'Matlab', 'Arduino', 'SQL', 'R', 'Excel', 'Power BI', 'Google Workspace', 'AppSheet', 'Tinkercad', 'OriginLab', 'Canva', 'Looker Studio', 'ChatGPT', 'Gemini', 'Claude', 'Firebase', 'Colab'],
+      items: ['Python', 'R', 'SQL', 'C++', 'MATLAB', 'Arduino', 'Power BI', 'Looker Studio', 'Excel Avanzado', 'Tableau', 'Firebase', 'Google Workspace', 'Google Colab'],
     },
     ia: {
-      title: "Inteligencia Artificial",
+      title: "Inteligencia Artificial y Machine Learning",
       icon: "ia",
-      items: ['Machine Learning', 'Deep Learning', 'Análisis Predictivo', 'Modelos Supervisados y No Supervisados', 'Validación y optimización de modelos'],
+      items: ['Modelado Predictivo', 'Machine Learning', 'Deep Learning', 'Análisis Estadístico', 'Scikit-learn', 'TensorFlow', 'OpenCV', 'Pandas', 'NumPy', 'ChatGPT', 'Gemini', 'Claude'],
     },
     profesionales: {
-      title: "Competencias Profesionales",
+      title: "Ingeniería Biomédica y Clínica",
       icon: "profesionales",
-      items: ['Gestión Tecnológica', 'Mantenimiento Equipos Médicos', 'Calibración', 'Tecnovigilancia', 'Evaluación Tecnológica', 'Análisis de Datos Clínicos', 'Biomateriales', 'Nanotecnología', 'Regulaciones y Normativas', 'Primeros Auxilios Psicológicos'],
+      items: ['Gestión Tecnológica', 'Mantenimiento Equipos Médicos', 'Calibración', 'Tecnovigilancia', 'Evaluación Tecnológica', 'Análisis de Datos Clínicos', 'Biomateriales', 'Nanotecnología', 'Regulaciones y Normativas', 'ETL'],
     },
     blandas: {
         title: "Habilidades Blandas",
         icon: "blandas",
-        items: ['Liderazgo', 'Comunicación Asertiva', 'Resolución de Conflictos', 'Pensamiento Estratégico', 'Adaptabilidad', 'Trabajo en equipo', 'Innovación y Creatividad'],
+        items: ['Pensamiento Analítico y Estratégico', 'Resolución de Problemas', 'Liderazgo Colaborativo', 'Comunicación Asertiva', 'Trabajo en Equipo', 'Adaptabilidad', 'Innovación y Creatividad', 'Toma de decisiones', 'Storytelling con Datos'],
     }
 };
 
 export const certificationsData = [
     'Diplomado en Habilitación de Servicios de Salud (2025)',
-    'Seminario de Metrología Biomédica (2025)',
     'Programa Nacional de Tecnovigilancia - INVIMA (2025)',
+    'Seminario de Metrología Biomédica (2025)',
+    'Curso de Primeros Auxilios Psicológicos (2025)',
     'Gestión de Datos Clínicos con IA - UAM (2024)',
     'Participación en verano de investigación - Programa DELFIN (2023)',
     'Fundamentos en Analítica de Datos - Correlation One (2022)',
+    'Machine Learning with MATLAB - MathWorks',
+    'MATLAB Fundamentals - MathWorks',
     'Competencias Digitales - Google Activate (2022)',
     'V Simposio Biomédica SENA (2022)',
-    'Certificación en Machine Learning with Matlab - MathWorks',
-    'Matrícula de Honor - Ingeniería Biomédica (2024)',
-    'Mención de Honor - Ingeniería Biomédica (2020-2024)',
     'Curso de Inglés - Universidad de Nariño (2016-2018)'
 ];
   
@@ -190,8 +199,3 @@ export const projectsData = [
       tags: ["Power BI", "Business Intelligence", "SQL"],
     },
   ];
-
-
-
-
-    
