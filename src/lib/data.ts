@@ -75,6 +75,18 @@ export const experienceData = [
         ]
     },
     {
+      puesto: 'Becario de investigación de verano',
+      empresa: 'Universidad de Guadalajara',
+      periodo: 'Jun 2023 - Ago 2023',
+      ubicacion: 'Guadalajara, Jalisco, México',
+      icon: 'research',
+      logros: [
+        'Participé como investigador en el prestigioso Programa DELFÍN, desarrollando nanomateriales eco-amigables a partir de residuos agroindustriales.',
+        'Me especialicé en la síntesis y caracterización de nanopartículas de celulosa derivadas del bagazo de agave, enfocándome en el aprovechamiento integral de polisacáridos para aplicaciones biomédicas.',
+        'Este trabajo aportó al avance en biomateriales renovables y nanotecnología verde, alineando la investigación científica con principios de sostenibilidad y desarrollo tecnológico en salud.'
+      ]
+    },
+    {
         puesto: 'Practicante de Ingeniería Biomédica',
         empresa: 'Clínica Cardioneurovascular Pabón S.A.S',
         periodo: 'Ene 2023 – Jun 2023',
@@ -178,3 +190,4 @@ export const projectsData = [
       tags: ["Power BI", "Business Intelligence", "SQL"],
     },
   ];
+
