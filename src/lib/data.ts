@@ -198,4 +198,20 @@ export const projectsData = [
       imageUrlId: "4",
       tags: ["Power BI", "Business Intelligence", "SQL"],
     },
+    {
+      id: "proj5",
+      title: "Simulación de Nanopartículas",
+      description: "Algoritmo de Simulación de Nanopartículas de Magnetita por Dinámica Molecular utilizando Python y C++ para analizar su comportamiento a diferentes escalas.",
+      imageUrlId: "5",
+      tags: ["Simulación", "Nanotecnología", "Python", "C++"],
+    },
+    {
+      id: "proj6",
+      title: "Automatización de Reportes",
+      description: "Desarrollo de scripts en Python para automatizar la generación de reportes de mantenimiento, reduciendo el tiempo de procesamiento en un 40%.",
+      imageUrlId: "6",
+      tags: ["Automatización", "Python", "ETL"],
+    },
   ];
+
+    

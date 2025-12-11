@@ -31,6 +31,18 @@
       "imageHint": "robotic arm"
     },
     {
+      "id": "5",
+      "description": "Nanoparticles simulation",
+      "imageUrl": "https://images.unsplash.com/photo-1614926120210-333956417a82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxuYW5vcGFydGljbGVzfGVufDB8fHx8MTc2NjI4MjY1N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "nanoparticles simulation"
+    },
+    {
+      "id": "6",
+      "description": "Data automation dashboard",
+      "imageUrl": "https://images.unsplash.com/photo-1630514937727-3a681705c136?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXRhJTIwYXV0b21hdGlvbnxlbnwwfHx8fDE3NjYyODI3MDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "data automation"
+    },
+    {
       "id": "hero-bg",
       "description": "Abstract background for hero section",
       "imageUrl": "https://images.unsplash.com/photo-1684503830683-108f3e0fd03f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YWJzdHJhY3QlMjB0ZWNobm9sb2d5fGVufDB8fHx8MTc2NTM3OTQ3M3ww&ixlib=rb-4.1.0&q=80&w=1080",
