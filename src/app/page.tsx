@@ -74,7 +74,7 @@ const ParticleBackground = () => {
 
     let animationFrameId: number;
     const particles: any[] = [];
-    const particleCount = 50;
+    const particleCount = 75;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -88,10 +88,10 @@ const ParticleBackground = () => {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
+          vx: (Math.random() - 0.5) * 0.7,
+          vy: (Math.random() - 0.5) * 0.7,
           size: Math.random() * 2 + 1,
-          color: Math.random() > 0.5 ? `hsla(${accentColor}, 0.5)`: `hsla(${primaryColor}, 0.5)`,
+          color: Math.random() > 0.5 ? `hsla(${accentColor}, 0.6)`: `hsla(${primaryColor}, 0.6)`,
         });
       }
     };
@@ -253,21 +253,21 @@ export default function Portfolio() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mt-20">
-              <Card className="bg-card/50 border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2">
+              <Card className="bg-card/50 border-border transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2 animated-gradient-border">
                 <CardContent className="p-6">
                   <Brain className="text-accent mb-3" size={32} />
                   <h3 className="text-xl font-semibold mb-2 font-headline">Inteligencia Artificial</h3>
                   <p className="text-muted-foreground text-sm">Especialización en IA aplicada a datos clínicos y gestión biomédica.</p>
                 </CardContent>
               </Card>
-              <Card className="bg-card/50 border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2">
+              <Card className="bg-card/50 border-border transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2 animated-gradient-border">
                 <CardContent className="p-6">
                   <Database className="text-accent mb-3" size={32} />
                   <h3 className="text-xl font-semibold mb-2 font-headline">Análisis de Datos</h3>
                   <p className="text-muted-foreground text-sm">Transformación de datos en insights con Python, SQL y Power BI.</p>
                 </CardContent>
               </Card>
-              <Card className="bg-card/50 border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2">
+              <Card className="bg-card/50 border-border transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2 animated-gradient-border">
                 <CardContent className="p-6">
                   <Briefcase className="text-accent mb-3" size={32} />
                   <h3 className="text-xl font-semibold mb-2 font-headline">Ingeniería Biomédica</h3>
@@ -287,7 +287,7 @@ export default function Portfolio() {
           
           <div className="space-y-8">
             {experienceData.map((exp, index) => (
-              <Card key={index} className="bg-card/50 border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:scale-[1.03]">
+              <Card key={index} className="bg-card/50 border-border transition-all duration-300 hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 hover:scale-[1.02]">
                 <CardContent className="p-6 md:p-8">
                   <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
                     <div>
@@ -327,7 +327,7 @@ export default function Portfolio() {
                 {projectsData.map((project) => {
                   const image = getImage(project.imageUrlId);
                   return(
-                    <Card key={project.id} className="bg-card/50 border-border hover:border-accent/50 transition-all duration-300 transform hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2 flex flex-col overflow-hidden">
+                    <Card key={project.id} className="bg-card/50 border-border transition-all duration-300 transform hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-2 flex flex-col overflow-hidden">
                         {image && <Image
                           src={image.imageUrl}
                           alt={`visual del proyecto ${project.title}`}
@@ -407,7 +407,7 @@ export default function Portfolio() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {certificationsData.map((cert, index) => (
-              <Card key={index} className="bg-card/50 border-border hover:border-accent/50 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-accent/10">
+              <Card key={index} className="bg-card/50 border-border transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-accent/10">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-3">
                     <Award className="text-accent flex-shrink-0 mt-1" size={20} />
