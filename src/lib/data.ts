@@ -6,7 +6,7 @@ export const cvData = {
     summary: "Ingeniero Biomédico con experiencia en gestión tecnológica hospitalaria, mantenimiento de equipos médicos, tecnovigilancia y apoyo en habilitación y acreditación de instituciones de salud. Especialista en análisis, optimización y mantenimiento de dispositivos biomédicos, con enfoque en evaluación tecnológica y uso seguro de equipos médicos. Cuento con experiencia en desarrollo de algoritmos y soluciones de inteligencia artificial aplicadas al análisis de datos clínicos, así como en la planificación y ejecución de proyectos de investigación. Me destaco por mi liderazgo colaborativo, comunicación asertiva, toma de decisiones y orientación a resultados. Soy adaptable, proactivo y comprometido con la innovación en tecnología médica para mejorar la seguridad, eficiencia y calidad en los entornos de salud.",
     contact: {
       email: "marioandretybio@gmail.com",
-      phone: "+573188189647",
+      phone: "573188189647",
       linkedin: "https://www.linkedin.com/in/mao-bio/",
       github: "https://github.com/mao-bio",
     },
@@ -192,3 +192,6 @@ export const projectsData = [
   ];
 
 
+
+
+    

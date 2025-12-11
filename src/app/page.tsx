@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download, FileText, Activity, Users, Star, Cpu, HeartPulse, FlaskConical, BookOpen } from 'lucide-react';
+import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download, FileText, Activity, Users, Star, Cpu, HeartPulse, FlaskConical, BookOpen, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -477,6 +477,16 @@ export default function Portfolio() {
                 </Button>
 
                 <Button asChild variant="secondary" className="h-auto text-left justify-start transition-transform duration-300 hover:scale-105" size="lg">
+                  <a href={`https://wa.me/${cvData.contact.phone.replace(/\\+/g, '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-6 rounded-lg">
+                    <MessageCircle size={32} className="flex-shrink-0" />
+                    <div>
+                      <p className="font-semibold">WhatsApp</p>
+                      <p className="text-sm font-normal text-secondary-foreground/80">{cvData.contact.phone}</p>
+                    </div>
+                  </a>
+                </Button>
+
+                <Button asChild variant="secondary" className="h-auto text-left justify-start transition-transform duration-300 hover:scale-105" size="lg">
                   <a href={cvData.contact.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-6 rounded-lg">
                     <Github size={32} className="flex-shrink-0" />
                     <div>
@@ -486,7 +496,7 @@ export default function Portfolio() {
                   </a>
                 </Button>
                 
-                <div className="flex items-center gap-4 bg-muted p-6 rounded-lg">
+                <div className="flex items-center gap-4 bg-muted p-6 rounded-lg md:col-span-2">
                   <MapPin size={32} className="flex-shrink-0" />
                   <div>
                     <p className="font-semibold">Ubicación</p>
@@ -518,3 +528,5 @@ export default function Portfolio() {
     </div>
   );
 }
+
+    
