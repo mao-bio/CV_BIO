@@ -6,7 +6,6 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download, FileText, Activity, Users, Star, Cpu, HeartPulse, FlaskConical, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useScrollspy } from '@/hooks/use-scrollspy';
 import { cn } from '@/lib/utils';
@@ -76,7 +75,7 @@ const ParticleBackground = () => {
 
     let animationFrameId: number;
     const particles: any[] = [];
-    const particleCount = 250;
+    const particleCount = 350;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -90,8 +89,8 @@ const ParticleBackground = () => {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 1.5,
-          vy: (Math.random() - 0.5) * 1.5,
+          vx: (Math.random() - 0.5) * 1.8,
+          vy: (Math.random() - 0.5) * 1.8,
           size: Math.random() * 2.5 + 1,
           color: Math.random() > 0.5 ? `hsla(${accentColor}, 0.7)`: `hsla(${primaryColor}, 0.7)`,
         });
@@ -309,67 +308,58 @@ export default function Portfolio() {
           </h2>
           
           <div className="relative">
-             <div className="absolute left-1/2 -translate-x-1/2 h-full w-1 bg-border/50 hidden md:block"></div>
-              <Accordion type="single" collapsible className="w-full space-y-12">
+            <div className="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-border/70 hidden md:block"></div>
+            
+            <div className="space-y-16">
               {experienceData.map((exp, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="border-none">
-                  <div className={cn(
-                      "flex md:items-center w-full",
-                      index % 2 === 0 ? "md:flex-row-reverse" : ""
-                  )}>
-                    <div className="hidden md:flex flex-col items-center w-1/3">
-                       <div className="z-10 bg-background p-3 rounded-full border-2 border-accent shadow-lg">
-                          <ExperienceIcon iconName={exp.icon} />
+                <div key={index} className={cn(
+                  "flex flex-col md:flex-row items-center",
+                  index % 2 === 0 ? "md:flex-row-reverse" : ""
+                )}>
+                  
+                  <div className="w-full md:w-5/12">
+                    <Card className="bg-card/50 border-border transition-all duration-300 hover:shadow-xl hover:shadow-accent/10 hover:scale-[1.01] hover:border-accent/50 animated-gradient-border">
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4">
+                            <div className="md:hidden z-10 bg-background p-2 rounded-full border-2 border-accent flex-shrink-0 mt-1">
+                                <ExperienceIcon iconName={exp.icon} />
+                            </div>
+                            <div>
+                                <h3 className="text-2xl font-bold text-accent mb-1 font-headline">{exp.puesto}</h3>
+                                <p className="text-lg text-foreground">{exp.empresa}</p>
+                                <div className="text-sm text-muted-foreground mt-2 flex flex-wrap gap-x-4 gap-y-1">
+                                  <span>{exp.periodo}</span>
+                                  <span className="flex items-center gap-1">
+                                    <MapPin size={14} />
+                                    {exp.ubicacion}
+                                  </span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div className="w-full md:w-2/3">
-                      <AccordionTrigger className="w-full hover:no-underline p-0">
-                        <Card className="w-full bg-card/50 border-border transition-all duration-300 hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 hover:scale-[1.01]">
-                          <CardContent className="p-6 text-left">
-                              <div className="flex items-start gap-4">
-                                <div className="md:hidden z-10 bg-background p-2 rounded-full border-2 border-accent flex-shrink-0 mt-1">
-                                    <ExperienceIcon iconName={exp.icon} />
-                                </div>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-accent mb-1 font-headline">{exp.puesto}</h3>
-                                    <p className="text-lg text-foreground">{exp.empresa}</p>
-                                    <div className="text-sm text-muted-foreground mt-2 flex flex-wrap gap-x-4 gap-y-1">
-                                      <span>{exp.periodo}</span>
-                                      <span className="flex items-center gap-1">
-                                        <MapPin size={14} />
-                                        {exp.ubicacion}
-                                      </span>
-                                    </div>
-                                </div>
-                              </div>
-                          </CardContent>
-                        </Card>
-                      </AccordionTrigger>
+                        <ul className="mt-4 space-y-3">
+                          {exp.logros.map((logro, i) => (
+                            <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                              <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />
+                              <span>{logro}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+
+                  <div className="w-2/12 h-16 md:h-auto flex justify-center items-center relative">
+                    <div className="h-full w-0.5 md:w-full md:h-0.5 bg-border/70"></div>
+                    <div className="absolute z-10 bg-background p-3 rounded-full border-2 border-accent shadow-lg">
+                      <ExperienceIcon iconName={exp.icon} />
                     </div>
                   </div>
-                  <AccordionContent className={cn(
-                      "flex w-full",
-                       index % 2 === 0 ? "md:flex-row-reverse" : ""
-                  )}>
-                    <div className="hidden md:block w-1/3"></div>
-                    <div className="w-full md:w-2/3">
-                      <Card className="w-full bg-card/50 border-border mt-2">
-                         <CardContent className="p-6">
-                          <ul className="space-y-3">
-                            {exp.logros.map((logro, i) => (
-                              <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                                <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />
-                                <span>{logro}</span>
-                              </li>
-                            ))}
-                          </ul>
-                         </CardContent>
-                      </Card>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
+
+                  <div className="hidden md:block w-5/12"></div>
+
+                </div>
               ))}
-            </Accordion>
+            </div>
           </div>
         </div>
       </AnimatedSection>
