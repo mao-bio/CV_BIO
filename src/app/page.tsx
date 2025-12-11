@@ -6,6 +6,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download, FileText, Activity, Users, Star, Cpu, HeartPulse } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useScrollspy } from '@/hooks/use-scrollspy';
 import { cn } from '@/lib/utils';
@@ -75,7 +76,7 @@ const ParticleBackground = () => {
 
     let animationFrameId: number;
     const particles: any[] = [];
-    const particleCount = 150;
+    const particleCount = 200;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -89,8 +90,8 @@ const ParticleBackground = () => {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 1.0,
-          vy: (Math.random() - 0.5) * 1.0,
+          vx: (Math.random() - 0.5) * 1.2,
+          vy: (Math.random() - 0.5) * 1.2,
           size: Math.random() * 2 + 1,
           color: Math.random() > 0.5 ? `hsla(${accentColor}, 0.6)`: `hsla(${primaryColor}, 0.6)`,
         });
@@ -289,42 +290,56 @@ export default function Portfolio() {
             </div>
         </div>
       </section>
-
+      
       <AnimatedSection id="experiencia">
         <div className="max-w-6xl mx-auto w-full">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center font-headline gradient-text">
+          <h2 className="text-4xl md:text-5xl font-bold mb-20 text-center font-headline gradient-text">
             <Briefcase className="inline mr-3 text-accent" size={40} />
             Experiencia Profesional
           </h2>
           
-          <div className="space-y-8">
-            {experienceData.map((exp, index) => (
-              <Card key={index} className="bg-card/50 border-border transition-all duration-300 hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 hover:scale-[1.02]">
-                <CardContent className="p-6 md:p-8">
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                    <div>
-                      <h3 className="text-2xl font-bold text-accent mb-2 font-headline">{exp.puesto}</h3>
-                      <p className="text-xl text-foreground">{exp.empresa}</p>
-                    </div>
-                    <div className="text-left md:text-right mt-2 md:mt-0">
-                      <p className="text-muted-foreground">{exp.periodo}</p>
-                      <p className="text-sm text-muted-foreground/80 flex items-center justify-start md:justify-end gap-1">
-                        <MapPin size={14} />
-                        {exp.ubicacion}
-                      </p>
+          <div className="relative">
+            <div className="absolute left-1/2 -translate-x-1/2 h-full w-[2px] bg-border"></div>
+            <Accordion type="single" collapsible className="w-full space-y-12">
+              {experienceData.map((exp, index) => (
+                <AccordionItem key={index} value={`item-${index}`} className="border-none">
+                  <div className="flex items-center justify-center relative">
+                    <div className="z-10 bg-background p-2 rounded-full border-2 border-accent">
+                      <Briefcase className="text-accent" />
                     </div>
                   </div>
-                  <ul className="space-y-2">
-                    {exp.logros.map((logro, i) => (
-                      <li key={i} className="flex items-start gap-2 text-muted-foreground">
-                        <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />
-                        <span>{logro}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
+                  <AccordionTrigger className="w-full hover:no-underline">
+                    <Card className="w-full bg-card/50 border-border transition-all duration-300 hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 hover:scale-[1.02]">
+                      <CardContent className="p-6 text-left">
+                          <h3 className="text-2xl font-bold text-accent mb-1 font-headline">{exp.puesto}</h3>
+                          <p className="text-lg text-foreground">{exp.empresa}</p>
+                          <div className="text-sm text-muted-foreground mt-2 flex flex-wrap gap-x-4 gap-y-1">
+                            <span>{exp.periodo}</span>
+                            <span className="flex items-center gap-1">
+                              <MapPin size={14} />
+                              {exp.ubicacion}
+                            </span>
+                          </div>
+                      </CardContent>
+                    </Card>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <Card className="w-full bg-card/50 border-border mt-2">
+                       <CardContent className="p-6">
+                        <ul className="space-y-3">
+                          {exp.logros.map((logro, i) => (
+                            <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                              <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />
+                              <span>{logro}</span>
+                            </li>
+                          ))}
+                        </ul>
+                       </CardContent>
+                    </Card>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </div>
       </AnimatedSection>
@@ -510,3 +525,5 @@ export default function Portfolio() {
     </div>
   );
 }
+
+    
