@@ -35,12 +35,21 @@ export const experienceData = [
     ubicacion: 'Ipiales, Nariño',
     icon: 'corporate',
     logros: [
-      'Gestión de inventarios de equipos y suministros en clínicas e IPS, asegurando disponibilidad y trazabilidad del 100%.',
-      'Ejecución de más de 70 mantenimientos preventivos y correctivos, logrando un 95% de disponibilidad de equipos.',
-      'Diseño e implementación de sistemas de gestión de inventarios con SQL y Power BI.',
-      'Implementación de soluciones de IA para predecir necesidades de mantenimiento.',
-      'Automatización de procesos documentales con Python y AppSheet, reduciendo tiempos en un 40%.',
-      'Apoyo en la implementación de la Resolución 3100 de 2019 para habilitación de servicios de salud.'
+      '**Gestión Técnica y Operativa:**',
+      'Coordiné la gestión completa de inventarios de equipos y suministros en múltiples clínicas e IPS, con especialización en el sector odontológico.',
+      'Ejecuté más de 70 mantenimientos preventivos y correctivos, logrando un 95% de disponibilidad operativa de equipos.',
+      'Realicé calibraciones de equipos biomédicos, asegurando el cumplimiento de estándares de calidad y normativas técnicas.',
+      'Administré íntegramente la gestión documental técnica, manteniendo actualizadas hojas de vida y facilitando auditorías.',
+      '**Análisis de Datos y Business Intelligence:**',
+      'Diseñé e implementé sistemas de gestión de inventarios en bases de datos SQL y dashboards interactivos en Power BI para monitoreo en tiempo real.',
+      'Realicé análisis estadístico profundo de datos de mantenimiento, identificando patrones de fallas y optimizando programas de intervención.',
+      'Ejecuté procesos completos de ETL (Extracción, Transformación y Carga) para convertir datos crudos en insights estratégicos.',
+      '**Inteligencia Artificial y Automatización:**',
+      'Implementé soluciones de IA para la predicción de necesidades de mantenimiento, reduciendo paradas no programadas.',
+      'Automaticé procesos de gestión documental con Python y AppSheet, logrando una reducción del 40% en tiempos de procesamiento.',
+      '**Cumplimiento Normativo:**',
+      'Apoyé activamente la implementación del estándar de dotación conforme a la Resolución 3100 de 2019.',
+      'Contribuí en procesos de habilitación de servicios de salud, aportando soporte técnico y preparando documentación regulatoria.'
     ]
   },
   {
@@ -50,9 +59,15 @@ export const experienceData = [
     ubicacion: 'Ipiales, Nariño',
     icon: 'academic',
     logros: [
-      'Desarrollo de materiales didácticos y evaluación personalizada de estudiantes.',
-      'Análisis de datos de desempeño estudiantil para personalizar estrategias de enseñanza.',
-      'Integración de herramientas de IA (ChatGPT, Gemini) para diseñar actividades interactivas y dar retroalimentación automatizada.'
+      '**Diseño y Desarrollo Pedagógico:**',
+      'Diseñé materiales didácticos personalizados y sistemas de evaluación adaptados a diferentes estilos de aprendizaje.',
+      'Implementé estrategias pedagógicas innovadoras, como gamificación y aprendizaje basado en proyectos, para aumentar la motivación y la participación.',
+      '**Integración de IA y Tecnología Educativa:**',
+      'Integré herramientas de IA (ChatGPT, Gemini) para diseñar actividades interactivas, generar retroalimentación automatizada y optimizar el seguimiento del progreso estudiantil.',
+      'Utilicé técnicas de "flipped classroom" y "pair work" para fomentar la participación activa y el aprendizaje colaborativo.',
+      '**Análisis de Datos Educativos:**',
+      'Realicé análisis de datos de desempeño estudiantil para identificar áreas de mejora y personalizar las estrategias de enseñanza.',
+      'Creé reportes analíticos sobre la efectividad de las metodologías de enseñanza, basados en datos cuantitativos y cualitativos.'
     ]
   },
   {
@@ -62,22 +77,27 @@ export const experienceData = [
       ubicacion: 'Pasto, Nariño',
       icon: 'corporate',
       logros: [
-          'Gestión del seguimiento a proveedores y preparación de documentación para auditorías.',
-          'Análisis de datos de proveedores y generación de reportes para auditorías con Excel y BI.',
-          'Capacitación al personal de salud en el uso seguro de equipos biomédicos.',
-          'Desarrollo de dashboards dinámicos para control de inventarios usando Looker Studio y Python.'
+        '**Gestión y Operaciones:**',
+        'Gestioné el seguimiento a proveedores y preparé la documentación técnica requerida para auditorías.',
+        'Capacite al personal de salud en el uso seguro de equipos biomédicos y apoyé en actividades del SG-SST.',
+        '**Digitalización y Business Intelligence:**',
+        'Lideré procesos de digitalización de información técnica y desarrollé dashboards en Google Data Studio (Looker Studio) para el control de inventarios.',
+        'Utilicé Python para el análisis avanzado de datos operativos y la automatización de reportes.'
       ]
   },
   {
-      puesto: 'Practicante de Ingeniería Biomédica',
-      empresa: 'TechMedic S.A.S',
+      puesto: 'Practicante de Ingeniería Biomédica (TechMedic S.A.S)',
+      empresa: 'Fundación Hospital San Pedro',
       periodo: 'Ago 2023 – Nov 2023',
       ubicacion: 'Pasto, Nariño',
       icon: 'corporate',
       logros: [
-          'Ejecución de mantenimientos preventivos y correctivos en la Fundación Hospital San Pedro.',
-          'Digitalización de guías rápidas mediante códigos QR.',
-          'Desarrollo de aplicaciones móviles para gestión de inventarios con AppSheet.'
+        '**Mantenimiento y Digitalización:**',
+        'Ejecuté mantenimientos preventivos y correctivos de equipos biomédicos en un entorno hospitalario.',
+        'Apoyé la digitalización de guías rápidas mediante la implementación de un sistema de códigos QR.',
+        '**Desarrollo y Gestión:**',
+        'Desarrollé aplicaciones móviles con AppSheet y Google Sheets para la gestión de inventarios y el registro de mantenimientos.',
+        'Elaboré protocolos técnicos y listas de chequeo conforme a las normativas de tecnovigilancia.'
       ]
   },
   {
@@ -87,9 +107,12 @@ export const experienceData = [
     ubicacion: 'Guadalajara, Jalisco, México',
     icon: 'research',
     logros: [
-      'Participé como investigador en el prestigioso Programa DELFÍN, desarrollando nanomateriales eco-amigables a partir de residuos agroindustriales.',
-      'Me especialicé en la síntesis y caracterización de nanopartículas de celulosa derivadas del bagazo de agave, enfocándome en el aprovechamiento integral de polisacáridos para aplicaciones biomédicas.',
-      'Este trabajo aportó al avance en biomateriales renovables y nanotecnología verde, alineando la investigación científica con principios de sostenibilidad y desarrollo tecnológico en salud.'
+      '**Investigación en Biomateriales Sostenibles:**',
+      'Participé en el prestigioso Programa DELFIN, desarrollando nanomateriales eco-amigables a partir de residuos agroindustriales (bagazo de agave).',
+      'Me especialicé en la síntesis y caracterización de nanopartículas de celulosa, optimizando parámetros para obtener propiedades controladas.',
+      '**Caracterización y Análisis:**',
+      'Realicé caracterización estructural mediante técnicas avanzadas como microscopía electrónica (SEM, TEM), difracción de rayos X (XRD) y espectroscopía infrarroja (FTIR).',
+      'Contribuí al avance en biomateriales renovables y nanotecnología verde, alineando la investigación con principios de sostenibilidad.'
     ]
   },
   {
@@ -99,10 +122,12 @@ export const experienceData = [
       ubicacion: 'Pasto, Nariño',
       icon: 'corporate',
       logros: [
-          'Apoyo en la ejecución de mantenimientos preventivos y correctivos de equipos médicos de alta complejidad.',
-          'Actualización sistemática de hojas de vida de equipos conforme a normativas INVIMA.',
-          'Liderazgo en capacitación de rondas hospitalarias para garantizar el uso seguro de dispositivos.',
-          'Pionero en la digitalización de procesos para la optimización de inventarios médicos.'
+        '**Mantenimiento y Gestión Clínica:**',
+        'Apoyé en mantenimientos preventivos y correctivos de equipos médicos de alta complejidad.',
+        'Actualicé sistemáticamente hojas de vida de equipos conforme a la normativa INVIMA y elaboré guías rápidas para su operación segura.',
+        '**Liderazgo y Digitalización:**',
+        'Lideré capacitaciones en tecnovigilancia y participé activamente en rondas hospitalarias para garantizar el funcionamiento seguro de los dispositivos.',
+        'Fui pionero en la digitalización de procesos para optimizar los inventarios de equipos médicos.'
       ]
   },
   {
@@ -112,9 +137,13 @@ export const experienceData = [
     ubicacion: 'Manizales, Caldas',
     icon: 'research',
     logros: [
-      'Desarrollo de algoritmo de Simulación de Nanopartículas de Magnetita por Dinámica Molecular (Python y C++).',
-      'Análisis estadístico avanzado del comportamiento de nanopartículas y generación de visualizaciones científicas.',
-      'Presentación de resultados en el XIV encuentro departamental de semilleros de investigación RREDSI.'
+      '**Desarrollo Computacional y Simulación:**',
+      'Desarrollé un algoritmo de Simulación de Nanopartículas de Magnetita por Dinámica Molecular utilizando Python y C++.',
+      'Implementé metodologías innovadoras para el análisis de impedancias en materiales semimetálicos.',
+      '**Análisis de Datos Científicos:**',
+      'Realicé análisis estadístico avanzado del comportamiento de nanopartículas, procesando grandes volúmenes de datos científicos y generando visualizaciones de alta calidad.',
+      '**Divulgación Científica:**',
+      'Presenté los resultados de la investigación en el XIV encuentro departamental de semilleros de investigación RREDSI.'
     ]
   },
   {
@@ -124,9 +153,12 @@ export const experienceData = [
     ubicacion: 'Manizales, Caldas',
     icon: 'academic',
     logros: [
-        'Tutor académico en Diseño y Simulación de Circuitos Biomédicos y desarrollo de dispositivos médicos.',
-        'Análisis y visualización de datos de simulaciones de circuitos con Matlab.',
-        'Mentoría a estudiantes en programación con Arduino y Python para aplicaciones clínicas.'
+        '**Monitor de Diseño Biomédico (2022):**',
+        'Proporcioné tutoría en diseño y simulación de circuitos biomédicos, y desarrollo de dispositivos médicos.',
+        'Creé material didáctico innovador y supervisé laboratorios especializados, ofreciendo mentoría en programación con Arduino y Python.',
+        '**Monitor de Circuitos (2021):**',
+        'Instruí en el análisis, diseño y simulación de circuitos electrónicos, con dominio en software especializado como Multisim y LTSpice.',
+        'Capacite a estudiantes en la programación de microcontroladores y en el procesamiento de señales de sensores biomédicos.'
     ]
 }
 ];
@@ -212,4 +244,20 @@ export const projectsData = [
     imageUrlId: "6",
     tags: ["Automatización", "Python", "ETL"],
   },
+  {
+    id: 'proj7',
+    title: 'Análisis de Sentimiento en Redes Sociales',
+    description: 'Análisis de sentimiento en tiempo real de publicaciones en redes sociales sobre temas de salud pública para identificar tendencias y preocupaciones de la población.',
+    imageUrlId: '7',
+    tags: ['NLP', 'Análisis de Sentimiento', 'Python'],
+  },
+  {
+    id: 'proj8',
+    title: 'Optimización de Rutas Logísticas',
+    description: 'Sistema de optimización de rutas para la distribución de suministros médicos utilizando algoritmos genéticos y análisis geoespacial.',
+    imageUrlId: '8',
+    tags: ['Optimización', 'Logística', 'Algoritmos Genéticos'],
+  }
 ];
+
+    
