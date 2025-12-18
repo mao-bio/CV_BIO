@@ -7,7 +7,7 @@ export const cvData = {
     contact: {
       email: "marioandretybio@gmail.com",
       phone: "+573188189647",
-      linkedin: "https://www.linkedin.com/in/mario-hernández-/",
+      linkedin: "https://www.linkedin.com/in/mario-hern%C3%A1ndez-/",
       github: "https://github.com/mao-bio",
     },
     location: "Pasto, Nariño / Ipiales, Nariño, Colombia",
@@ -35,19 +35,19 @@ export const experienceData = [
     ubicacion: 'Ipiales, Nariño',
     icon: 'corporate',
     logros: [
-      '**Gestión Técnica y Operativa:**',
+      '<strong>Gestión Técnica y Operativa:</strong>',
       'Coordiné la gestión completa de inventarios de equipos y suministros en múltiples clínicas e IPS, con especialización en el sector odontológico.',
       'Ejecuté más de 70 mantenimientos preventivos y correctivos, logrando un 95% de disponibilidad operativa de equipos.',
       'Realicé calibraciones de equipos biomédicos, asegurando el cumplimiento de estándares de calidad y normativas técnicas.',
       'Administré íntegramente la gestión documental técnica, manteniendo actualizadas hojas de vida y facilitando auditorías.',
-      '**Análisis de Datos y Business Intelligence:**',
+      '<strong>Análisis de Datos y Business Intelligence:</strong>',
       'Diseñé e implementé sistemas de gestión de inventarios en bases de datos SQL y dashboards interactivos en Power BI para monitoreo en tiempo real.',
       'Realicé análisis estadístico profundo de datos de mantenimiento, identificando patrones de fallas y optimizando programas de intervención.',
       'Ejecuté procesos completos de ETL (Extracción, Transformación y Carga) para convertir datos crudos en insights estratégicos.',
-      '**Inteligencia Artificial y Automatización:**',
+      '<strong>Inteligencia Artificial y Automatización:</strong>',
       'Implementé soluciones de IA para la predicción de necesidades de mantenimiento, reduciendo paradas no programadas.',
       'Automaticé procesos de gestión documental con Python y AppSheet, logrando una reducción del 40% en tiempos de procesamiento.',
-      '**Cumplimiento Normativo:**',
+      '<strong>Cumplimiento Normativo:</strong>',
       'Apoyé activamente la implementación del estándar de dotación conforme a la Resolución 3100 de 2019.',
       'Contribuí en procesos de habilitación de servicios de salud, aportando soporte técnico y preparando documentación regulatoria.'
     ]
@@ -59,13 +59,13 @@ export const experienceData = [
     ubicacion: 'Ipiales, Nariño',
     icon: 'academic',
     logros: [
-      '**Diseño y Desarrollo Pedagógico:**',
+      '<strong>Diseño y Desarrollo Pedagógico:</strong>',
       'Diseñé materiales didácticos personalizados y sistemas de evaluación adaptados a diferentes estilos de aprendizaje.',
       'Implementé estrategias pedagógicas innovadoras, como gamificación y aprendizaje basado en proyectos, para aumentar la motivación y la participación.',
-      '**Integración de IA y Tecnología Educativa:**',
+      '<strong>Integración de IA y Tecnología Educativa:</strong>',
       'Integré herramientas de IA (ChatGPT, Gemini) para diseñar actividades interactivas, generar retroalimentación automatizada y optimizar el seguimiento del progreso estudiantil.',
       'Utilicé técnicas de "flipped classroom" y "pair work" para fomentar la participación activa y el aprendizaje colaborativo.',
-      '**Análisis de Datos Educativos:**',
+      '<strong>Análisis de Datos Educativos:</strong>',
       'Realicé análisis de datos de desempeño estudiantil para identificar áreas de mejora y personalizar las estrategias de enseñanza.',
       'Creé reportes analíticos sobre la efectividad de las metodologías de enseñanza, basados en datos cuantitativos y cualitativos.'
     ]
@@ -77,10 +77,10 @@ export const experienceData = [
     ubicacion: 'Pasto, Nariño',
     icon: 'corporate',
     logros: [
-      '**Gestión y Operaciones:**',
+      '<strong>Gestión y Operaciones:</strong>',
       'Gestioné el seguimiento a proveedores y preparé la documentación técnica requerida para auditorías.',
       'Capacite al personal de salud en el uso seguro de equipos biomédicos y apoyé en actividades del SG-SST.',
-      '**Digitalización y Business Intelligence:**',
+      '<strong>Digitalización y Business Intelligence:</strong>',
       'Lideré procesos de digitalización de información técnica y desarrollé dashboards en Google Data Studio (Looker Studio) para el control de inventarios.',
       'Utilicé Python para el análisis avanzado de datos operativos y la automatización de reportes.'
     ]
@@ -92,10 +92,10 @@ export const experienceData = [
     ubicacion: 'Pasto, Nariño',
     icon: 'corporate',
     logros: [
-      '**Mantenimiento y Digitalización:**',
+      '<strong>Mantenimiento y Digitalización:</strong>',
       'Ejecuté mantenimientos preventivos y correctivos de equipos biomédicos en un entorno hospitalario.',
       'Apoyé la digitalización de guías rápidas mediante la implementación de un sistema de códigos QR.',
-      '**Desarrollo y Gestión:**',
+      '<strong>Desarrollo y Gestión:</strong>',
       'Desarrollé aplicaciones móviles con AppSheet y Google Sheets para la gestión de inventarios y el registro de mantenimientos.',
       'Elaboré protocolos técnicos y listas de chequeo conforme a las normativas de tecnovigilancia.'
     ]
@@ -107,10 +107,10 @@ export const experienceData = [
     ubicacion: 'Guadalajara, Jalisco, México',
     icon: 'research',
     logros: [
-      '**Investigación en Biomateriales Sostenibles:**',
+      '<strong>Investigación en Biomateriales Sostenibles:</strong>',
       'Participé en el prestigioso Programa DELFIN, desarrollando nanomateriales eco-amigables a partir de residuos agroindustriales (bagazo de agave).',
       'Me especialicé en la síntesis y caracterización de nanopartículas de celulosa, optimizando parámetros para obtener propiedades controladas.',
-      '**Caracterización y Análisis:**',
+      '<strong>Caracterización y Análisis:</strong>',
       'Realicé caracterización estructural mediante técnicas avanzadas como microscopía electrónica (SEM, TEM), difracción de rayos X (XRD) y espectroscopía infrarroja (FTIR).',
       'Contribuí al avance en biomateriales renovables y nanotecnología verde, alineando la investigación con principios de sostenibilidad.'
     ]
@@ -122,10 +122,10 @@ export const experienceData = [
     ubicacion: 'Pasto, Nariño',
     icon: 'corporate',
     logros: [
-      '**Mantenimiento y Gestión Clínica:**',
+      '<strong>Mantenimiento y Gestión Clínica:</strong>',
       'Apoyé en mantenimientos preventivos y correctivos de equipos médicos de alta complejidad.',
       'Actualicé sistemáticamente hojas de vida de equipos conforme a la normativa INVIMA y elaboré guías rápidas para su operación segura.',
-      '**Liderazgo y Digitalización:**',
+      '<strong>Liderazgo y Digitalización:</strong>',
       'Lideré capacitaciones en tecnovigilancia y participé activamente en rondas hospitalarias para garantizar el funcionamiento seguro de los dispositivos.',
       'Fui pionero en la digitalización de procesos para optimizar los inventarios de equipos médicos.'
     ]
@@ -137,12 +137,12 @@ export const experienceData = [
     ubicacion: 'Manizales, Caldas',
     icon: 'research',
     logros: [
-      '**Desarrollo Computacional y Simulación:**',
+      '<strong>Desarrollo Computacional y Simulación:</strong>',
       'Desarrollé un algoritmo de Simulación de Nanopartículas de Magnetita por Dinámica Molecular utilizando Python y C++.',
       'Implementé metodologías innovadoras para el análisis de impedancias en materiales semimetálicos.',
-      '**Análisis de Datos Científicos:**',
+      '<strong>Análisis de Datos Científicos:</strong>',
       'Realicé análisis estadístico avanzado del comportamiento de nanopartículas, procesando grandes volúmenes de datos científicos y generando visualizaciones de alta calidad.',
-      '**Divulgación Científica:**',
+      '<strong>Divulgación Científica:</strong>',
       'Presenté los resultados de la investigación en el XIV encuentro departamental de semilleros de investigación RREDSI.'
     ]
   },
@@ -153,10 +153,10 @@ export const experienceData = [
     ubicacion: 'Manizales, Caldas',
     icon: 'academic',
     logros: [
-      '**Monitor de Diseño Biomédico (2022):**',
+      '<strong>Monitor de Diseño Biomédico (2022):</strong>',
       'Proporcioné tutoría en diseño y simulación de circuitos biomédicos, y desarrollo de dispositivos médicos.',
       'Creé material didáctico innovador y supervisé laboratorios especializados, ofreciendo mentoría en programación con Arduino y Python.',
-      '**Monitor de Circuitos (2021):**',
+      '<strong>Monitor de Circuitos (2021):</strong>',
       'Instruí en el análisis, diseño y simulación de circuitos electrónicos, con dominio en software especializado como Multisim y LTSpice.',
       'Capacite a estudiantes en la programación de microcontroladores y en el procesamiento de señales de sensores biomédicos.'
     ]

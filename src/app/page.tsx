@@ -349,7 +349,7 @@ export default function Portfolio() {
                     {exp.logros.map((logro, i) => (
                       <li key={i} className="flex items-start gap-3 text-muted-foreground">
                         <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />
-                        <span>{logro}</span>
+                        <span dangerouslySetInnerHTML={{ __html: logro }} />
                       </li>
                     ))}
                   </ul>
