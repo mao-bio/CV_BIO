@@ -133,24 +133,20 @@ const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }
   };
 
   return (
-    <Collapsible
-      open={isOpen}
-      onOpenChange={setIsOpen}
-      className="w-full"
-    >
-      <Card className="bg-card/50 border-border transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border">
-        <CardHeader className="flex flex-row items-start gap-4">
-            <div className="bg-accent/10 p-3 rounded-full mt-1">
-              <ExperienceIcon iconName={experience.icon} />
-            </div>
-            <div className="flex-1">
-              <CardTitle className="text-xl text-accent font-headline">{experience.puesto}</CardTitle>
-              <CardDescription className="text-md text-foreground">{experience.empresa}</CardDescription>
-              <p className="text-sm text-muted-foreground mt-1">{experience.periodo} &middot; {experience.ubicacion}</p>
-            </div>
-        </CardHeader>
-        <CardContent className="px-6 pb-6">
-           <CollapsibleContent>
+    <Card className="bg-card/50 border-border transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border">
+      <CardHeader className="flex flex-row items-start gap-4">
+        <div className="bg-accent/10 p-3 rounded-full mt-1">
+          <ExperienceIcon iconName={experience.icon} />
+        </div>
+        <div className="flex-1">
+          <CardTitle className="text-xl text-accent font-headline">{experience.puesto}</CardTitle>
+          <CardDescription className="text-md text-foreground">{experience.empresa}</CardDescription>
+          <p className="text-sm text-muted-foreground mt-1">{experience.periodo} &middot; {experience.ubicacion}</p>
+        </div>
+      </CardHeader>
+      <CardContent className="px-6 pb-6">
+        <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+          <CollapsibleContent>
             <div className="pl-4 border-l-2 border-accent/50 ml-6 space-y-3 mt-4">
               {experience.logros.map((logro, i) => (
                 <div key={i} className="flex items-start gap-3">
@@ -168,9 +164,9 @@ const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }
               {isOpen ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
             </Button>
           </CollapsibleTrigger>
-        </CardContent>
-      </Card>
-    </Collapsible>
+        </Collapsible>
+      </CardContent>
+    </Card>
   );
 };
 
@@ -555,5 +551,7 @@ export default function Portfolio() {
     </div>
   );
 }
+
+    
 
     
