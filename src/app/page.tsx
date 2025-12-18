@@ -119,6 +119,8 @@ const ParticleBackground = () => {
 };
 
 const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const ExperienceIcon = ({ iconName }: { iconName: string | undefined }) => {
     const icons: { [key: string]: React.ElementType } = {
       corporate: Briefcase,
@@ -130,34 +132,49 @@ const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }
   };
 
   return (
-    <AccordionItem value={experience.puesto} className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border mb-4">
-      <AccordionTrigger className="p-6 hover:no-underline">
-        <div className="flex flex-row items-start gap-4 text-left w-full">
-          <div className="bg-accent/10 p-3 rounded-full mt-1">
-            <ExperienceIcon iconName={experience.icon} />
-          </div>
-          <div className="flex-1">
-            <h3 className="text-xl text-accent font-headline">{experience.puesto}</h3>
-            <p className="text-md text-foreground">{experience.empresa}</p>
-            <p className="text-sm text-muted-foreground mt-1">{experience.periodo} &middot; {experience.ubicacion}</p>
-          </div>
+    <Card className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border mb-4">
+        <div className="p-6">
+            <div className="flex flex-row items-start gap-4 text-left w-full">
+                <div className="bg-accent/10 p-3 rounded-full mt-1">
+                    <ExperienceIcon iconName={experience.icon} />
+                </div>
+                <div className="flex-1">
+                    <h3 className="text-xl text-accent font-headline">{experience.puesto}</h3>
+                    <p className="text-md text-foreground">{experience.empresa}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{experience.periodo} &middot; {experience.ubicacion}</p>
+                </div>
+            </div>
+
+            <div 
+                className={cn(
+                    "transition-all duration-500 ease-in-out overflow-hidden",
+                    isOpen ? "max-h-[2000px] opacity-100 mt-4" : "max-h-0 opacity-0"
+                )}
+            >
+                <div className="pl-4 border-l-2 border-accent/50 ml-6 space-y-3 pt-4">
+                    {experience.logros.map((logro, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                            {logro.endsWith(':') ? null : <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />}
+                            <p className={cn('text-muted-foreground', { 'font-semibold text-foreground -ml-7 mt-2': logro.endsWith(':') })}>
+                                {logro.endsWith(':') ? <strong>{logro}</strong> : logro}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
-      </AccordionTrigger>
-      <AccordionContent>
-        <div className="px-6 pb-6 pt-0">
-          <div className="pl-4 border-l-2 border-accent/50 ml-6 space-y-3">
-            {experience.logros.map((logro, i) => (
-              <div key={i} className="flex items-start gap-3">
-                {logro.endsWith(':') ? null : <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />}
-                <p className={cn('text-muted-foreground', { 'font-semibold text-foreground -ml-7 mt-2': logro.endsWith(':') })}>
-                  {logro.endsWith(':') ? <strong>{logro}</strong> : logro}
-                </p>
-              </div>
-            ))}
-          </div>
+
+        <div className="px-6 pb-4">
+            <Button
+                variant="ghost"
+                className="w-full text-accent hover:text-accent hover:bg-accent/10"
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                {isOpen ? 'Ver menos' : 'Ver más'}
+                {isOpen ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
+            </Button>
         </div>
-      </AccordionContent>
-    </AccordionItem>
+    </Card>
   );
 };
 
@@ -362,11 +379,11 @@ export default function Portfolio() {
             <Briefcase className="inline mr-3 text-accent" size={40} />
             Experiencia Profesional
           </h2>
-          <Accordion type="single" collapsible className="w-full">
+          <div className="w-full space-y-4">
             {experienceData.map((exp, index) => (
               <ExperienceCard key={index} experience={exp} />
             ))}
-          </Accordion>
+          </div>
         </div>
       </AnimatedSection>
       
@@ -542,6 +559,3 @@ export default function Portfolio() {
     </div>
   );
 }
-
-    
-    
