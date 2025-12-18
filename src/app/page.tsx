@@ -43,7 +43,7 @@ function AnimatedSection({ children, id }: { children: React.ReactNode, id: stri
   }, []);
 
   return (
-    <section id={id} ref={ref} className={cn('min-h-screen py-20 px-4 flex items-center', isVisible ? 'fade-in-up' : 'opacity-0')}>
+    <section id={id} ref={ref} className={cn('py-20 px-4 flex items-center', isVisible ? 'fade-in-up' : 'opacity-0')}>
       {children}
     </section>
   );
