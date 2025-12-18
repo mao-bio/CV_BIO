@@ -324,40 +324,45 @@ export default function Portfolio() {
       </AnimatedSection>
       
       <AnimatedSection id="experiencia">
-        <div className="max-w-4xl mx-auto w-full">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center font-headline gradient-text">
-            <Briefcase className="inline mr-3 text-accent" size={40} />
-            Experiencia Profesional
-          </h2>
-          <Accordion type="single" collapsible className="w-full space-y-4">
-            {experienceData.map((exp, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border">
-                <AccordionTrigger className="p-6 text-left hover:no-underline">
-                  <div className="flex items-center gap-4">
-                    <div className="bg-accent/10 p-3 rounded-full">
-                        <ExperienceIcon iconName={exp.icon} />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-accent font-headline">{exp.puesto}</h3>
-                      <p className="text-md text-foreground">{exp.empresa}</p>
-                      <p className="text-sm text-muted-foreground mt-1">{exp.periodo} &middot; {exp.ubicacion}</p>
-                    </div>
+      <div className="max-w-4xl mx-auto w-full">
+        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center font-headline gradient-text">
+          <Briefcase className="inline mr-3 text-accent" size={40} />
+          Experiencia Profesional
+        </h2>
+        <Accordion type="single" collapsible className="w-full space-y-4">
+          {experienceData.map((exp, index) => (
+            <AccordionItem key={index} value={`item-${index}`} className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border">
+              <AccordionTrigger className="p-6 text-left hover:no-underline">
+                <div className="flex items-center gap-4">
+                  <div className="bg-accent/10 p-3 rounded-full">
+                    <ExperienceIcon iconName={exp.icon} />
                   </div>
-                </AccordionTrigger>
-                <AccordionContent className="p-6 pt-0">
-                  <ul className="space-y-3 pl-4 border-l-2 border-accent/50 ml-6">
-                    {exp.logros.map((logro, i) => (
-                      <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                        <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />
-                        <span dangerouslySetInnerHTML={{ __html: logro }} />
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-accent font-headline">{exp.puesto}</h3>
+                    <p className="text-md text-foreground">{exp.empresa}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{exp.periodo} &middot; {exp.ubicacion}</p>
+                  </div>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="p-6 pt-0">
+                  <div className="space-y-3 pl-4 border-l-2 border-accent/50 ml-6">
+                    {exp.logros.map((logro, i) => {
+                      const isTitle = logro.endsWith(':');
+                      return (
+                        <div key={i} className="flex items-start gap-3">
+                          {!isTitle && <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />}
+                          <p className={cn('text-muted-foreground', { 'font-semibold text-foreground mt-2': isTitle, 'ml-0': isTitle, 'ml-0': !isTitle })}>
+                            {logro}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
       </AnimatedSection>
       
       <AnimatedSection id="proyectos">
@@ -532,5 +537,3 @@ export default function Portfolio() {
     </div>
   );
 }
-
-    
