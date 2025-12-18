@@ -71,34 +71,34 @@ export const experienceData = [
     ]
   },
   {
-      puesto: 'Ingeniero de Apoyo en Coordinación Biomédica',
-      empresa: 'TechMedic S.A.S',
-      periodo: 'Nov 2023 – Dic 2023',
-      ubicacion: 'Pasto, Nariño',
-      icon: 'corporate',
-      logros: [
-        '**Gestión y Operaciones:**',
-        'Gestioné el seguimiento a proveedores y preparé la documentación técnica requerida para auditorías.',
-        'Capacite al personal de salud en el uso seguro de equipos biomédicos y apoyé en actividades del SG-SST.',
-        '**Digitalización y Business Intelligence:**',
-        'Lideré procesos de digitalización de información técnica y desarrollé dashboards en Google Data Studio (Looker Studio) para el control de inventarios.',
-        'Utilicé Python para el análisis avanzado de datos operativos y la automatización de reportes.'
-      ]
+    puesto: 'Ingeniero de Apoyo en Coordinación Biomédica',
+    empresa: 'TechMedic S.A.S',
+    periodo: 'Nov 2023 – Dic 2023',
+    ubicacion: 'Pasto, Nariño',
+    icon: 'corporate',
+    logros: [
+      '**Gestión y Operaciones:**',
+      'Gestioné el seguimiento a proveedores y preparé la documentación técnica requerida para auditorías.',
+      'Capacite al personal de salud en el uso seguro de equipos biomédicos y apoyé en actividades del SG-SST.',
+      '**Digitalización y Business Intelligence:**',
+      'Lideré procesos de digitalización de información técnica y desarrollé dashboards en Google Data Studio (Looker Studio) para el control de inventarios.',
+      'Utilicé Python para el análisis avanzado de datos operativos y la automatización de reportes.'
+    ]
   },
   {
-      puesto: 'Practicante de Ingeniería Biomédica (TechMedic S.A.S)',
-      empresa: 'Fundación Hospital San Pedro',
-      periodo: 'Ago 2023 – Nov 2023',
-      ubicacion: 'Pasto, Nariño',
-      icon: 'corporate',
-      logros: [
-        '**Mantenimiento y Digitalización:**',
-        'Ejecuté mantenimientos preventivos y correctivos de equipos biomédicos en un entorno hospitalario.',
-        'Apoyé la digitalización de guías rápidas mediante la implementación de un sistema de códigos QR.',
-        '**Desarrollo y Gestión:**',
-        'Desarrollé aplicaciones móviles con AppSheet y Google Sheets para la gestión de inventarios y el registro de mantenimientos.',
-        'Elaboré protocolos técnicos y listas de chequeo conforme a las normativas de tecnovigilancia.'
-      ]
+    puesto: 'Practicante de Ingeniería Biomédica (TechMedic S.A.S)',
+    empresa: 'Fundación Hospital San Pedro',
+    periodo: 'Ago 2023 – Nov 2023',
+    ubicacion: 'Pasto, Nariño',
+    icon: 'corporate',
+    logros: [
+      '**Mantenimiento y Digitalización:**',
+      'Ejecuté mantenimientos preventivos y correctivos de equipos biomédicos en un entorno hospitalario.',
+      'Apoyé la digitalización de guías rápidas mediante la implementación de un sistema de códigos QR.',
+      '**Desarrollo y Gestión:**',
+      'Desarrollé aplicaciones móviles con AppSheet y Google Sheets para la gestión de inventarios y el registro de mantenimientos.',
+      'Elaboré protocolos técnicos y listas de chequeo conforme a las normativas de tecnovigilancia.'
+    ]
   },
   {
     puesto: 'Becario de investigación de verano',
@@ -116,19 +116,19 @@ export const experienceData = [
     ]
   },
   {
-      puesto: 'Practicante de Ingeniería Biomédica',
-      empresa: 'Clínica Cardioneurovascular Pabón S.A.S',
-      periodo: 'Ene 2023 – Jun 2023',
-      ubicacion: 'Pasto, Nariño',
-      icon: 'corporate',
-      logros: [
-        '**Mantenimiento y Gestión Clínica:**',
-        'Apoyé en mantenimientos preventivos y correctivos de equipos médicos de alta complejidad.',
-        'Actualicé sistemáticamente hojas de vida de equipos conforme a la normativa INVIMA y elaboré guías rápidas para su operación segura.',
-        '**Liderazgo y Digitalización:**',
-        'Lideré capacitaciones en tecnovigilancia y participé activamente en rondas hospitalarias para garantizar el funcionamiento seguro de los dispositivos.',
-        'Fui pionero en la digitalización de procesos para optimizar los inventarios de equipos médicos.'
-      ]
+    puesto: 'Practicante de Ingeniería Biomédica',
+    empresa: 'Clínica Cardioneurovascular Pabón S.A.S',
+    periodo: 'Ene 2023 – Jun 2023',
+    ubicacion: 'Pasto, Nariño',
+    icon: 'corporate',
+    logros: [
+      '**Mantenimiento y Gestión Clínica:**',
+      'Apoyé en mantenimientos preventivos y correctivos de equipos médicos de alta complejidad.',
+      'Actualicé sistemáticamente hojas de vida de equipos conforme a la normativa INVIMA y elaboré guías rápidas para su operación segura.',
+      '**Liderazgo y Digitalización:**',
+      'Lideré capacitaciones en tecnovigilancia y participé activamente en rondas hospitalarias para garantizar el funcionamiento seguro de los dispositivos.',
+      'Fui pionero en la digitalización de procesos para optimizar los inventarios de equipos médicos.'
+    ]
   },
   {
     puesto: 'Joven Investigador - Nanociencia y Nanotecnología',
@@ -153,14 +153,14 @@ export const experienceData = [
     ubicacion: 'Manizales, Caldas',
     icon: 'academic',
     logros: [
-        '**Monitor de Diseño Biomédico (2022):**',
-        'Proporcioné tutoría en diseño y simulación de circuitos biomédicos, y desarrollo de dispositivos médicos.',
-        'Creé material didáctico innovador y supervisé laboratorios especializados, ofreciendo mentoría en programación con Arduino y Python.',
-        '**Monitor de Circuitos (2021):**',
-        'Instruí en el análisis, diseño y simulación de circuitos electrónicos, con dominio en software especializado como Multisim y LTSpice.',
-        'Capacite a estudiantes en la programación de microcontroladores y en el procesamiento de señales de sensores biomédicos.'
+      '**Monitor de Diseño Biomédico (2022):**',
+      'Proporcioné tutoría en diseño y simulación de circuitos biomédicos, y desarrollo de dispositivos médicos.',
+      'Creé material didáctico innovador y supervisé laboratorios especializados, ofreciendo mentoría en programación con Arduino y Python.',
+      '**Monitor de Circuitos (2021):**',
+      'Instruí en el análisis, diseño y simulación de circuitos electrónicos, con dominio en software especializado como Multisim y LTSpice.',
+      'Capacite a estudiantes en la programación de microcontroladores y en el procesamiento de señales de sensores biomédicos.'
     ]
-}
+  }
 ];
 
 export const skillsData = {
@@ -259,5 +259,3 @@ export const projectsData = [
     tags: ['Optimización', 'Logística', 'Algoritmos Genéticos'],
   }
 ];
-
-    
