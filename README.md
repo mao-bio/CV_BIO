@@ -4,7 +4,7 @@
 
 Bienvenido a mi portafolio profesional y currículum vitae interactivo. Este proyecto ha sido desarrollado para presentar mi trayectoria, habilidades y proyectos de una manera dinámica y moderna. La aplicación está construida con **Next.js**, **React**, **Tailwind CSS**, **ShadCN UI** y **Genkit (para IA)**, y está alojada en **Firebase Hosting**.
 
-**[Visita la versión en vivo aquí](URL_DEL_SITIO_EN_VIVO)** _(Reemplaza este enlace con la URL de tu aplicación desplegada)_
+**[Visita la versión en vivo aquí](https://bioai-cv-mario-hernandez.vercel.app)**
 
 ---
 
