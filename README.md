@@ -82,5 +82,5 @@ Si deseas ejecutar este proyecto en tu entorno local, sigue estos pasos:
 ¿Interesado en colaborar o discutir oportunidades? ¡Hablemos!
 
 - **Email:** [marioandretybio@gmail.com](mailto:marioandretybio@gmail.com)
-- **LinkedIn:** [https://www.linkedin.com/in/mao-bio/](https://www.linkedin.com/in/mao-bio/)
+- **LinkedIn:** [https://www.linkedin.com/in/mario-hernández-/](https://www.linkedin.com/in/mario-hernández-/)
 - **GitHub:** [https://github.com/mao-bio](https://github.com/mao-bio)
