@@ -345,20 +345,20 @@ export default function Portfolio() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="p-6 pt-0">
-                  <div className="space-y-3 pl-4 border-l-2 border-accent/50 ml-6">
-                    {exp.logros.map((logro, i) => {
-                      const isTitle = logro.endsWith(':');
-                      return (
-                        <div key={i} className="flex items-start gap-3">
-                          {!isTitle && <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />}
-                          <p className={cn('text-muted-foreground', { 'font-semibold text-foreground mt-2': isTitle, 'ml-0': isTitle, 'ml-0': !isTitle })}>
-                            {logro}
-                          </p>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </AccordionContent>
+                <div className="pl-4 border-l-2 border-accent/50 ml-6 space-y-3">
+                  {exp.logros.map((logro, i) => {
+                    const isTitle = logro.endsWith(':');
+                    return (
+                      <div key={i} className="flex items-start gap-3">
+                         {!isTitle && <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />}
+                        <p className={cn('text-muted-foreground', { 'font-semibold text-foreground mt-2': isTitle, 'ml-0': isTitle, 'ml-0': !isTitle })}>
+                          {logro}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
