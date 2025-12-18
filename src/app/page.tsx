@@ -2,11 +2,12 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download, FileText, Activity, Users, Star, Cpu, HeartPulse, FlaskConical, BookOpen, MessageCircle } from 'lucide-react';
+import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download, FileText, Activity, Users, Star, Cpu, HeartPulse, FlaskConical, BookOpen, MessageCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { useScrollspy } from '@/hooks/use-scrollspy';
 import { cn } from '@/lib/utils';
 import { cvData, skillsData, experienceData, certificationsData, projectsData } from '@/lib/data';
@@ -118,6 +119,61 @@ const ParticleBackground = () => {
   return <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full -z-10" />;
 };
 
+const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const ExperienceIcon = ({ iconName }: { iconName: string | undefined }) => {
+    const icons: { [key: string]: React.ElementType } = {
+      corporate: Briefcase,
+      research: FlaskConical,
+      academic: BookOpen,
+    };
+    const Icon = iconName ? icons[iconName] : Briefcase;
+    return <Icon className="text-accent h-8 w-8" />;
+  };
+
+  return (
+    <Collapsible
+      open={isOpen}
+      onOpenChange={setIsOpen}
+      className="w-full"
+    >
+      <Card className="bg-card/50 border-border transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border">
+        <CardHeader className="flex flex-row items-start gap-4">
+            <div className="bg-accent/10 p-3 rounded-full mt-1">
+              <ExperienceIcon iconName={experience.icon} />
+            </div>
+            <div className="flex-1">
+              <CardTitle className="text-xl text-accent font-headline">{experience.puesto}</CardTitle>
+              <CardDescription className="text-md text-foreground">{experience.empresa}</CardDescription>
+              <p className="text-sm text-muted-foreground mt-1">{experience.periodo} &middot; {experience.ubicacion}</p>
+            </div>
+        </CardHeader>
+        <CardContent className="px-6 pb-6">
+           <CollapsibleContent>
+            <div className="pl-4 border-l-2 border-accent/50 ml-6 space-y-3 mt-4">
+              {experience.logros.map((logro, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  {logro.startsWith('✅') || logro.endsWith(':') ? null : <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />}
+                  <p className={cn('text-muted-foreground', { 'font-semibold text-foreground mt-2': logro.endsWith(':') })}>
+                    {logro.endsWith(':') ? <strong>{logro}</strong> : logro}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </CollapsibleContent>
+          <CollapsibleTrigger asChild>
+            <Button variant="ghost" className="w-full mt-4">
+              {isOpen ? 'Ver menos' : 'Ver más'}
+              {isOpen ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
+            </Button>
+          </CollapsibleTrigger>
+        </CardContent>
+      </Card>
+    </Collapsible>
+  );
+};
+
 
 export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -152,16 +208,6 @@ export default function Portfolio() {
     };
     const Icon = icons[iconName] || Star;
     return <Icon className="mr-3 text-accent" size={28} />;
-  };
-  
-  const ExperienceIcon = ({ iconName }: { iconName: string | undefined }) => {
-    const icons: { [key: string]: React.ElementType } = {
-      corporate: Briefcase,
-      research: FlaskConical,
-      academic: BookOpen,
-    };
-    const Icon = iconName ? icons[iconName] : Briefcase;
-    return <Icon className="text-accent h-6 w-6" />;
   };
 
   return (
@@ -329,39 +375,11 @@ export default function Portfolio() {
           <Briefcase className="inline mr-3 text-accent" size={40} />
           Experiencia Profesional
         </h2>
-        <Accordion type="single" collapsible className="w-full space-y-4">
+        <div className="space-y-6">
           {experienceData.map((exp, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border">
-              <AccordionTrigger className="p-6 text-left hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="bg-accent/10 p-3 rounded-full">
-                    <ExperienceIcon iconName={exp.icon} />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-accent font-headline">{exp.puesto}</h3>
-                    <p className="text-md text-foreground">{exp.empresa}</p>
-                    <p className="text-sm text-muted-foreground mt-1">{exp.periodo} &middot; {exp.ubicacion}</p>
-                  </div>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="p-6 pt-0">
-                <div className="pl-4 border-l-2 border-accent/50 ml-6 space-y-3">
-                  {exp.logros.map((logro, i) => {
-                    const isTitle = logro.endsWith(':');
-                    return (
-                      <div key={i} className="flex items-start gap-3">
-                         {!isTitle && <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />}
-                        <p className={cn('text-muted-foreground', { 'font-semibold text-foreground mt-2': isTitle, 'ml-0': isTitle, 'ml-0': !isTitle })}>
-                          {logro}
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
-              </AccordionContent>
-            </AccordionItem>
+            <ExperienceCard key={index} experience={exp} />
           ))}
-        </Accordion>
+        </div>
       </div>
       </AnimatedSection>
       
@@ -537,3 +555,5 @@ export default function Portfolio() {
     </div>
   );
 }
+
+    
