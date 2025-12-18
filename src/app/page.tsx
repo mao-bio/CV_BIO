@@ -123,7 +123,7 @@ export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const sectionIds = ['inicio', 'experiencia', 'proyectos', 'habilidades', 'certificaciones', 'contacto'];
+  const sectionIds = ['inicio', 'educacion', 'experiencia', 'proyectos', 'habilidades', 'certificaciones', 'contacto'];
   const activeSection = useScrollspy(sectionIds, { offset: 100 });
 
 
@@ -180,7 +180,7 @@ export default function Portfolio() {
                   onClick={() => scrollToSection(item)}
                   className={`capitalize hover:text-accent transition-colors duration-300 ${activeSection === item ? 'text-accent font-semibold' : ''}`}
                 >
-                  {item === 'inicio' ? 'Inicio' : item}
+                  {item === 'inicio' ? 'Inicio' : item === 'educacion' ? 'Educación' : item}
                 </button>
               ))}
             </div>
@@ -200,7 +200,7 @@ export default function Portfolio() {
                   onClick={() => scrollToSection(item)}
                   className="block w-full text-left px-3 py-2 capitalize hover:bg-muted rounded-md"
                 >
-                  {item === 'inicio' ? 'Inicio' : item}
+                  {item === 'inicio' ? 'Inicio' : item === 'educacion' ? 'Educación' : item}
                 </button>
               ))}
             </div>
@@ -299,6 +299,29 @@ export default function Portfolio() {
             </div>
         </div>
       </section>
+
+      <AnimatedSection id="educacion">
+        <div className="max-w-6xl mx-auto w-full">
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center font-headline gradient-text">
+                <GraduationCap className="inline mr-3 text-accent" size={40} />
+                Educación
+            </h2>
+            <Card className="bg-gradient-to-r from-primary/10 to-accent/10 backdrop-blur-sm p-8 border-border">
+              <CardContent className="p-0">
+                <div className="grid md:grid-cols-2 gap-8">
+                  {cvData.education.map((edu, i) => (
+                    <div key={i} className="bg-card/50 p-6 rounded-lg animated-gradient-border hover:shadow-lg hover:shadow-accent/10 transition-all">
+                      <h3 className="text-xl font-bold text-accent mb-2 font-headline">{edu.degree}</h3>
+                      <p className="text-lg text-foreground mb-1">{edu.institution}</p>
+                      <p className="text-md text-muted-foreground">{edu.period}</p>
+                      {edu.honor && <p className="text-accent text-sm mt-2 flex items-center gap-2"><Star size={16} /> {edu.honor}</p>}
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+        </div>
+      </AnimatedSection>
       
       <AnimatedSection id="experiencia">
         <div className="max-w-4xl mx-auto w-full">
@@ -395,25 +418,6 @@ export default function Portfolio() {
               </div>
             ))}
           </div>
-
-          <Card className="bg-gradient-to-r from-primary/10 to-accent/10 backdrop-blur-sm p-8 border-border mt-16">
-            <CardContent className="p-0">
-              <h3 className="text-3xl font-bold text-accent mb-6 flex items-center gap-3 font-headline">
-                <GraduationCap size={32} />
-                Educación
-              </h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {cvData.education.map((edu, i) => (
-                  <div key={i}>
-                    <h4 className="text-xl font-semibold text-foreground mb-1">{edu.degree}</h4>
-                    <p className="text-muted-foreground">{edu.institution}</p>
-                    <p className="text-muted-foreground/80 text-sm">{edu.period}</p>
-                    {edu.honor && <p className="text-accent text-sm mt-1">⭐ {edu.honor}</p>}
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </AnimatedSection>
 
@@ -528,7 +532,5 @@ export default function Portfolio() {
     </div>
   );
 }
-
-    
 
     
