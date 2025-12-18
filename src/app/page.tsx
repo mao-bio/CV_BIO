@@ -130,7 +130,7 @@ const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }
   };
 
   return (
-    <AccordionItem value={experience.puesto} className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border mb-4 overflow-hidden">
+    <AccordionItem value={experience.puesto} className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border mb-4">
       <AccordionTrigger className="p-6 hover:no-underline">
         <div className="flex flex-row items-start gap-4 text-left w-full">
           <div className="bg-accent/10 p-3 rounded-full mt-1">
@@ -362,7 +362,7 @@ export default function Portfolio() {
             <Briefcase className="inline mr-3 text-accent" size={40} />
             Experiencia Profesional
           </h2>
-          <Accordion type="single" collapsible className="w-full space-y-4">
+          <Accordion type="single" collapsible className="w-full">
             {experienceData.map((exp, index) => (
               <ExperienceCard key={index} experience={exp} />
             ))}
@@ -543,4 +543,5 @@ export default function Portfolio() {
   );
 }
 
+    
     
