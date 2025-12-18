@@ -170,7 +170,7 @@ export default function Portfolio() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="text-xl font-bold gradient-text font-headline">
-              {cvData.name.split(' ').slice(0, 2).join(' ')}
+              BioAI CV
             </div>
             
             <div className="hidden md:flex space-x-8">
