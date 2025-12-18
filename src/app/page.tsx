@@ -261,7 +261,7 @@ export default function Portfolio() {
                             alt="Foto de perfil de Mario Hernández"
                             width={250}
                             height={250}
-                            className="rounded-full border-4 border-primary/50 shadow-lg"
+                            className="rounded-full border-4 border-primary/50 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-accent/20"
                             data-ai-hint={profileImage.imageHint}
                         />
                     )}
