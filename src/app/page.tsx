@@ -2,16 +2,24 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import Script from 'next/script';
 import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download, FileText, Activity, Users, Star, Cpu, HeartPulse, FlaskConical, BookOpen, MessageCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useScrollspy } from '@/hooks/use-scrollspy';
 import { cn } from '@/lib/utils';
 import { cvData, skillsData, experienceData, certificationsData, projectsData } from '@/lib/data';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'elevenlabs-convai': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+    }
+  }
+}
 
 function AnimatedSection({ children, id }: { children: React.ReactNode, id: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -186,6 +194,12 @@ export default function Portfolio() {
   const sectionIds = ['inicio', 'educacion', 'experiencia', 'proyectos', 'habilidades', 'certificaciones', 'contacto'];
   const activeSection = useScrollspy(sectionIds, { offset: 100 });
 
+  const convaiRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    if (convaiRef.current) {
+      convaiRef.current.setAttribute('agent-id', 'agent_2601kf4fhhr2ecmteasabjm1d6kr');
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -556,6 +570,8 @@ export default function Portfolio() {
           </p>
         </div>
       </footer>
+      <elevenlabs-convai ref={convaiRef}></elevenlabs-convai>
+      <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async />
     </div>
   );
 }
