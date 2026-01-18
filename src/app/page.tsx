@@ -139,6 +139,23 @@ const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }
     return <Icon className="text-accent h-8 w-8" />;
   };
 
+  const BoldRenderer = ({ text }: { text: string }) => {
+    const parts = text.split(/\*\*(.*?)\*\*/g);
+    return (
+      <>
+        {parts.map((part, i) =>
+          i % 2 === 1 ? (
+            <strong key={i} className="font-semibold text-foreground/90">
+              {part}
+            </strong>
+          ) : (
+            part
+          )
+        )}
+      </>
+    );
+  };
+
   return (
     <Card className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 mb-4">
         <div className="p-6">
@@ -173,23 +190,18 @@ const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }
                             // H4 for sub-sub-sections like Gestión de Inventarios
                             return <h4 key={i} className="font-semibold text-accent/90">{logro.substring(5)}</h4>;
                         }
-                        if (logro.startsWith('**')) {
-                            // Bolded item, used for sub-section titles without a heading
-                            const end = logro.indexOf('**', 2);
-                            return <p key={i} className="font-semibold text-foreground">{logro.substring(2, end)}</p>;
-                        }
                         if (logro.startsWith('- ')) {
                             // List item
                             return <div key={i} className="flex items-start gap-2">
                                 <span className="text-accent mt-1">&bull;</span>
-                                <p className="text-muted-foreground flex-1">{logro.substring(2)}</p>
+                                <p className="text-muted-foreground flex-1"><BoldRenderer text={logro.substring(2)} /></p>
                             </div>;
                         }
                         if (logro.startsWith('✅ ')) {
                            // Checkmark list item
                            return <div key={i} className="flex items-start gap-2">
                                 <span className="text-green-500">✅</span>
-                                <p className="text-muted-foreground flex-1">{logro.substring(2)}</p>
+                                <p className="text-muted-foreground flex-1"><BoldRenderer text={logro.substring(2)} /></p>
                             </div>;
                         }
                         if (logro === '---') {
@@ -201,7 +213,7 @@ const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }
                             return null;
                         }
                         // Default paragraph for descriptions
-                        return <p key={i} className="text-muted-foreground pb-2">{logro}</p>;
+                        return <p key={i} className="text-muted-foreground pb-2"><BoldRenderer text={logro} /></p>;
                     })}
                 </div>
             </div>
