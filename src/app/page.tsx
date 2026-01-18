@@ -418,6 +418,28 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* --- ESTADÍSTICAS RÁPIDAS --- */}
+      <section className="py-12 bg-secondary/20 border-y border-border">
+        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="text-center">
+            <div className="text-5xl font-bold gradient-text font-headline">1+</div>
+            <div className="text-sm text-muted-foreground uppercase tracking-widest font-semibold mt-2">Año Exp. Clínica</div>
+          </div>
+          <div className="text-center">
+            <div className="text-5xl font-bold gradient-text font-headline">95%</div>
+            <div className="text-sm text-muted-foreground uppercase tracking-widest font-semibold mt-2">Disponibilidad Equipos</div>
+          </div>
+          <div className="text-center">
+            <div className="text-5xl font-bold gradient-text font-headline">40%</div>
+            <div className="text-sm text-muted-foreground uppercase tracking-widest font-semibold mt-2">Reducción Tiempos</div>
+          </div>
+          <div className="text-center">
+            <div className="text-5xl font-bold gradient-text font-headline">5+</div>
+            <div className="text-sm text-muted-foreground uppercase tracking-widest font-semibold mt-2">Proyectos IA</div>
+          </div>
+        </div>
+      </section>
+
       <AnimatedSection id="educacion">
         <div className="max-w-6xl mx-auto w-full">
             <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center font-headline gradient-text">
