@@ -140,7 +140,7 @@ const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }
   };
 
   return (
-    <Card className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border mb-4">
+    <Card className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 mb-4">
         <div className="p-6">
             <div className="flex flex-row items-start gap-4 text-left w-full">
                 <div className="bg-accent/10 p-3 rounded-full mt-1">
