@@ -8,15 +8,21 @@ Bienvenido a mi portafolio profesional y currículum vitae interactivo. Este pro
 
 ---
 
+## ✨ Características Destacadas
+
+- **CV Interactivo y Detallado:** Secciones de experiencia profesional que se despliegan para mostrar información exhaustiva de manera limpia y organizada.
+- **Diseño Moderno y Animado:** Una interfaz pulida creada con ShadCN/UI, Tailwind CSS y animaciones sutiles que mejoran la experiencia de usuario.
+- **Asistente Virtual con IA:** Integración de un chatbot conversacional (Convai de ElevenLabs) capaz de responder preguntas sobre mi perfil profesional.
+- **Desarrollo Asistido por IA:** El proyecto fue construido con la asistencia de Firebase Studio, demostrando el uso de herramientas de desarrollo de última generación.
+- **Totalmente Responsivo:** Diseño adaptable a cualquier dispositivo, desde móviles hasta ordenadores de escritorio.
+
+---
+
 ## 👨‍💻 Sobre Mí
 
-Soy un profesional en la intersección entre la tecnología, la salud y los datos, apasionado por resolver problemas complejos con impacto real. Mi objetivo es aplicar la inteligencia artificial y la ciencia de datos para transformar procesos clínicos, investigaciones científicas y desarrollos tecnológicos, diseñando soluciones inteligentes que impacten positivamente en la industria, la educación y la investigación.
+Ingeniero Biomédico con especialización en IA y más de un año de experiencia en gestión tecnológica hospitalaria, mantenimiento de equipos y tecnovigilancia. Mi enfoque se centra en optimizar la seguridad y eficiencia en entornos de salud mediante el análisis de datos clínicos, el desarrollo de algoritmos de IA y la ejecución de proyectos de investigación.
 
-### Perfil como Ingeniero Biomédico
-Ingeniero Biomédico con más de un año de experiencia en gestión tecnológica hospitalaria, mantenimiento de equipos médicos y tecnovigilancia. Especialista en el análisis, optimización y mantenimiento de dispositivos biomédicos, así como en la evaluación tecnológica y el uso seguro de equipos. Experiencia en el desarrollo de algoritmos y soluciones basadas en IA para el análisis de datos clínicos y en la ejecución de proyectos de investigación. Me caracterizo por un liderazgo colaborativo, comunicación asertiva y una fuerte orientación a resultados para optimizar la seguridad y eficiencia en entornos de salud.
-
-### Perfil como Analista de Datos y BI
-Analista de Datos con formación en Ingeniería Biomédica y Especialización en Inteligencia Artificial. Poseo una sólida experiencia en el procesamiento, análisis y visualización de datos complejos. Soy experto en el desarrollo de soluciones basadas en datos mediante **Python**, **SQL**, **R** y herramientas de Business Intelligence como **Power BI** y **Looker Studio**. Mi especialidad es transformar datos en insights accionables para la toma de decisiones estratégicas, con experiencia en la implementación de sistemas de gestión de información, automatización de procesos y creación de dashboards interactivos.
+Me caracterizo por un liderazgo colaborativo, una fuerte orientación a resultados y una pasión por la innovación en tecnología médica. Soy adaptable, proactivo y estoy en continuo aprendizaje para diseñar soluciones inteligentes con impacto real.
 
 ---
 
@@ -41,6 +47,7 @@ Este portafolio fue construido utilizando un stack de tecnologías moderno y efi
 - **Estilos:** [Tailwind CSS](https://tailwindcss.com/)
 - **Componentes UI:** [ShadCN/UI](https://ui.shadcn.com/)
 - **Funcionalidad IA:** [Google Genkit](https://firebase.google.com/docs/genkit)
+- **Asistente Virtual IA:** [ElevenLabs Convai](https://elevenlabs.io/convai)
 - **Hosting:** [Firebase Hosting](https://firebase.google.com/products/hosting)
 - **Desarrollo Asistido por IA:** [Firebase Studio](https://firebase.google.com/docs/studio)
 
