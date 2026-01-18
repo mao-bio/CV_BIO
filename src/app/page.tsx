@@ -85,7 +85,7 @@ const ParticleBackground = () => {
 
     let animationFrameId: number;
     const particles: any[] = [];
-    const particleCount = 100;
+    const particleCount = 50;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -99,8 +99,8 @@ const ParticleBackground = () => {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 1.2,
-          vy: (Math.random() - 0.5) * 1.2,
+          vx: (Math.random() - 0.5) * 0.8,
+          vy: (Math.random() - 0.5) * 0.8,
           size: Math.random() * 2 + 1,
           color: Math.random() > 0.5 ? `hsla(${accentColor}, 0.7)`: `hsla(${primaryColor}, 0.7)`,
         });
@@ -162,14 +162,14 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
   };
 
   return (
-    <Card className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border mb-4 overflow-hidden">
+    <Card className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border mb-4">
         {image && (
           <Image
             src={image.imageUrl}
             alt={`Imagen para ${experience.empresa}`}
             width={600}
             height={400}
-            className="w-full h-auto aspect-video object-cover"
+            className="w-full h-auto aspect-video object-cover rounded-t-lg"
             data-ai-hint={image.imageHint}
           />
         )}
@@ -187,7 +187,7 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
 
             <div 
                 className={cn(
-                    "transition-all duration-700 ease-in-out",
+                    "transition-all duration-700 ease-in-out overflow-hidden",
                     isOpen ? "max-h-[9999px] opacity-100 mt-4" : "max-h-0 opacity-0"
                 )}
             >
@@ -226,7 +226,7 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
             </div>
         </div>
 
-        <div className="px-6 pb-4">
+        <div className="px-6 pb-4 border-t border-border/20 pt-4">
             <Button
                 variant="ghost"
                 className="w-full text-accent hover:text-accent hover:bg-accent/10"
@@ -503,7 +503,7 @@ export default function Portfolio() {
                             <p className="text-muted-foreground text-sm mb-4 flex-1">{project.description}</p>
                             <div className="flex flex-wrap gap-2 mt-auto">
                               {project.tags.map((tag) => (
-                                <div key={tag} className="text-xs bg-primary/20 text-primary-foreground border border-primary/50 rounded-full px-3 py-1 transition-all hover:bg-primary/40 hover:scale-105">{tag}</div>
+                                <div key={tag} className="text-xs bg-primary/20 text-primary-foreground/80 border border-primary/30 rounded-full px-3 py-1 transition-all hover:bg-primary/40 hover:scale-105">{tag}</div>
                               ))}
                             </div>
                         </CardContent>
@@ -694,3 +694,5 @@ export default function Portfolio() {
     </div>
   );
 }
+
+    
