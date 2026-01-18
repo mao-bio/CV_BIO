@@ -237,6 +237,7 @@ const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }
 export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showFloatingButton, setShowFloatingButton] = useState(false);
 
   const sectionIds = ['inicio', 'educacion', 'experiencia', 'proyectos', 'habilidades', 'certificaciones', 'contacto'];
   const activeSection = useScrollspy(sectionIds, { offset: 100 });
@@ -251,8 +252,10 @@ export default function Portfolio() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      setShowFloatingButton(window.scrollY > window.innerHeight * 0.8);
     };
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -621,10 +624,32 @@ export default function Portfolio() {
           </p>
         </div>
       </footer>
+      {showFloatingButton && (
+        <div className="fixed bottom-8 right-8 z-50 animate-in fade-in duration-300">
+            <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                    <Button size="icon" className="rounded-full h-14 w-14 shadow-lg transition-transform duration-300 hover:scale-110">
+                        <Download className="h-6 w-6" />
+                        <span className="sr-only">Descargar CV</span>
+                    </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent side="top" align="end">
+                    <DropdownMenuItem asChild>
+                        <a href="https://drive.google.com/uc?export=download&id=1tXlXo8psiKUyFIF75CWkFhvZu1OrfxNX" download>
+                            <FileText className="mr-2" /> CV Analista de Datos
+                        </a>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                        <a href="https://drive.google.com/uc?export=download&id=1r9OgNObhdZu3niT-rHVqfJ1LMPZBlx2k" download>
+                            <Activity className="mr-2" /> CV Ing. Biomédico
+                        </a>
+                    </DropdownMenuItem>
+                </DropdownMenuContent>
+            </DropdownMenu>
+        </div>
+      )}
       <elevenlabs-convai ref={convaiRef}></elevenlabs-convai>
       <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async />
     </div>
   );
 }
-
-    
