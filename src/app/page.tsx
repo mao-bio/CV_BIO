@@ -12,6 +12,8 @@ import { cvData, skillsData, experienceData, certificationsData, projectsData } 
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+
 
 declare global {
   namespace JSX {
@@ -267,6 +269,13 @@ export default function Portfolio() {
   const getImage = (id: string) => PlaceHolderImages.find(p => p.id === id);
   const profileImage = getImage('profile');
 
+  const skillIcons: { [key: string]: React.ElementType } = {
+    programacion: Code,
+    ia: Brain,
+    profesionales: Briefcase,
+    blandas: MessageCircle,
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'}`}>
@@ -507,17 +516,25 @@ export default function Portfolio() {
             Habilidades Técnicas
           </h2>
 
-          <div className="space-y-8">
-            {Object.entries(skillsData).map(([category, skills]) => (
-                <div key={category}>
-                    <h3 className="text-xl font-semibold text-accent mb-3 font-headline">
-                        {skills.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                        {skills.items.join(' · ')}
-                    </p>
-                </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {Object.entries(skillsData).map(([category, skills]) => {
+              const Icon = skillIcons[category as keyof typeof skillIcons];
+              return (
+                <Card key={category} className="bg-card/50 border-border transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border">
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-4">
+                      {Icon && <Icon className="text-accent h-8 w-8 mt-1 flex-shrink-0" />}
+                      <div>
+                        <h3 className="text-xl font-bold text-accent mb-2 font-headline">{skills.title}</h3>
+                        <p className="text-sm text-muted-foreground">
+                          {skills.items.join(' · ')}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </AnimatedSection>
@@ -529,18 +546,32 @@ export default function Portfolio() {
             Certificaciones y Logros
           </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {certificationsData.map((cert, index) => (
-              <Card key={index} className="bg-card/50 border-border transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-3">
-                    <Award className="text-accent flex-shrink-0 mt-1" size={20} />
-                    <p className="text-foreground text-sm">{cert}</p>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-4xl mx-auto"
+          >
+            <CarouselContent>
+              {certificationsData.map((cert, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-2 h-full">
+                    <Card className="bg-card/50 border-border h-full flex flex-col justify-center animated-gradient-border">
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4">
+                          <Award className="text-accent flex-shrink-0 mt-1" size={20} />
+                          <p className="text-foreground text-sm">{cert}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </AnimatedSection>
 
