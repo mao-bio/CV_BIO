@@ -155,19 +155,54 @@ const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }
 
             <div 
                 className={cn(
-                    "transition-all duration-500 ease-in-out overflow-hidden",
-                    isOpen ? "max-h-[2000px] opacity-100 mt-4" : "max-h-0 opacity-0"
+                    "transition-all duration-700 ease-in-out overflow-hidden",
+                    isOpen ? "max-h-[9999px] opacity-100 mt-4" : "max-h-0 opacity-0"
                 )}
             >
-                <div className="pl-4 border-l-2 border-accent/50 ml-6 space-y-3 pt-4">
-                    {experience.logros.map((logro, i) => (
-                        <div key={i} className="flex items-start gap-3">
-                            {logro.endsWith(':') ? null : <ChevronRight className="text-accent flex-shrink-0 mt-1" size={16} />}
-                            <p className={cn('text-muted-foreground', { 'font-semibold text-foreground -ml-7 mt-2': logro.endsWith(':') })}>
-                                {logro.endsWith(':') ? <strong>{logro}</strong> : logro}
-                            </p>
-                        </div>
-                    ))}
+                <div className="pl-[4.25rem] pt-4 space-y-3 text-sm">
+                    {experience.logros.map((logro, i) => {
+                        if (logro.startsWith('## ')) {
+                            // H2 for main sections like RESPONSABILIDADES
+                            return <h2 key={i} className="text-lg font-bold text-accent font-headline pt-2">{logro.substring(3)}</h2>;
+                        }
+                        if (logro.startsWith('### ')) {
+                             // H3 for sub-sections like A. GESTIÓN TÉCNICA
+                            return <h3 key={i} className="text-md font-bold text-foreground uppercase pt-1">{logro.substring(4)}</h3>;
+                        }
+                        if (logro.startsWith('#### ')) {
+                            // H4 for sub-sub-sections like Gestión de Inventarios
+                            return <h4 key={i} className="font-semibold text-accent/90">{logro.substring(5)}</h4>;
+                        }
+                        if (logro.startsWith('**')) {
+                            // Bolded item, used for sub-section titles without a heading
+                            const end = logro.indexOf('**', 2);
+                            return <p key={i} className="font-semibold text-foreground">{logro.substring(2, end)}</p>;
+                        }
+                        if (logro.startsWith('- ')) {
+                            // List item
+                            return <div key={i} className="flex items-start gap-2">
+                                <span className="text-accent mt-1">&bull;</span>
+                                <p className="text-muted-foreground flex-1">{logro.substring(2)}</p>
+                            </div>;
+                        }
+                        if (logro.startsWith('✅ ')) {
+                           // Checkmark list item
+                           return <div key={i} className="flex items-start gap-2">
+                                <span className="text-green-500">✅</span>
+                                <p className="text-muted-foreground flex-1">{logro.substring(2)}</p>
+                            </div>;
+                        }
+                        if (logro === '---') {
+                            // Separator
+                            return <hr key={i} className="my-3 border-border/50" />;
+                        }
+                        if (logro.startsWith('# ')) {
+                            // Ignore top-level headers within the details
+                            return null;
+                        }
+                        // Default paragraph for descriptions
+                        return <p key={i} className="text-muted-foreground pb-2">{logro}</p>;
+                    })}
                 </div>
             </div>
         </div>
@@ -575,3 +610,5 @@ export default function Portfolio() {
     </div>
   );
 }
+
+    
