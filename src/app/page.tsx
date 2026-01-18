@@ -126,20 +126,7 @@ const ParticleBackground = () => {
   return <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full -z-10" />;
 };
 
-const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const ExperienceIcon = ({ iconName }: { iconName: string | undefined }) => {
-    const icons: { [key: string]: React.ElementType } = {
-      corporate: Briefcase,
-      research: FlaskConical,
-      academic: BookOpen,
-    };
-    const Icon = iconName ? icons[iconName] : Briefcase;
-    return <Icon className="text-accent h-8 w-8" />;
-  };
-
-  const BoldRenderer = ({ text }: { text: string }) => {
+const BoldRenderer = ({ text }: { text: string }) => {
     const parts = text.split(/\*\*(.*?)\*\*/g);
     return (
       <>
@@ -154,6 +141,19 @@ const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }
         )}
       </>
     );
+};
+
+const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const ExperienceIcon = ({ iconName }: { iconName: string | undefined }) => {
+    const icons: { [key: string]: React.ElementType } = {
+      corporate: Briefcase,
+      research: FlaskConical,
+      academic: BookOpen,
+    };
+    const Icon = iconName ? icons[iconName] : Briefcase;
+    return <Icon className="text-accent h-8 w-8" />;
   };
 
   return (
@@ -343,9 +343,13 @@ export default function Portfolio() {
                     <p className="text-2xl md:text-3xl text-accent mb-4 font-headline">
                         {cvData.title}
                     </p>
-                    <p className="text-lg text-muted-foreground mb-8 max-w-2xl">
-                        {cvData.summary}
-                    </p>
+                    <div className="text-lg text-muted-foreground mb-8 max-w-2xl space-y-4">
+                        {cvData.summary.map((paragraph, index) => (
+                            <p key={index}>
+                                <BoldRenderer text={paragraph} />
+                            </p>
+                        ))}
+                    </div>
                     <div className="flex flex-wrap justify-center md:justify-start gap-4">
                         <Button asChild size="lg" className="transition-transform duration-300 hover:scale-105">
                             <a href="#contacto">
