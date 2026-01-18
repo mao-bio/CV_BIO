@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Script from 'next/script';
-import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, ChevronRight, Menu, X, Linkedin, Download, FileText, Activity, Users, Star, Cpu, HeartPulse, FlaskConical, BookOpen, MessageCircle, ChevronDown, ChevronUp } from 'lucide-react';
+import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, Menu, X, Linkedin, Download, FileText, Activity, Star, Cpu, FlaskConical, BookOpen, MessageCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { useScrollspy } from '@/hooks/use-scrollspy';
@@ -267,17 +267,6 @@ export default function Portfolio() {
   const getImage = (id: string) => PlaceHolderImages.find(p => p.id === id);
   const profileImage = getImage('profile');
 
-  const SkillIcon = ({ iconName }: { iconName: string }) => {
-    const icons: { [key: string]: React.ElementType } = {
-      programacion: Code,
-      ia: Brain,
-      profesionales: HeartPulse,
-      blandas: Users,
-    };
-    const Icon = icons[iconName] || Star;
-    return <Icon className="mr-3 text-accent" size={28} />;
-  };
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'}`}>
@@ -518,21 +507,16 @@ export default function Portfolio() {
             Habilidades Técnicas
           </h2>
 
-          <div className="space-y-10">
+          <div className="space-y-8">
             {Object.entries(skillsData).map(([category, skills]) => (
-              <div key={category}>
-                <h3 className="flex items-center text-2xl font-bold text-accent mb-4 font-headline">
-                  <SkillIcon iconName={skills.icon} />
-                  {skills.title}
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {skills.items.map((skill, i) => (
-                    <span key={i} className="px-4 py-2 rounded-full border border-border bg-card/50 text-muted-foreground hover:bg-accent/10 hover:text-accent transition-all duration-300 cursor-default">
-                      {skill}
-                    </span>
-                  ))}
+                <div key={category}>
+                    <h3 className="text-xl font-semibold text-accent mb-3 font-headline">
+                        {skills.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                        {skills.items.join(' · ')}
+                    </p>
                 </div>
-              </div>
             ))}
           </div>
         </div>
