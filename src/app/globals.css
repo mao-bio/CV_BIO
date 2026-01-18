@@ -101,7 +101,6 @@ body {
 
   .animated-gradient-border {
     position: relative;
-    overflow: hidden;
   }
   .animated-gradient-border::before {
     content: '';

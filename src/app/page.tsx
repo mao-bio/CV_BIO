@@ -85,7 +85,7 @@ const ParticleBackground = () => {
 
     let animationFrameId: number;
     const particles: any[] = [];
-    const particleCount = 450;
+    const particleCount = 200;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -159,7 +159,7 @@ const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }
   };
 
   return (
-    <Card className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 mb-4">
+    <Card className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border mb-4">
         <div className="p-6">
             <div className="flex flex-row items-start gap-4 text-left w-full">
                 <div className="bg-accent/10 p-3 rounded-full mt-1">
@@ -181,40 +181,32 @@ const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }
                 <div className="pl-[4.25rem] pt-4 space-y-3 text-sm">
                     {experience.logros.map((logro, i) => {
                         if (logro.startsWith('## ')) {
-                            // H2 for main sections like RESPONSABILIDADES
                             return <h2 key={i} className="text-lg font-bold text-accent font-headline pt-2">{logro.substring(3)}</h2>;
                         }
                         if (logro.startsWith('### ')) {
-                             // H3 for sub-sections like A. GESTIÓN TÉCNICA
                             return <h3 key={i} className="text-md font-bold text-foreground uppercase pt-1">{logro.substring(4)}</h3>;
                         }
                         if (logro.startsWith('#### ')) {
-                            // H4 for sub-sub-sections like Gestión de Inventarios
                             return <h4 key={i} className="font-semibold text-accent/90">{logro.substring(5)}</h4>;
                         }
                         if (logro.startsWith('- ')) {
-                            // List item
                             return <div key={i} className="flex items-start gap-2">
                                 <span className="text-accent mt-1">&bull;</span>
                                 <p className="text-muted-foreground flex-1"><BoldRenderer text={logro.substring(2)} /></p>
                             </div>;
                         }
                         if (logro.startsWith('✅ ')) {
-                           // Checkmark list item
                            return <div key={i} className="flex items-start gap-2">
                                 <span className="text-green-500">✅</span>
                                 <p className="text-muted-foreground flex-1"><BoldRenderer text={logro.substring(2)} /></p>
                             </div>;
                         }
                         if (logro === '---') {
-                            // Separator
                             return <hr key={i} className="my-3 border-border/50" />;
                         }
                         if (logro.startsWith('# ')) {
-                            // Ignore top-level headers within the details
                             return null;
                         }
-                        // Default paragraph for descriptions
                         return <p key={i} className="text-muted-foreground pb-2"><BoldRenderer text={logro} /></p>;
                     })}
                 </div>
@@ -499,7 +491,7 @@ export default function Portfolio() {
                             <p className="text-muted-foreground text-sm mb-4 flex-1">{project.description}</p>
                             <div className="flex flex-wrap gap-2 mt-auto">
                               {project.tags.map((tag) => (
-                                <div key={tag} className="text-xs bg-primary/20 text-primary-foreground border border-primary/50 rounded-full px-3 py-1 transition-all hover:bg-primary/40 hover:scale-105">{tag}</div>
+                                <div key={tag} className="text-xs bg-primary/20 text-primary border border-primary/50 rounded-full px-3 py-1 transition-all hover:bg-primary/40 hover:scale-105">{tag}</div>
                               ))}
                             </div>
                         </CardContent>
