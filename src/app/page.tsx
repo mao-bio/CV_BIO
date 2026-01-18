@@ -13,6 +13,7 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 
 declare global {
@@ -163,6 +164,7 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
 
   return (
     <Card className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border mb-4">
+      <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full">
         {image && (
           <Image
             src={image.imageUrl}
@@ -184,60 +186,57 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
                     <p className="text-sm text-muted-foreground mt-1">{experience.periodo} &middot; {experience.ubicacion}</p>
                 </div>
             </div>
-
-            <div
-              className={cn(
-                'grid transition-[grid-template-rows] duration-500 ease-in-out',
-                isOpen ? 'grid-rows-[1fr] mt-4' : 'grid-rows-[0fr]'
-              )}
-            >
-              <div className="overflow-hidden">
-                <div className="pl-[4.25rem] pt-4 space-y-3 text-sm">
-                    {experience.logros.map((logro, i) => {
-                        if (logro.startsWith('## ')) {
-                            return <h2 key={i} className="text-lg font-bold text-accent font-headline pt-2">{logro.substring(3)}</h2>;
-                        }
-                        if (logro.startsWith('### ')) {
-                            return <h3 key={i} className="text-md font-bold text-foreground uppercase pt-1">{logro.substring(4)}</h3>;
-                        }
-                        if (logro.startsWith('#### ')) {
-                            return <h4 key={i} className="font-semibold text-accent/90">{logro.substring(5)}</h4>;
-                        }
-                        if (logro.startsWith('- ')) {
-                            return <div key={i} className="flex items-start gap-2">
-                                <span className="text-accent mt-1">&bull;</span>
-                                <p className="text-muted-foreground flex-1"><BoldRenderer text={logro.substring(2)} /></p>
-                            </div>;
-                        }
-                        if (logro.startsWith('✅ ')) {
-                           return <div key={i} className="flex items-start gap-2">
-                                <span className="text-green-500">✅</span>
-                                <p className="text-muted-foreground flex-1"><BoldRenderer text={logro.substring(2)} /></p>
-                            </div>;
-                        }
-                        if (logro === '---') {
-                            return <hr key={i} className="my-3 border-border/50" />;
-                        }
-                        if (logro.startsWith('# ')) {
-                            return null;
-                        }
-                        return <p key={i} className="text-muted-foreground pb-2"><BoldRenderer text={logro} /></p>;
-                    })}
-                </div>
-              </div>
-            </div>
         </div>
+
+        <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
+          <div className="px-6 pt-0 pb-4">
+            <div className="pl-[4.25rem] space-y-3 text-sm">
+                {experience.logros.map((logro, i) => {
+                    if (logro.startsWith('## ')) {
+                        return <h2 key={i} className="text-lg font-bold text-accent font-headline pt-2">{logro.substring(3)}</h2>;
+                    }
+                    if (logro.startsWith('### ')) {
+                        return <h3 key={i} className="text-md font-bold text-foreground uppercase pt-1">{logro.substring(4)}</h3>;
+                    }
+                    if (logro.startsWith('#### ')) {
+                        return <h4 key={i} className="font-semibold text-accent/90">{logro.substring(5)}</h4>;
+                    }
+                    if (logro.startsWith('- ')) {
+                        return <div key={i} className="flex items-start gap-2">
+                            <span className="text-accent mt-1">&bull;</span>
+                            <p className="text-muted-foreground flex-1"><BoldRenderer text={logro.substring(2)} /></p>
+                        </div>;
+                    }
+                    if (logro.startsWith('✅ ')) {
+                       return <div key={i} className="flex items-start gap-2">
+                            <span className="text-green-500">✅</span>
+                            <p className="text-muted-foreground flex-1"><BoldRenderer text={logro.substring(2)} /></p>
+                        </div>;
+                    }
+                    if (logro === '---') {
+                        return <hr key={i} className="my-3 border-border/50" />;
+                    }
+                    if (logro.startsWith('# ')) {
+                        return null;
+                    }
+                    return <p key={i} className="text-muted-foreground pb-2"><BoldRenderer text={logro} /></p>;
+                })}
+            </div>
+          </div>
+        </CollapsibleContent>
 
         <div className="px-6 pb-4 border-t border-border/20 pt-4">
-            <Button
-                variant="ghost"
-                className="w-full text-accent hover:text-accent hover:bg-accent/10"
-                onClick={() => setIsOpen(!isOpen)}
-            >
-                {isOpen ? 'Ver menos' : 'Ver más'}
-                {isOpen ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
-            </Button>
+            <CollapsibleTrigger asChild>
+                <Button
+                    variant="ghost"
+                    className="w-full text-accent hover:text-accent hover:bg-accent/10"
+                >
+                    {isOpen ? 'Ver menos' : 'Ver más'}
+                    {isOpen ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
+                </Button>
+            </CollapsibleTrigger>
         </div>
+      </Collapsible>
     </Card>
   );
 };
