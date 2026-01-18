@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { useScrollspy } from '@/hooks/use-scrollspy';
 import { cn } from '@/lib/utils';
-import { cvData, skillsData, experienceData, certificationsData, projectsData } from '@/lib/data';
+import { cvData, skillsData, experienceData, certificationsData, projectsData, type Experience } from '@/lib/data';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
@@ -85,7 +85,7 @@ const ParticleBackground = () => {
 
     let animationFrameId: number;
     const particles: any[] = [];
-    const particleCount = 200;
+    const particleCount = 100;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -99,9 +99,9 @@ const ParticleBackground = () => {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 2.2,
-          vy: (Math.random() - 0.5) * 2.2,
-          size: Math.random() * 2.5 + 1,
+          vx: (Math.random() - 0.5) * 1.2,
+          vy: (Math.random() - 0.5) * 1.2,
+          size: Math.random() * 2 + 1,
           color: Math.random() > 0.5 ? `hsla(${accentColor}, 0.7)`: `hsla(${primaryColor}, 0.7)`,
         });
       }
@@ -145,8 +145,11 @@ const BoldRenderer = ({ text }: { text: string }) => {
     );
 };
 
-const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }) => {
+const getImage = (id: string) => PlaceHolderImages.find(p => p.id === id);
+
+const ExperienceCard = ({ experience }: { experience: Experience }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const image = experience.imageUrlId ? getImage(experience.imageUrlId) : null;
 
   const ExperienceIcon = ({ iconName }: { iconName: string | undefined }) => {
     const icons: { [key: string]: React.ElementType } = {
@@ -159,7 +162,17 @@ const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }
   };
 
   return (
-    <Card className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border mb-4">
+    <Card className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border mb-4 overflow-hidden">
+        {image && (
+          <Image
+            src={image.imageUrl}
+            alt={`Imagen para ${experience.empresa}`}
+            width={600}
+            height={400}
+            className="w-full h-auto aspect-video object-cover"
+            data-ai-hint={image.imageHint}
+          />
+        )}
         <div className="p-6">
             <div className="flex flex-row items-start gap-4 text-left w-full">
                 <div className="bg-accent/10 p-3 rounded-full mt-1">
@@ -174,7 +187,7 @@ const ExperienceCard = ({ experience }: { experience: typeof experienceData[0] }
 
             <div 
                 className={cn(
-                    "transition-all duration-700 ease-in-out overflow-hidden",
+                    "transition-all duration-700 ease-in-out",
                     isOpen ? "max-h-[9999px] opacity-100 mt-4" : "max-h-0 opacity-0"
                 )}
             >
@@ -258,7 +271,6 @@ export default function Portfolio() {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
   
-  const getImage = (id: string) => PlaceHolderImages.find(p => p.id === id);
   const profileImage = getImage('profile');
 
   const skillIcons: { [key: string]: React.ElementType } = {
@@ -491,7 +503,7 @@ export default function Portfolio() {
                             <p className="text-muted-foreground text-sm mb-4 flex-1">{project.description}</p>
                             <div className="flex flex-wrap gap-2 mt-auto">
                               {project.tags.map((tag) => (
-                                <div key={tag} className="text-xs bg-primary/20 text-primary border border-primary/50 rounded-full px-3 py-1 transition-all hover:bg-primary/40 hover:scale-105">{tag}</div>
+                                <div key={tag} className="text-xs bg-primary/20 text-primary-foreground border border-primary/50 rounded-full px-3 py-1 transition-all hover:bg-primary/40 hover:scale-105">{tag}</div>
                               ))}
                             </div>
                         </CardContent>

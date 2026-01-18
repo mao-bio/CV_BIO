@@ -47,6 +47,12 @@
       "description": "Abstract background for hero section",
       "imageUrl": "https://images.unsplash.com/photo-1684503830683-108f3e0fd03f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YWJzdHJhY3QlMjB0ZWNobm9sb2d5fGVufDB8fHx8MTc2NTM3OTQ3M3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "abstract technology"
+    },
+    {
+      "id": "exp-bimtho",
+      "description": "Biomedical engineering equipment",
+      "imageUrl": "https://images.unsplash.com/photo-1695048441269-41b4d75351c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxiaW9tZWRpY2FsJTIwZXF1aXBtZW50fGVufDB8fHx8MTc2ODcwNzQ5NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "biomedical equipment"
     }
   ]
 }
