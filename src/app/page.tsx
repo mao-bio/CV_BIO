@@ -185,12 +185,13 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
                 </div>
             </div>
 
-            <div 
-                className={cn(
-                    "transition-all duration-700 ease-in-out overflow-hidden",
-                    isOpen ? "max-h-[9999px] opacity-100 mt-4" : "max-h-0 opacity-0"
-                )}
+            <div
+              className={cn(
+                'grid transition-[grid-template-rows] duration-500 ease-in-out',
+                isOpen ? 'grid-rows-[1fr] mt-4' : 'grid-rows-[0fr]'
+              )}
             >
+              <div className="overflow-hidden">
                 <div className="pl-[4.25rem] pt-4 space-y-3 text-sm">
                     {experience.logros.map((logro, i) => {
                         if (logro.startsWith('## ')) {
@@ -223,6 +224,7 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
                         return <p key={i} className="text-muted-foreground pb-2"><BoldRenderer text={logro} /></p>;
                     })}
                 </div>
+              </div>
             </div>
         </div>
 
@@ -503,7 +505,7 @@ export default function Portfolio() {
                             <p className="text-muted-foreground text-sm mb-4 flex-1">{project.description}</p>
                             <div className="flex flex-wrap gap-2 mt-auto">
                               {project.tags.map((tag) => (
-                                <div key={tag} className="text-xs bg-primary/20 text-primary-foreground/90 border border-primary/30 rounded-full px-3 py-1 transition-all hover:bg-primary/40 hover:scale-105">{tag}</div>
+                                <div key={tag} className="text-xs bg-primary/20 text-primary-foreground border border-primary/30 rounded-full px-3 py-1 transition-all hover:bg-primary/40 hover:scale-105">{tag}</div>
                               ))}
                             </div>
                         </CardContent>
@@ -694,6 +696,8 @@ export default function Portfolio() {
     </div>
   );
 }
+
+    
 
     
 
