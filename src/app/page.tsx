@@ -625,7 +625,7 @@ export default function Portfolio() {
         </div>
       </footer>
       {showFloatingButton && (
-        <div className="fixed bottom-8 right-8 z-50 animate-in fade-in duration-300">
+        <div className="fixed bottom-8 left-8 z-50 animate-in fade-in duration-300">
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Button size="icon" className="rounded-full h-14 w-14 shadow-lg transition-transform duration-300 hover:scale-110">
@@ -633,7 +633,7 @@ export default function Portfolio() {
                         <span className="sr-only">Descargar CV</span>
                     </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent side="top" align="end">
+                <DropdownMenuContent side="top" align="start">
                     <DropdownMenuItem asChild>
                         <a href="https://drive.google.com/uc?export=download&id=1tXlXo8psiKUyFIF75CWkFhvZu1OrfxNX" download>
                             <FileText className="mr-2" /> CV Analista de Datos
