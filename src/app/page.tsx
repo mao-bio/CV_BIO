@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { useScrollspy } from '@/hooks/use-scrollspy';
 import { cn } from '@/lib/utils';
-import { cvData, skillsData, experienceData, certificationsData, projectsData, type Experience } from '@/lib/data';
+import { cvData, skillsData, experienceData, projectsData, certificationsData, type Experience } from '@/lib/data';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
@@ -85,7 +85,7 @@ const ParticleBackground = () => {
 
     let animationFrameId: number;
     const particles: any[] = [];
-    const particleCount = 50;
+    const particleCount = 25;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -99,8 +99,8 @@ const ParticleBackground = () => {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.8,
-          vy: (Math.random() - 0.5) * 0.8,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
           size: Math.random() * 2 + 1,
           color: Math.random() > 0.5 ? `hsla(${accentColor}, 0.7)`: `hsla(${primaryColor}, 0.7)`,
         });
@@ -148,7 +148,7 @@ const BoldRenderer = ({ text }: { text: string }) => {
 const getImage = (id: string) => PlaceHolderImages.find(p => p.id === id);
 
 const ExperienceCard = ({ experience }: { experience: Experience }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const image = experience.imageUrlId ? getImage(experience.imageUrlId) : null;
 
   const ExperienceIcon = ({ iconName }: { iconName: string | undefined }) => {
@@ -489,13 +489,13 @@ export default function Portfolio() {
                 {projectsData.map((project) => {
                   const image = getImage(project.imageUrlId);
                   return(
-                    <Card key={project.id} className="bg-card/50 border-border transition-all duration-300 transform hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-2 flex flex-col overflow-hidden animated-gradient-border">
+                    <Card key={project.id} className="bg-card/50 border-border transition-all duration-300 transform hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-2 flex flex-col animated-gradient-border">
                         {image && <Image
                           src={image.imageUrl}
                           alt={`visual del proyecto ${project.title}`}
                           width={600}
                           height={400}
-                          className="w-full h-auto aspect-video object-cover"
+                          className="w-full h-auto aspect-video object-cover rounded-t-lg"
                           data-ai-hint={image.imageHint}
                         />}
                         <CardContent className="p-6 flex-1 flex flex-col">
@@ -503,7 +503,7 @@ export default function Portfolio() {
                             <p className="text-muted-foreground text-sm mb-4 flex-1">{project.description}</p>
                             <div className="flex flex-wrap gap-2 mt-auto">
                               {project.tags.map((tag) => (
-                                <div key={tag} className="text-xs bg-primary/20 text-primary-foreground/80 border border-primary/30 rounded-full px-3 py-1 transition-all hover:bg-primary/40 hover:scale-105">{tag}</div>
+                                <div key={tag} className="text-xs bg-primary/20 text-primary-foreground/90 border border-primary/30 rounded-full px-3 py-1 transition-all hover:bg-primary/40 hover:scale-105">{tag}</div>
                               ))}
                             </div>
                         </CardContent>
@@ -694,5 +694,7 @@ export default function Portfolio() {
     </div>
   );
 }
+
+    
 
     
