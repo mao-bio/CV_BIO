@@ -12,6 +12,8 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+import Autoplay from 'embla-carousel-autoplay';
 
 
 declare global {
@@ -251,6 +253,10 @@ export default function Portfolio() {
   const activeSection = useScrollspy(sectionIds, { offset: 100 });
 
   const convaiRef = useRef<HTMLElement>(null);
+  const autoplayPlugin = React.useRef(
+    Autoplay({ delay: 2500, stopOnInteraction: true, stopOnMouseEnter: true })
+  );
+
   useEffect(() => {
     if (convaiRef.current) {
       convaiRef.current.setAttribute('agent-id', 'agent_2601kf4fhhr2ecmteasabjm1d6kr');
@@ -551,18 +557,31 @@ export default function Portfolio() {
             Certificaciones y Logros
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {certificationsData.map((cert, index) => (
-              <Card key={index} className="bg-card/50 border-border animated-gradient-border transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 flex flex-col h-full">
-                <CardContent className="p-6 flex-1 flex items-center">
-                  <div className="flex items-start gap-4">
-                    <Award className="text-accent flex-shrink-0 mt-1" size={20} />
-                    <p className="text-foreground text-sm">{cert}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <Carousel
+            plugins={[autoplayPlugin.current]}
+            className="w-full"
+            opts={{
+                align: "start",
+                loop: true,
+            }}
+          >
+            <CarouselContent>
+                {certificationsData.map((cert, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    <div className="p-1 h-full">
+                        <Card className="bg-card/50 border-border animated-gradient-border transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 flex flex-col h-full">
+                            <CardContent className="p-6 flex-1 flex items-center">
+                                <div className="flex items-start gap-4">
+                                <Award className="text-accent flex-shrink-0 mt-1" size={20} />
+                                <p className="text-foreground text-sm">{cert}</p>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </div>
+                </CarouselItem>
+                ))}
+            </CarouselContent>
+          </Carousel>
         </div>
       </AnimatedSection>
 
