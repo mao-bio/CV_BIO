@@ -167,7 +167,7 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
     <Collapsible
       open={isOpen}
       onOpenChange={setIsOpen}
-      className="w-full bg-card/50 border border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border mb-4"
+      className="w-full bg-card/50 border border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 mb-4"
     >
       {image && (
         <Image
@@ -698,5 +698,7 @@ export default function Portfolio() {
     </div>
   );
 }
+
+    
 
     
