@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { useScrollspy } from '@/hooks/use-scrollspy';
 import { cn } from '@/lib/utils';
-import { cvData, skillsData, experienceData, projectsData, certificationsData, type Experience } from '@/lib/data';
+import { cvData, skillsData, experienceData, certificationsData, projectsData, type Experience } from '@/lib/data';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
@@ -699,10 +699,3 @@ export default function Portfolio() {
     </div>
   );
 }
-
-    
-
-    
-
-    
-
