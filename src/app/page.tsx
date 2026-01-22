@@ -13,6 +13,7 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 
 declare global {
@@ -162,35 +163,36 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
   };
 
   return (
-    <Card className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border mb-4">
-      {image && (
-        <Image
-          src={image.imageUrl}
-          alt={`Imagen para ${experience.empresa}`}
-          width={600}
-          height={400}
-          className="w-full h-auto aspect-video object-cover rounded-t-lg"
-          data-ai-hint={image.imageHint}
-        />
-      )}
-      <div className="p-6">
-          <div className="flex flex-row items-start gap-4 text-left w-full">
-              <div className="bg-accent/10 p-3 rounded-full mt-1">
-                  <ExperienceIcon iconName={experience.icon} />
-              </div>
-              <div className="flex-1">
-                  <h3 className="text-xl text-accent font-headline">{experience.puesto}</h3>
-                  <p className="text-md text-foreground">{experience.empresa}</p>
-                  <p className="text-sm text-muted-foreground mt-1">{experience.periodo} &middot; {experience.ubicacion}</p>
-              </div>
-          </div>
-      </div>
-      
-      <div 
-        className="grid transition-[grid-template-rows] duration-300 ease-in-out"
-        style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
-      >
-        <div className="overflow-hidden">
+    <Collapsible
+      open={isOpen}
+      onOpenChange={setIsOpen}
+      className="w-full"
+    >
+      <Card className="bg-card/50 border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border mb-4">
+        {image && (
+          <Image
+            src={image.imageUrl}
+            alt={`Imagen para ${experience.empresa}`}
+            width={600}
+            height={400}
+            className="w-full h-auto aspect-video object-cover rounded-t-lg"
+            data-ai-hint={image.imageHint}
+          />
+        )}
+        <div className="p-6">
+            <div className="flex flex-row items-start gap-4 text-left w-full">
+                <div className="bg-accent/10 p-3 rounded-full mt-1">
+                    <ExperienceIcon iconName={experience.icon} />
+                </div>
+                <div className="flex-1">
+                    <h3 className="text-xl text-accent font-headline">{experience.puesto}</h3>
+                    <p className="text-md text-foreground">{experience.empresa}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{experience.periodo} &middot; {experience.ubicacion}</p>
+                </div>
+            </div>
+        </div>
+        
+        <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
           <div className="px-6 pt-0 pb-4">
             <div className="pl-[4.25rem] space-y-3 text-sm">
                 {experience.logros.map((logro, i) => {
@@ -225,20 +227,21 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
                 })}
             </div>
           </div>
-        </div>
-      </div>
+        </CollapsibleContent>
 
-      <div className="px-6 pb-4 border-t border-border/20 pt-4">
-        <Button
-            variant="ghost"
-            className="w-full text-accent hover:text-accent hover:bg-accent/10"
-            onClick={() => setIsOpen(!isOpen)}
-        >
-            {isOpen ? 'Ver menos' : 'Ver más'}
-            {isOpen ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
-        </Button>
-      </div>
-    </Card>
+        <div className="px-6 pb-4 border-t border-border/20 pt-4">
+          <CollapsibleTrigger asChild>
+            <Button
+                variant="ghost"
+                className="w-full text-accent hover:text-accent hover:bg-accent/10"
+            >
+                {isOpen ? 'Ver menos' : 'Ver más'}
+                {isOpen ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
+            </Button>
+          </CollapsibleTrigger>
+        </div>
+      </Card>
+    </Collapsible>
   );
 };
 
@@ -702,3 +705,4 @@ export default function Portfolio() {
     
 
     
+
