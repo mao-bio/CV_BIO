@@ -81,7 +81,7 @@ const ParticleBackground = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2D');
     if (!ctx) return;
 
     let animationFrameId: number;
@@ -149,7 +149,7 @@ const BoldRenderer = ({ text }: { text: string }) => {
 const getImage = (id: string) => PlaceHolderImages.find(p => p.id === id);
 
 const ExperienceCard = ({ experience }: { experience: Experience }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const image = experience.imageUrlId ? getImage(experience.imageUrlId) : null;
 
   const ExperienceIcon = ({ iconName }: { iconName: string | undefined }) => {
@@ -699,3 +699,5 @@ export default function Portfolio() {
     </div>
   );
 }
+
+    
