@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
@@ -13,7 +11,6 @@ import { cvData, skillsData, experienceData, certificationsData, projectsData, t
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 
@@ -24,6 +21,8 @@ declare global {
     }
   }
 }
+
+const getImage = (id: string) => PlaceHolderImages.find(p => p.id === id);
 
 function AnimatedSection({ children, id }: { children: React.ReactNode, id: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -146,8 +145,6 @@ const BoldRenderer = ({ text }: { text: string }) => {
       </>
     );
 };
-
-const getImage = (id: string) => PlaceHolderImages.find(p => p.id === id);
 
 const ExperienceCard = ({ experience }: { experience: Experience }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -554,32 +551,18 @@ export default function Portfolio() {
             Certificaciones y Logros
           </h2>
 
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-4xl mx-auto"
-          >
-            <CarouselContent>
-              {certificationsData.map((cert, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-2 h-full">
-                    <Card className="bg-card/50 border-border h-full flex flex-col justify-center animated-gradient-border">
-                      <CardContent className="p-6">
-                        <div className="flex items-start gap-4">
-                          <Award className="text-accent flex-shrink-0 mt-1" size={20} />
-                          <p className="text-foreground text-sm">{cert}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {certificationsData.map((cert, index) => (
+              <Card key={index} className="bg-card/50 border-border animated-gradient-border transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 flex flex-col h-full">
+                <CardContent className="p-6 flex-1 flex items-center">
+                  <div className="flex items-start gap-4">
+                    <Award className="text-accent flex-shrink-0 mt-1" size={20} />
+                    <p className="text-foreground text-sm">{cert}</p>
                   </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </AnimatedSection>
 
@@ -698,7 +681,3 @@ export default function Portfolio() {
     </div>
   );
 }
-
-    
-
-    
