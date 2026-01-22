@@ -254,7 +254,7 @@ export default function Portfolio() {
 
   const convaiRef = useRef<HTMLElement>(null);
   const autoplayPlugin = React.useRef(
-    Autoplay({ delay: 2500, stopOnInteraction: true, stopOnMouseEnter: true })
+    Autoplay({ delay: 2500, stopOnInteraction: true })
   );
 
   useEffect(() => {
