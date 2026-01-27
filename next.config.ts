@@ -33,6 +33,12 @@ const nextConfig: NextConfig = {
         hostname: 'drive.google.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn-3.expansion.mx',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
