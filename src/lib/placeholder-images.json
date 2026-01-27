@@ -26,9 +26,9 @@
     },
     {
       "id": "4",
-      "description": "Robotic arm in a lab setting",
-      "imageUrl": "https://images.unsplash.com/photo-1563968743333-044cef800494?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxyb2JvdGljJTIwYXJtfGVufDB8fHx8MTc2NTMzNzE2NHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "robotic arm"
+      "description": "Spotify logo on a phone screen with headphones",
+      "imageUrl": "https://images.unsplash.com/photo-1611339555312-e607c8352671?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwbGF5bGlzdCUyMHNwb3RpZnl8ZW58MHx8fHwxNzE3MTc0MTMxfDA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "spotify music"
     },
     {
       "id": "5",
