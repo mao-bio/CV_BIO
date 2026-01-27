@@ -1,5 +1,6 @@
 
 
+
 export type Project = {
   id: string;
   title: string;
@@ -245,10 +246,10 @@ export const projectsData: Project[] = [
   },
    {
     id: "proj4",
-    title: "Análisis de Datos Empresariales",
-    description: "Creación de dashboards interactivos y reportes ejecutivos con Power BI para la toma de decisiones estratégicas basadas en datos.",
+    title: "Análisis de Canciones Más Escuchadas en Spotify (2023)",
+    description: "Dashboard interactivo que explora las tendencias y patrones en los datos de las canciones más populares de Spotify durante el año 2023.",
     imageUrlId: "4",
-    tags: ["Power BI", "Business Intelligence", "SQL"],
+    tags: ["Looker Studio", "Business Intelligence", "Spotify"],
     embedUrl: "https://lookerstudio.google.com/embed/reporting/46e53d0a-6842-47fb-a93c-6a2422cc5579/page/mHL5D"
   },
   {
