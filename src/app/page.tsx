@@ -2,15 +2,16 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Script from 'next/script';
-import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, Menu, X, Linkedin, Download, FileText, Activity, Star, Cpu, FlaskConical, BookOpen, MessageCircle, ChevronDown, ChevronUp } from 'lucide-react';
+import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, Menu, X, Linkedin, Download, FileText, Activity, Star, Cpu, FlaskConical, BookOpen, MessageCircle, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { useScrollspy } from '@/hooks/use-scrollspy';
 import { cn } from '@/lib/utils';
-import { cvData, skillsData, experienceData, certificationsData, projectsData, type Experience } from '@/lib/data';
+import { cvData, skillsData, experienceData, certificationsData, projectsData, type Experience, type Project } from '@/lib/data';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
@@ -254,7 +255,7 @@ export default function Portfolio() {
 
   const convaiRef = useRef<HTMLElement>(null);
   const autoplayPlugin = React.useRef(
-    Autoplay({ delay: 2500, stopOnInteraction: true })
+    Autoplay({ delay: 2500, stopOnInteraction: false, stopOnMouseEnter: false })
   );
 
   useEffect(() => {
@@ -495,27 +496,67 @@ export default function Portfolio() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {projectsData.map((project) => {
                   const image = getImage(project.imageUrlId);
-                  return(
-                    <Card key={project.id} className="bg-card/50 border-border transition-all duration-300 transform hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-2 flex flex-col animated-gradient-border">
-                        {image && <Image
-                          src={image.imageUrl}
-                          alt={`visual del proyecto ${project.title}`}
-                          width={600}
-                          height={400}
-                          className="w-full h-auto aspect-video object-cover rounded-t-lg"
-                          data-ai-hint={image.imageHint}
-                        />}
-                        <CardContent className="p-6 flex-1 flex flex-col">
-                            <h3 className="text-xl font-bold text-accent mb-2 font-headline">{project.title}</h3>
-                            <p className="text-muted-foreground text-sm mb-4 flex-1">{project.description}</p>
-                            <div className="flex flex-wrap gap-2 mt-auto">
-                              {project.tags.map((tag) => (
-                                <div key={tag} className="text-xs bg-primary/20 text-primary-foreground border border-primary/30 rounded-full px-3 py-1 transition-all hover:bg-primary/40 hover:scale-105">{tag}</div>
-                              ))}
+
+                  const cardContent = (
+                    <>
+                      {image && <Image
+                        src={image.imageUrl}
+                        alt={`visual del proyecto ${project.title}`}
+                        width={600}
+                        height={400}
+                        className="w-full h-auto aspect-video object-cover rounded-t-lg"
+                        data-ai-hint={image.imageHint}
+                      />}
+                      <CardContent className="p-6 flex-1 flex flex-col">
+                          <h3 className="text-xl font-bold text-accent mb-2 font-headline">{project.title}</h3>
+                          <p className="text-muted-foreground text-sm mb-4 flex-1">{project.description}</p>
+                          <div className="flex flex-wrap gap-2 mt-auto">
+                            {project.tags.map((tag) => (
+                              <div key={tag} className="text-xs bg-primary/20 text-primary-foreground border border-primary/30 rounded-full px-3 py-1 transition-all hover:bg-primary/40 hover:scale-105">{tag}</div>
+                            ))}
+                          </div>
+                      </CardContent>
+                    </>
+                  );
+
+                  if (project.embedUrl) {
+                    return (
+                      <Dialog key={project.id}>
+                        <DialogTrigger asChild>
+                          <Card className="bg-card/50 border-border transition-all duration-300 transform hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-2 flex flex-col animated-gradient-border h-full cursor-pointer group relative">
+                            {cardContent}
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                <div className="bg-background/80 text-foreground p-3 rounded-full shadow-lg">
+                                    <ExternalLink className="h-6 w-6" />
+                                </div>
                             </div>
-                        </CardContent>
+                          </Card>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-6xl w-full h-[90vh] flex flex-col p-0">
+                          <DialogHeader className="p-4 border-b">
+                            <DialogTitle>{project.title}</DialogTitle>
+                          </DialogHeader>
+                          <div className="flex-1 p-4 bg-muted/20">
+                            <iframe
+                                src={project.embedUrl}
+                                className="w-full h-full bg-white"
+                                frameBorder="0"
+                                style={{ border: 0 }}
+                                allowFullScreen
+                                sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+                            </iframe>
+                          </div>
+                        </DialogContent>
+                      </Dialog>
+                    );
+                  }
+
+                  return (
+                    <Card key={project.id} className="bg-card/50 border-border transition-all duration-300 transform hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-2 flex flex-col animated-gradient-border h-full">
+                      {cardContent}
                     </Card>
-                )})}
+                  );
+                })}
             </div>
         </div>
       </AnimatedSection>

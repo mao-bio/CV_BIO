@@ -1,5 +1,15 @@
 
 
+export type Project = {
+  id: string;
+  title: string;
+  description: string;
+  imageUrlId: string;
+  tags: string[];
+  embedUrl?: string;
+};
+
+
 export const cvData = {
     name: "Mario Hernández",
     title: "Ingeniero Biomédico | Especialista en IA",
@@ -211,7 +221,7 @@ export const certificationsData = [
     'Curso de Inglés - Universidad de Nariño (2016-2018)'
 ];
   
-export const projectsData = [
+export const projectsData: Project[] = [
   {
     id: "proj1",
     title: "Predicción de Brotes de Enfermedad (EDA)",
@@ -239,6 +249,7 @@ export const projectsData = [
     description: "Creación de dashboards interactivos y reportes ejecutivos con Power BI para la toma de decisiones estratégicas basadas en datos.",
     imageUrlId: "4",
     tags: ["Power BI", "Business Intelligence", "SQL"],
+    embedUrl: "https://lookerstudio.google.com/embed/reporting/46e53d0a-6842-47fb-a93c-6a2422cc5579/page/mHL5D"
   },
   {
     id: "proj5",
