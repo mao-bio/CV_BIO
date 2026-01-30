@@ -239,6 +239,9 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
 };
 
 export const ProjectsSection = () => {
+    const saludProjects = projectsData.filter(p => p.category === 'salud');
+    const otrosProjects = projectsData.filter(p => p.category === 'otros');
+
     return (
         <Section id="proyectos" className="relative">
             <div className="text-center mb-16 space-y-4">
@@ -246,10 +249,38 @@ export const ProjectsSection = () => {
                 <h3 className="text-4xl md:text-5xl font-bold">Proyectos Destacados</h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
-                {projectsData.map((project, index) => (
-                    <ProjectCard key={project.id} project={project} index={index} />
-                ))}
+            {/* Proyectos de Salud */}
+            <div className="mb-20">
+                <div className="flex items-center gap-3 mb-8">
+                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+                    <h4 className="text-2xl md:text-3xl font-bold text-primary flex items-center gap-2">
+                        <span className="text-3xl">🏥</span>
+                        Salud & Biomedicina
+                    </h4>
+                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
+                    {saludProjects.map((project, index) => (
+                        <ProjectCard key={project.id} project={project} index={index} />
+                    ))}
+                </div>
+            </div>
+
+            {/* Otros Proyectos */}
+            <div>
+                <div className="flex items-center gap-3 mb-8">
+                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+                    <h4 className="text-2xl md:text-3xl font-bold text-accent flex items-center gap-2">
+                        <span className="text-3xl">💼</span>
+                        Otros Proyectos
+                    </h4>
+                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
+                    {otrosProjects.map((project, index) => (
+                        <ProjectCard key={project.id} project={project} index={index} />
+                    ))}
+                </div>
             </div>
         </Section>
     );

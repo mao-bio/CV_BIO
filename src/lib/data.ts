@@ -9,6 +9,7 @@ export type Project = {
   imageUrlId: string;
   images?: string[];
   tags: string[];
+  category: 'salud' | 'otros';
   embedUrl?: string;
   downloadUrl?: string;
   githubUrl?: string;
@@ -255,6 +256,17 @@ export const projectsData: Project[] = [
     description: "Sistema de predicción basado en machine learning para anticipar casos de Enfermedad Diarreica Aguda en Ipiales, Nariño, utilizando datos clínicos y ambientales.",
     imageUrlId: "1",
     tags: ["Machine Learning", "Salud Pública", "Python"],
+    category: 'salud'
+  },
+  {
+    id: "proj-clinical-data",
+    title: "Gestión de Datos Clínicos con IA",
+    description: "Proyecto académico de análisis exploratorio y modelado predictivo en salud. Incluye análisis de datasets médicos (Heart Disease, Thyroid, Diabetes) con modelos de ML supervisado alcanzando 85%+ de accuracy.",
+    imageUrlId: "proj-clinical",
+    tags: ["Machine Learning", "Healthcare", "Python", "Jupyter"],
+    embedUrl: "https://htmlpreview.github.io/?https://github.com/mao-bio/gestion-datos-clinicos-ia/blob/main/results/EDA_df1.html",
+    githubUrl: "https://github.com/mao-bio/gestion-datos-clinicos-ia",
+    category: 'salud'
   },
   {
     id: "proj2",
@@ -262,6 +274,7 @@ export const projectsData: Project[] = [
     description: "Implementación de algoritmos de agrupamiento no supervisado para analizar patrones ocultos en registros biomédicos del dataset 'Thyroid Disease'.",
     imageUrlId: "2",
     tags: ["Clustering", "Análisis de Datos", "Scikit-learn"],
+    category: 'salud'
   },
   {
     id: "proj3",
@@ -269,6 +282,7 @@ export const projectsData: Project[] = [
     description: "Entrenamiento de modelos de clasificación para detectar riesgo de falla cardíaca (dataset 'Heart Failure Prediction') y optimización de métricas como accuracy y AUC.",
     imageUrlId: "3",
     tags: ["Clasificación", "Deep Learning", "TensorFlow"],
+    category: 'salud'
   },
   {
     id: "proj4",
@@ -277,7 +291,8 @@ export const projectsData: Project[] = [
     imageUrlId: "4",
     tags: ["Python", "R", "Looker Studio", "Data Analysis"],
     embedUrl: "https://lookerstudio.google.com/embed/reporting/46e53d0a-6842-47fb-a93c-6a2422cc5579/page/mHL5D",
-    githubUrl: "https://github.com/mao-bio/analisis-spotify-2023"
+    githubUrl: "https://github.com/mao-bio/analisis-spotify-2023",
+    category: 'otros'
   },
   {
     id: "proj5",
@@ -285,6 +300,7 @@ export const projectsData: Project[] = [
     description: "Algoritmo de Simulación de Nanopartículas de Magnetita por Dinámica Molecular utilizando Python y C++ para analizar su comportamiento a diferentes escalas.",
     imageUrlId: "5",
     tags: ["Simulación", "Nanotecnología", "Python", "C++"],
+    category: 'otros'
   },
   {
     id: "proj7",
@@ -292,7 +308,8 @@ export const projectsData: Project[] = [
     description: "Plataforma educativa interactiva que utiliza gamificación para la enseñanza de conceptos geométricos. Desarrollada con **Firebase Studio** para la gestión de datos y desplegada en **Vercel**.",
     imageUrlId: "7",
     tags: ["React", "Firebase", "Vercel", "Educación"],
-    embedUrl: "https://studio-aprender-es-un-juego.vercel.app"
+    embedUrl: "https://studio-aprender-es-un-juego.vercel.app",
+    category: 'otros'
   },
   {
     id: "proj8",
@@ -301,7 +318,8 @@ export const projectsData: Project[] = [
     imageUrlId: "8",
     images: ["/nacimientos-caldas-1.jpg", "/nacimientos-caldas-2.jpg", "/nacimientos-caldas-3.jpg"],
     tags: ["Power BI", "Business Intelligence", "Análisis de Datos"],
-    downloadUrl: "https://drive.google.com/uc?export=download&id=15chuHSHS_q8IaqNvnhh4BlFLIc8w5BZx"
+    downloadUrl: "https://drive.google.com/uc?export=download&id=15chuHSHS_q8IaqNvnhh4BlFLIc8w5BZx",
+    category: 'salud'
   },
   {
     id: "proj9",
@@ -309,6 +327,17 @@ export const projectsData: Project[] = [
     description: "Solución integral para el Banco de Inversión Latinoamericano (BILA) que facilita la identificación del perfil de riesgo y la toma de decisiones informadas mediante un dashboard interactivo de análisis financiero.",
     imageUrlId: "proj-bila",
     tags: ["Data Analytics", "Power BI", "Finance"],
-    githubUrl: "https://github.com/No-Country-simulation/C22-36-n-data-bi"
+    githubUrl: "https://github.com/mao-bio/investment-compass",
+    embedUrl: "https://investment-compass.streamlit.app/?embed=true",
+    category: 'otros'
+  },
+  {
+    id: "proj10",
+    title: "Sistema de Clientes AlianzaNet Pro",
+    description: "Sistema integral de gestión de clientes desarrollado con Supabase y optimizado con Antigravity. Solución completa que integra base de datos SQL para un manejo eficiente de la información.",
+    imageUrlId: "proj-alianzanet",
+    tags: ["Supabase", "Antigravity", "SQL", "Full Stack"],
+    githubUrl: "https://github.com/mao-bio/sistema_clientes-alianzanet-pro",
+    category: 'otros'
   },
 ];
