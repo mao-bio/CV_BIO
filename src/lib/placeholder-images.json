@@ -95,6 +95,12 @@
       "description": "Mario - Clínica Cardioneurovascular Pabón",
       "imageUrl": "/mario-pabon.png",
       "imageHint": "mario with clinical equipment"
+    },
+    {
+      "id": "proj-bila",
+      "description": "Dashboard de Inversión BILA - Análisis de Riesgo",
+      "imageUrl": "/bila-dashboard.jpg",
+      "imageHint": "investment dashboard UI"
     }
   ]
 }

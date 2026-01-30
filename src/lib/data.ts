@@ -303,4 +303,12 @@ export const projectsData: Project[] = [
     tags: ["Power BI", "Business Intelligence", "Análisis de Datos"],
     downloadUrl: "https://drive.google.com/uc?export=download&id=15chuHSHS_q8IaqNvnhh4BlFLIc8w5BZx"
   },
+  {
+    id: "proj9",
+    title: "Tendencias de Inversión BILA",
+    description: "Solución integral para el Banco de Inversión Latinoamericano (BILA) que facilita la identificación del perfil de riesgo y la toma de decisiones informadas mediante un dashboard interactivo de análisis financiero.",
+    imageUrlId: "proj-bila",
+    tags: ["Data Analytics", "Power BI", "Finance"],
+    githubUrl: "https://github.com/No-Country-simulation/C22-36-n-data-bi"
+  },
 ];
