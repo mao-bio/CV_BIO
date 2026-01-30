@@ -338,6 +338,7 @@ export const projectsData: Project[] = [
     imageUrlId: "proj-alianzanet",
     tags: ["Supabase", "Antigravity", "SQL", "Full Stack"],
     githubUrl: "https://github.com/mao-bio/sistema_clientes-alianzanet-pro",
+    embedUrl: "https://sistema-clientes-alianzanet-pro.vercel.app",
     category: 'otros'
   },
 ];
