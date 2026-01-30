@@ -7,40 +7,60 @@ export type Project = {
   title: string;
   description: string;
   imageUrlId: string;
+  images?: string[];
   tags: string[];
   embedUrl?: string;
+  downloadUrl?: string;
+  githubUrl?: string;
 };
 
 
 export const cvData = {
-    name: "Mario Hernández",
-    title: "Ingeniero Biomédico | Especialista en IA",
-    summary: [
-        "Transformo **datos en decisiones** que salvan tiempo, recursos y vidas.",
-        "Como **Ingeniero Biomédico y Especialista en Inteligencia Artificial**, conecto la ingeniería clínica, la gestión tecnológica y la IA para optimizar la salud mediante **análisis de datos y soluciones inteligentes** de alto impacto.",
-        "Con un enfoque en **liderazgo colaborativo** y una fuerte orientación a resultados, me apasiona la innovación que mejora la **seguridad y eficiencia** en los entornos de salud."
-    ],
-    contact: {
-      email: "marioandretybio@gmail.com",
-      phone: "+573188189647",
-      linkedin: "https://www.linkedin.com/in/mario-hern%C3%A1ndez-/",
-      github: "https://github.com/mao-bio",
+  name: "Mario Hernández",
+  title: "Ingeniero Biomédico | Especialista en IA",
+  specialties: [
+    {
+      title: "Inteligencia Artificial",
+      description: "Especialización en IA aplicada a datos clínicos y gestión biomédica.",
+      icon: "brain"
     },
-    location: "Pasto, Nariño / Ipiales, Nariño, Colombia",
-    education: [
-      {
-        degree: "Especialización en Inteligencia Artificial",
-        institution: "Universidad Autónoma de Manizales",
-        period: "2024 - 2025",
-        honor: ""
-      },
-      {
-        degree: "Ingeniería Biomédica",
-        institution: "Universidad Autónoma de Manizales",
-        period: "2019 - 2023",
-        honor: "Matrícula de Honor | Mención de Honor",
-      },
-    ],
+    {
+      title: "Análisis de Datos",
+      description: "Transformación de datos en insights con **Python, SQL y Power BI**.",
+      icon: "database"
+    },
+    {
+      title: "Ingeniería Biomédica",
+      description: "Gestión tecnológica hospitalaria y mantenimiento de equipos médicos.",
+      icon: "briefcase"
+    }
+  ],
+  summary: [
+    "Transformo **datos en decisiones** que salvan tiempo, recursos y vidas.",
+    "Como **Ingeniero Biomédico y Especialista en Inteligencia Artificial**, conecto la ingeniería clínica, la gestión tecnológica y la IA para optimizar la salud mediante **análisis de datos y soluciones inteligentes** de alto impacto.",
+    "Con un enfoque en **liderazgo colaborativo** y una fuerte orientación a resultados, me apasiona la innovación que mejora la **seguridad y eficiencia** en los entornos de salud."
+  ],
+  contact: {
+    email: "marioandretybio@gmail.com",
+    phone: "+573188189647",
+    linkedin: "https://www.linkedin.com/in/mario-hern%C3%A1ndez-/",
+    github: "https://github.com/mao-bio",
+  },
+  location: "Pasto, Nariño / Ipiales, Nariño, Colombia",
+  education: [
+    {
+      degree: "Especialización en Inteligencia Artificial",
+      institution: "Universidad Autónoma de Manizales",
+      period: "2024 - 2025",
+      honor: ""
+    },
+    {
+      degree: "Ingeniería Biomédica",
+      institution: "Universidad Autónoma de Manizales",
+      period: "2019 - 2023",
+      honor: "Matrícula de Honor | Mención de Honor",
+    },
+  ],
 };
 
 export type Experience = {
@@ -52,7 +72,7 @@ export type Experience = {
   imageUrlId?: string;
   logros: string[];
 };
-  
+
 export const experienceData: Experience[] = [
   {
     puesto: 'Ingeniero de Servicio y Coordinación de Gestión Biomédica',
@@ -86,11 +106,12 @@ export const experienceData: Experience[] = [
     periodo: 'Marzo 2024 – Noviembre 2025',
     ubicacion: 'Ipiales, Nariño, Colombia',
     icon: 'academic',
+    imageUrlId: 'exp-smart',
     logros: [
       '## RESPONSABILIDADES Y LOGROS',
       'Diseñé un currículo de inglés personalizado, integrando metodologías modernas y herramientas de IA para optimizar el aprendizaje y el seguimiento del progreso estudiantil.',
       '#### Diseño Pedagógico y Tecnológico:',
-      '- Desarrollé materiales didácticos adaptativos y apliqué estrategias innovadoras como **gamificación** y **"flipped classroom"**.',
+      '- Desarrollé materiales didácticos adaptativos y apliqué estrategias innovadoras como **gamificación**.',
       '- Utilicé herramientas de IA (ChatGPT, Gemini) para diseñar actividades y automatizar la retroalimentación.',
       '#### Análisis de Datos y Personalización:',
       '- Realicé análisis de datos de desempeño para identificar áreas de mejora y personalizar las estrategias de enseñanza.',
@@ -106,6 +127,7 @@ export const experienceData: Experience[] = [
     periodo: 'Agosto 2023 – Diciembre 2023',
     ubicacion: 'Pasto, Nariño, Colombia',
     icon: 'corporate',
+    imageUrlId: 'exp-hospital',
     logros: [
       '## RESPONSABILIDADES Y LOGROS',
       'Durante mi doble rol, gestioné proveedores, preparé auditorías y lideré la digitalización de información técnica. Como practicante, ejecuté mantenimiento en la Fundación Hospital San Pedro y desarrollé apps para la gestión de inventarios.',
@@ -127,13 +149,14 @@ export const experienceData: Experience[] = [
     periodo: '2021 – 2024',
     ubicacion: 'Manizales, Caldas, Colombia',
     icon: 'research',
+    imageUrlId: 'exp-research',
     logros: [
       '## RESPONSABILIDADES Y LOGROS',
-      'Como investigador, desarrollé un algoritmo de simulación de nanopartículas y procesé grandes volúmenes de datos. Como monitor, impartí tutorías en diseño de circuitos y programación.',
+      'Como investigador, desarrollé algoritmos de simulación de nanopartículas y procesé grandes volúmenes de datos. Como monitor, impartí tutorías en diseño de circuitos y programación.',
       '#### Investigación (Nanociencia y Nanotecnología):',
       '- Desarrollé un algoritmo de **Simulación de Nanopartículas de Magnetita** por Dinámica Molecular usando **Python y C++**.',
       '- Realicé análisis estadístico avanzado de terabytes de datos de simulación.',
-      '- Presenté resultados en el XIV encuentro departamental de semilleros de investigación RREDSI.',
+      '- Presenté resultados en el XIV Encuentro Departamental de Semilleros de Investigación RREDSI.',
       '#### Monitor Académico (Diseño Biomédico y Circuitos):',
       '- Impartí tutorías en diseño de circuitos (**Multisim**) y programación con **Arduino y Python**.',
       '- Instruí en análisis de circuitos y procesamiento de señales biomédicas.',
@@ -150,18 +173,19 @@ export const experienceData: Experience[] = [
     periodo: 'Junio 2023 – Agosto 2023',
     ubicacion: 'Guadalajara, Jalisco, México',
     icon: 'research',
+    imageUrlId: 'exp-delfin',
     logros: [
-        '## DESCRIPCIÓN DEL PROGRAMA',
-        'Participé en el prestigioso Programa DELFIN, donde desarrollé investigación en biomateriales sostenibles, enfocándome en la síntesis y caracterización de nanomateriales a partir de residuos de agave.',
-        '#### Investigación y Desarrollo:',
-        '- Participé en el desarrollo de **nanomateriales eco-amigables** a partir de bagazo de agave, especializándome en la síntesis de nanopartículas de celulosa (**SEM, TEM, XRD**).',
-        '#### Análisis de Datos y Nanotecnología:',
-        '- Apliqué modelado estadístico (**DOE, ANOVA**) y **Python** para la optimización de procesos experimentales.',
-        '- Contribuí al avance de la nanotecnología verde con procesos de menor huella ambiental.',
-        '## TECNOLOGÍAS CLAVE',
-        'Técnicas Experimentales (SEM, TEM, XRD, FTIR), Python (NumPy, Pandas, SciPy).',
-        '## IMPACTO',
-        '✅ Síntesis y caracterización exitosa de nanopartículas de celulosa, y contribución a la investigación en biomateriales sostenibles.',
+      '## DESCRIPCIÓN DEL PROGRAMA',
+      'Participé en el prestigioso Programa DELFIN, donde desarrollé investigación en biomateriales sostenibles, enfocándome en la síntesis y caracterización de nanomateriales a partir de residuos de agave.',
+      '#### Investigación y Desarrollo:',
+      '- Participé en el desarrollo de **nanomateriales eco-amigables** a partir de bagazo de agave, especializándome en la síntesis de nanopartículas de celulosa (**SEM, TEM, XRD**).',
+      '#### Análisis de Datos y Nanotecnología:',
+      '- Apliqué modelado estadístico (**DOE, ANOVA**) y **Python** para la optimización de procesos experimentales.',
+      '- Contribuí al avance de la nanotecnología verde con procesos de menor huella ambiental.',
+      '## TECNOLOGÍAS CLAVE',
+      'Técnicas Experimentales (SEM, TEM, XRD, FTIR), Python (NumPy, Pandas, SciPy).',
+      '## IMPACTO',
+      '✅ Síntesis y caracterización exitosa de nanopartículas de celulosa, y contribución a la investigación en biomateriales sostenibles.',
     ]
   },
   {
@@ -170,59 +194,60 @@ export const experienceData: Experience[] = [
     periodo: 'Enero 2023 – Junio 2023',
     ubicacion: 'Pasto, Nariño, Colombia',
     icon: 'corporate',
+    imageUrlId: 'exp-pabon',
     logros: [
-        '## DESCRIPCIÓN GENERAL',
-        'Realicé mantenimiento de equipos médicos de alta complejidad, tecnovigilancia y gestión tecnológica, siendo pionero en la digitalización de procesos para optimizar inventarios.',
-        '#### Mantenimiento y Gestión:',
-        '- Ejecuté mantenimientos en equipos de alta tecnología como **sistemas de hemodinamia y ventiladores mecánicos**.',
-        '- Actualicé sistemáticamente las hojas de vida de los equipos conforme a la **normativa INVIMA**.',
-        '#### Tecnovigilancia y Digitalización:',
-        '- Impartí capacitaciones en tecnovigilancia y participé en rondas de seguridad en áreas críticas.',
-        '- Fui pionero en la **digitalización de inventarios médicos**, mejorando la trazabilidad.',
-        '## IMPACTO',
-        '✅ Cero eventos adversos relacionados con equipos y 100% de equipos con hojas de vida actualizadas.',
+      '## DESCRIPCIÓN GENERAL',
+      'Realicé mantenimiento de equipos médicos de alta complejidad, tecnovigilancia y gestión tecnológica, siendo pionero en la digitalización de procesos para optimizar inventarios.',
+      '#### Mantenimiento y Gestión:',
+      '- Ejecuté mantenimientos en equipos de alta tecnología como **sistemas de hemodinamia y ventiladores mecánicos**.',
+      '- Actualicé sistemáticamente las hojas de vida de los equipos conforme a la **normativa INVIMA**.',
+      '#### Tecnovigilancia y Digitalización:',
+      '- Impartí capacitaciones en tecnovigilancia y participé en rondas de seguridad en áreas críticas.',
+      '- Fui pionero en la **digitalización de inventarios médicos**, mejorando la trazabilidad.',
+      '## IMPACTO',
+      '✅ Cero eventos adversos relacionados con equipos y 100% de equipos con hojas de vida actualizadas.',
     ]
   },
 ];
 
 export const skillsData = {
-    programacion: {
-      title: "Lenguajes, BI y Cloud",
-      icon: "programacion",
-      items: ['Python', 'R', 'SQL', 'C++', 'MATLAB', 'Arduino', 'Power BI', 'Looker Studio', 'Excel Avanzado', 'Tableau', 'Firebase', 'Google Workspace', 'Google Colab'],
-    },
-    ia: {
-      title: "Inteligencia Artificial y Machine Learning",
-      icon: "ia",
-      items: ['Modelado Predictivo', 'Machine Learning', 'Deep Learning', 'Análisis Estadístico', 'Scikit-learn', 'TensorFlow', 'OpenCV', 'Pandas', 'NumPy', 'ChatGPT', 'Gemini', 'Claude'],
-    },
-    profesionales: {
-      title: "Ingeniería Biomédica y Clínica",
-      icon: "profesionales",
-      items: ['Gestión Tecnológica', 'Mantenimiento Equipos Médicos', 'Calibración', 'Tecnovigilancia', 'Evaluación Tecnológica', 'Análisis de Datos Clínicos', 'Biomateriales', 'Nanotecnología', 'Regulaciones y Normativas', 'ETL'],
-    },
-    blandas: {
-        title: "Habilidades Blandas",
-        icon: "blandas",
-        items: ['Pensamiento Analítico y Estratégico', 'Resolución de Problemas', 'Liderazgo Colaborativo', 'Comunicación Asertiva', 'Trabajo en Equipo', 'Adaptabilidad', 'Innovación y Creatividad', 'Toma de decisiones', 'Storytelling con Datos'],
-    }
+  programacion: {
+    title: "Lenguajes, BI y Cloud",
+    icon: "programacion",
+    items: ['Python', 'R', 'SQL', 'C++', 'MATLAB', 'Arduino', 'Power BI', 'Looker Studio', 'AppScript', 'Streamlit', 'Excel Avanzado', 'Tableau', 'Firebase', 'Google Workspace', 'Google Colab'],
+  },
+  ia: {
+    title: "Inteligencia Artificial y Machine Learning",
+    icon: "ia",
+    items: ['Modelado Predictivo', 'Machine Learning', 'Deep Learning', 'Análisis Estadístico', 'Scikit-learn', 'TensorFlow', 'OpenCV', 'Pandas', 'NumPy', 'ChatGPT', 'Gemini', 'Claude', 'Antigravity'],
+  },
+  profesionales: {
+    title: "Ingeniería Biomédica y Clínica",
+    icon: "profesionales",
+    items: ['Gestión Tecnológica', 'Mantenimiento Equipos Médicos', 'Calibración', 'Tecnovigilancia', 'Evaluación Tecnológica', 'Análisis de Datos Clínicos', 'Biomateriales', 'Nanotecnología', 'Regulaciones y Normativas', 'ETL'],
+  },
+  blandas: {
+    title: "Habilidades Blandas",
+    icon: "blandas",
+    items: ['Pensamiento Analítico y Estratégico', 'Resolución de Problemas', 'Liderazgo Colaborativo', 'Comunicación Asertiva', 'Trabajo en Equipo', 'Adaptabilidad', 'Innovación y Creatividad', 'Toma de decisiones', 'Storytelling con Datos'],
+  }
 };
 
 export const certificationsData = [
-    'Diplomado en Habilitación de Servicios de Salud (2025)',
-    'Programa Nacional de Tecnovigilancia - INVIMA (2025)',
-    'Seminario de Metrología Biomédica (2025)',
-    'Curso de Primeros Auxilios Psicológicos (2025)',
-    'Gestión de Datos Clínicos con IA - UAM (2024)',
-    'Participación en verano de investigación - Programa DELFIN (2023)',
-    'Fundamentos en Analítica de Datos - Correlation One (2022)',
-    'Machine Learning with MATLAB - MathWorks',
-    'MATLAB Fundamentals - MathWorks',
-    'Competencias Digitales - Google Activate (2022)',
-    'V Simposio Biomédica SENA (2022)',
-    'Curso de Inglés - Universidad de Nariño (2016-2018)'
+  'Diplomado en Habilitación de Servicios de Salud (2025)',
+  'Programa Nacional de Tecnovigilancia - INVIMA (2025)',
+  'Seminario de Metrología Biomédica (2025)',
+  'Curso de Primeros Auxilios Psicológicos (2025)',
+  'Gestión de Datos Clínicos con IA - UAM (2024)',
+  'Participación en el Verano de Investigación - Programa DELFIN (2023)',
+  'Fundamentos en Analítica de Datos - Correlation One (2022)',
+  'Machine Learning with MATLAB - MathWorks',
+  'MATLAB Fundamentals - MathWorks',
+  'Competencias Digitales - Google Activate (2022)',
+  'V Simposio Biomédica SENA (2022)',
+  'Curso de Inglés - Universidad de Nariño (2016-2018)'
 ];
-  
+
 export const projectsData: Project[] = [
   {
     id: "proj1",
@@ -245,13 +270,14 @@ export const projectsData: Project[] = [
     imageUrlId: "3",
     tags: ["Clasificación", "Deep Learning", "TensorFlow"],
   },
-   {
+  {
     id: "proj4",
     title: "Análisis de Canciones en Spotify hasta el 2023",
-    description: "Dashboard interactivo que explora las tendencias y patrones en los datos de las canciones más populares de Spotify hasta el año 2023.",
+    description: "Análisis integral que explora tendencias y patrones en canciones populares hasta 2023. Incluye procesamiento de datos con **Python y R**, dashboard interactivo en **Looker Studio** y video de sustentación.",
     imageUrlId: "4",
-    tags: ["Looker Studio", "Business Intelligence", "Spotify"],
-    embedUrl: "https://lookerstudio.google.com/embed/reporting/46e53d0a-6842-47fb-a93c-6a2422cc5579/page/mHL5D"
+    tags: ["Python", "R", "Looker Studio", "Data Analysis"],
+    embedUrl: "https://lookerstudio.google.com/embed/reporting/46e53d0a-6842-47fb-a93c-6a2422cc5579/page/mHL5D",
+    githubUrl: "https://github.com/mao-bio/analisis-spotify-2023"
   },
   {
     id: "proj5",
@@ -261,10 +287,20 @@ export const projectsData: Project[] = [
     tags: ["Simulación", "Nanotecnología", "Python", "C++"],
   },
   {
-    id: "proj6",
-    title: "Automatización de Reportes",
-    description: "Desarrollo de scripts en Python para automatizar la generación de reportes de mantenimiento, reduciendo el tiempo de procesamiento en un 40%.",
-    imageUrlId: "6",
-    tags: ["Automatización", "Python", "ETL"],
+    id: "proj7",
+    title: "Aprender es un Juego: Geometría",
+    description: "Plataforma educativa interactiva que utiliza gamificación para la enseñanza de conceptos geométricos. Desarrollada con **Firebase Studio** para la gestión de datos y desplegada en **Vercel**.",
+    imageUrlId: "7",
+    tags: ["React", "Firebase", "Vercel", "Educación"],
+    embedUrl: "https://studio-aprender-es-un-juego.vercel.app"
+  },
+  {
+    id: "proj8",
+    title: "Nacimientos en Caldas (2010-2024)",
+    description: "Dashboard de Power BI que analiza los nacimientos por residencia en el departamento de Caldas. Incluye visualizaciones interactivas de tendencias y distribuciones geográficas.",
+    imageUrlId: "8",
+    images: ["/nacimientos-caldas-1.jpg", "/nacimientos-caldas-2.jpg", "/nacimientos-caldas-3.jpg"],
+    tags: ["Power BI", "Business Intelligence", "Análisis de Datos"],
+    downloadUrl: "https://drive.google.com/uc?export=download&id=15chuHSHS_q8IaqNvnhh4BlFLIc8w5BZx"
   },
 ];

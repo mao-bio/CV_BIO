@@ -3,7 +3,7 @@
     {
       "id": "profile",
       "description": "User profile picture",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1kk3UyCjmz1SQpJdVucjCx-mpMV-OYlxN",
+      "imageUrl": "/mario-perfil.jpg",
       "imageHint": "profile portrait"
     },
     {
@@ -50,9 +50,51 @@
     },
     {
       "id": "exp-bimtho",
-      "description": "Biomedical engineering equipment",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1RoF_emm9yZYYM238We79JsnhxJogaUXC",
-      "imageHint": "biomedical equipment"
+      "description": "Mario at Bimtho Ingeniería S.A.S",
+      "imageUrl": "/mario-bimtho.png",
+      "imageHint": "clinical dental setting portrait"
+    },
+    {
+      "id": "7",
+      "description": "Educational games",
+      "imageUrl": "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1080",
+      "imageHint": "education game"
+    },
+    {
+      "id": "exp-hospital",
+      "description": "Mario at Fundación Hospital San Pedro",
+      "imageUrl": "/mario-hospital.jpg",
+      "imageHint": "clinical setting portrait"
+    },
+    {
+      "id": "8",
+      "description": "Birth statistics dashboard",
+      "imageUrl": "/nacimientos-caldas-portada.jpg",
+      "imageHint": "data dashboard"
+    },
+    {
+      "id": "exp-smart",
+      "description": "Mario at Smart English Academy - Final Class",
+      "imageUrl": "/mario-smart-english.jpg",
+      "imageHint": "english class group photo"
+    },
+    {
+      "id": "exp-research",
+      "description": "Mario - Mejor Ponencia Joven Investigador",
+      "imageUrl": "/mario-investigador.jpg",
+      "imageHint": "research award presentation"
+    },
+    {
+      "id": "exp-delfin",
+      "description": "Mario - Programa DELFIN Universidad de Guadalajara",
+      "imageUrl": "/mario-delfin.jpg",
+      "imageHint": "research group photo at university"
+    },
+    {
+      "id": "exp-pabon",
+      "description": "Mario - Clínica Cardioneurovascular Pabón",
+      "imageUrl": "/mario-pabon.png",
+      "imageHint": "mario with clinical equipment"
     }
   ]
 }

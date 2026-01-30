@@ -1,262 +1,24 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Script from 'next/script';
-import { Mail, Phone, Github, MapPin, Briefcase, GraduationCap, Award, Code, Database, Brain, Menu, X, Linkedin, Download, FileText, Activity, Star, Cpu, FlaskConical, BookOpen, MessageCircle, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { useScrollspy } from '@/hooks/use-scrollspy';
-import { cn } from '@/lib/utils';
-import { cvData, skillsData, experienceData, certificationsData, projectsData, type Experience, type Project } from '@/lib/data';
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
-import Autoplay from 'embla-carousel-autoplay';
+import { Header } from '@/components/sections/Header';
+import { Hero } from '@/components/sections/Hero';
+import { ExperienceSection } from '@/components/sections/Experience';
+import { EducationSection } from '@/components/sections/Education';
+import { ProjectsSection } from '@/components/sections/Projects';
+import { SkillsSection } from '@/components/sections/Skills';
+import { CertificationsSection } from '@/components/sections/Certifications';
+import { ContactSection } from '@/components/sections/Contact';
+import { FloatingCV } from '@/components/sections/FloatingCV';
+import { ScrollProgress } from '@/components/ScrollProgress';
+import { SpecialtiesSection } from '@/components/sections/Specialties';
+import { cvData } from '@/lib/data';
 
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'elevenlabs-convai': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-    }
-  }
-}
-
-const getImage = (id: string) => PlaceHolderImages.find(p => p.id === id);
-
-function AnimatedSection({ children, id }: { children: React.ReactNode, id: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      {
-        rootMargin: '0px',
-        threshold: 0.1
-      }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, []);
-
-  return (
-    <section id={id} ref={ref} className={cn('py-20 px-4 flex items-center', isVisible ? 'fade-in-up' : 'opacity-0')}>
-      {children}
-    </section>
-  );
-}
-
-const ParticleBackground = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  const draw = useCallback((ctx: CanvasRenderingContext2D, frame: number, particles: any[]) => {
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    particles.forEach(p => {
-      ctx.fillStyle = p.color;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, 2 * Math.PI);
-      ctx.fill();
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.x < 0 || p.x > ctx.canvas.width) p.vx *= -1;
-      if (p.y < 0 || p.y > ctx.canvas.height) p.vy *= -1;
-    });
-  }, []);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2D');
-    if (!ctx) return;
-
-    let animationFrameId: number;
-    const particles: any[] = [];
-    const particleCount = 25;
-
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      
-      particles.length = 0;
-      const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
-      const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
-      
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          size: Math.random() * 2 + 1,
-          color: Math.random() > 0.5 ? `hsla(${accentColor}, 0.7)`: `hsla(${primaryColor}, 0.7)`,
-        });
-      }
-    };
-
-    resizeCanvas();
-    
-    let frame = 0;
-    const render = () => {
-      frame++;
-      draw(ctx, frame, particles);
-      animationFrameId = window.requestAnimationFrame(render);
-    };
-    render();
-
-    window.addEventListener('resize', resizeCanvas);
-
-    return () => {
-      window.cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', resizeCanvas);
-    };
-  }, [draw]);
-
-  return <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full -z-10" />;
-};
-
-const BoldRenderer = ({ text }: { text: string }) => {
-    const parts = text.split(/\*\*(.*?)\*\*/g);
-    return (
-      <>
-        {parts.map((part, i) =>
-          i % 2 === 1 ? (
-            <strong key={i} className="font-semibold text-foreground/90">
-              {part}
-            </strong>
-          ) : (
-            part
-          )
-        )}
-      </>
-    );
-};
-
-const ExperienceCard = ({ experience }: { experience: Experience }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const image = experience.imageUrlId ? getImage(experience.imageUrlId) : null;
-
-  const ExperienceIcon = ({ iconName }: { iconName: string | undefined }) => {
-    const icons: { [key: string]: React.ElementType } = {
-      corporate: Briefcase,
-      research: FlaskConical,
-      academic: BookOpen,
-    };
-    const Icon = iconName ? icons[iconName] : Briefcase;
-    return <Icon className="text-accent h-8 w-8" />;
-  };
-
-  return (
-    <Collapsible
-      open={isOpen}
-      onOpenChange={setIsOpen}
-      className="w-full bg-card/50 border border-border rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 mb-4"
-    >
-      {image && (
-        <Image
-          src={image.imageUrl}
-          alt={`Imagen para ${experience.empresa}`}
-          width={600}
-          height={400}
-          className="w-full h-auto aspect-video object-cover rounded-t-lg"
-          data-ai-hint={image.imageHint}
-        />
-      )}
-      <div className="p-6">
-        <div className="flex flex-row items-start gap-4 text-left w-full">
-          <div className="bg-accent/10 p-3 rounded-full mt-1">
-            <ExperienceIcon iconName={experience.icon} />
-          </div>
-          <div className="flex-1">
-            <h3 className="text-xl text-accent font-headline">{experience.puesto}</h3>
-            <p className="text-md text-foreground">{experience.empresa}</p>
-            <p className="text-sm text-muted-foreground mt-1">{experience.periodo} &middot; {experience.ubicacion}</p>
-          </div>
-        </div>
-      </div>
-      
-      <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
-        <div className="px-6 pt-0 pb-4">
-          <div className="pl-[4.25rem] space-y-3 text-sm">
-              {experience.logros.map((logro, i) => {
-                  if (logro.startsWith('## ')) {
-                      return <h2 key={i} className="text-lg font-bold text-accent font-headline pt-2">{logro.substring(3)}</h2>;
-                  }
-                  if (logro.startsWith('### ')) {
-                      return <h3 key={i} className="text-md font-bold text-foreground uppercase pt-1">{logro.substring(4)}</h3>;
-                  }
-                  if (logro.startsWith('#### ')) {
-                      return <h4 key={i} className="font-semibold text-accent/90">{logro.substring(5)}</h4>;
-                  }
-                  if (logro.startsWith('- ')) {
-                      return <div key={i} className="flex items-start gap-2">
-                          <span className="text-accent mt-1">&bull;</span>
-                          <p className="text-muted-foreground flex-1"><BoldRenderer text={logro.substring(2)} /></p>
-                      </div>;
-                  }
-                  if (logro.startsWith('✅ ')) {
-                     return <div key={i} className="flex items-start gap-2">
-                          <span className="text-green-500">✅</span>
-                          <p className="text-muted-foreground flex-1"><BoldRenderer text={logro.substring(2)} /></p>
-                      </div>;
-                  }
-                  if (logro === '---') {
-                      return <hr key={i} className="my-3 border-border/50" />;
-                  }
-                  if (logro.startsWith('# ')) {
-                      return null;
-                  }
-                  return <p key={i} className="text-muted-foreground pb-2"><BoldRenderer text={logro} /></p>;
-              })}
-          </div>
-        </div>
-      </CollapsibleContent>
-
-      <div className="px-6 pb-4 border-t border-border/20 pt-4">
-        <CollapsibleTrigger asChild>
-          <Button
-              variant="ghost"
-              className="w-full text-accent hover:text-accent hover:bg-accent/10"
-          >
-              {isOpen ? 'Ver menos' : 'Ver más'}
-              {isOpen ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
-          </Button>
-        </CollapsibleTrigger>
-      </div>
-    </Collapsible>
-  );
-};
 
 
 export default function Portfolio() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [showFloatingButton, setShowFloatingButton] = useState(false);
-
-  const sectionIds = ['inicio', 'educacion', 'experiencia', 'proyectos', 'habilidades', 'certificaciones', 'contacto'];
-  const activeSection = useScrollspy(sectionIds, { offset: 100 });
-
   const convaiRef = useRef<HTMLElement>(null);
-  const autoplayPlugin = React.useRef(
-    Autoplay({ delay: 2500, stopOnInteraction: false, stopOnMouseEnter: false })
-  );
 
   useEffect(() => {
     if (convaiRef.current) {
@@ -264,478 +26,69 @@ export default function Portfolio() {
     }
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-      setShowFloatingButton(window.scrollY > window.innerHeight * 0.8);
-    };
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    setIsMenuOpen(false);
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-  
-  const profileImage = getImage('profile');
-
-  const skillIcons: { [key: string]: React.ElementType } = {
-    programacion: Code,
-    ia: Brain,
-    profesionales: Briefcase,
-    blandas: MessageCircle,
-  };
-
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="text-xl font-bold gradient-text font-headline">
-              BioAI CV
-            </div>
-            
-            <div className="hidden md:flex space-x-8">
-              {sectionIds.map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className={`capitalize hover:text-accent transition-colors duration-300 ${activeSection === item ? 'text-accent font-semibold' : ''}`}
-                >
-                  {item === 'inicio' ? 'Inicio' : item === 'educacion' ? 'Educación' : item}
-                </button>
-              ))}
-            </div>
+    <div className="min-h-screen bg-background text-foreground relative selection:bg-primary/20 bg-grid">
+      {/* Noise texture overlay */}
+      <div className="noise" />
 
-            <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X /> : <Menu />}
-            </button>
-          </div>
-        </div>
+      <ScrollProgress />
+      <Header />
 
-        {isMenuOpen && (
-          <div className="md:hidden bg-background/95 backdrop-blur-md">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {sectionIds.map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className="block w-full text-left px-3 py-2 capitalize hover:bg-muted rounded-md"
-                >
-                  {item === 'inicio' ? 'Inicio' : item === 'educacion' ? 'Educación' : item}
-                </button>
-              ))}
+      <main>
+        <Hero />
+        <SpecialtiesSection />
+
+        {/* Statistics or Social Proof Section */}
+        <section className="py-12 border-y border-border bg-muted/50">
+          <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center group">
+              <div className="text-4xl md:text-5xl font-bold gradient-text">1+</div>
+              <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-2 group-hover:text-primary transition-colors italic">Año Exp. Clínica</p>
+            </div>
+            <div className="text-center group">
+              <div className="text-4xl md:text-5xl font-bold gradient-text">95%</div>
+              <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-2 group-hover:text-primary transition-colors italic">Disponibilidad Equipos</p>
+            </div>
+            <div className="text-center group">
+              <div className="text-4xl md:text-5xl font-bold gradient-text">40%</div>
+              <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-2 group-hover:text-primary transition-colors italic">Reducción Tiempos</p>
+            </div>
+            <div className="text-center group">
+              <div className="text-4xl md:text-5xl font-bold gradient-text">5+</div>
+              <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-2 group-hover:text-primary transition-colors italic">Proyectos IA</p>
             </div>
           </div>
-        )}
-      </nav>
+        </section>
 
-      <section id="inicio" className="min-h-screen flex items-center justify-center px-4 pt-16 relative overflow-hidden">
-        <ParticleBackground />
-        <div className="max-w-6xl mx-auto z-10 w-full">
-            <div className="grid md:grid-cols-3 gap-8 md:gap-12 items-center">
-                <div className="md:col-span-1 flex justify-center">
-                    {profileImage && (
-                        <Image
-                            src={profileImage.imageUrl}
-                            alt="Foto de perfil de Mario Hernández"
-                            width={250}
-                            height={250}
-                            className="rounded-full border-4 border-primary/50 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-accent/20"
-                            data-ai-hint={profileImage.imageHint}
-                        />
-                    )}
-                </div>
-                <div className="md:col-span-2 text-center md:text-left">
-                    <h1 className="text-5xl md:text-7xl font-bold mb-4 gradient-text font-headline">
-                        {cvData.name}
-                    </h1>
-                    <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mb-6 mx-auto md:mx-0"></div>
-                    <p className="text-2xl md:text-3xl text-accent mb-4 font-headline">
-                        {cvData.title}
-                    </p>
-                    <div className="text-lg text-muted-foreground mb-8 max-w-2xl space-y-4">
-                        {cvData.summary.map((paragraph, index) => (
-                            <p key={index}>
-                                <BoldRenderer text={paragraph} />
-                            </p>
-                        ))}
-                    </div>
-                    <div className="flex flex-wrap justify-center md:justify-start gap-4">
-                        <Button asChild size="lg" className="transition-transform duration-300 hover:scale-105">
-                            <a href="#contacto">
-                                <Mail className="mr-2" /> Contactar
-                            </a>
-                        </Button>
-                        <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                                <Button variant="secondary" size="lg" className="transition-transform duration-300 hover:scale-105">
-                                    <Download className="mr-2" /> Descargar CV
-                                </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent>
-                                <DropdownMenuItem asChild>
-                                    <a href="https://drive.google.com/uc?export=download&id=1tXlXo8psiKUyFIF75CWkFhvZu1OrfxNX" download>
-                                        <FileText className="mr-2" /> CV Analista de Datos
-                                    </a>
-                                </DropdownMenuItem>
-                                <DropdownMenuItem asChild>
-                                    <a href="https://drive.google.com/uc?export=download&id=1r9OgNObhdZu3niT-rHVqfJ1LMPZBlx2k" download>
-                                        <Activity className="mr-2" /> CV Ing. Biomédico
-                                    </a>
-                                </DropdownMenuItem>
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-                        <Button asChild variant="secondary" size="lg" className="transition-transform duration-300 hover:scale-105">
-                            <a href={cvData.contact.github} target="_blank" rel="noopener noreferrer">
-                                <Github className="mr-2" /> GitHub
-                            </a>
-                        </Button>
-                        <Button asChild variant="secondary" size="lg" className="transition-transform duration-300 hover:scale-105">
-                            <a href={cvData.contact.linkedin} target="_blank" rel="noopener noreferrer">
-                                <Linkedin className="mr-2" /> LinkedIn
-                            </a>
-                        </Button>
-                    </div>
-                </div>
-            </div>
+        <ExperienceSection />
+        <EducationSection />
+        <ProjectsSection />
+        <SkillsSection />
+        <CertificationsSection />
+        <ContactSection />
+      </main>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mt-20">
-              <Card className="bg-card/50 border-border transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2 animated-gradient-border">
-                <CardContent className="p-6">
-                  <Brain className="text-accent mb-3" size={32} />
-                  <h3 className="text-xl font-semibold mb-2 font-headline">Inteligencia Artificial</h3>
-                  <p className="text-muted-foreground text-sm">Especialización en IA aplicada a datos clínicos y gestión biomédica.</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-card/50 border-border transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2 animated-gradient-border">
-                <CardContent className="p-6">
-                  <Database className="text-accent mb-3" size={32} />
-                  <h3 className="text-xl font-semibold mb-2 font-headline">Análisis de Datos</h3>
-                  <p className="text-muted-foreground text-sm">Transformación de datos en insights con Python, SQL y Power BI.</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-card/50 border-border transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-2 animated-gradient-border">
-                <CardContent className="p-6">
-                  <Briefcase className="text-accent mb-3" size={32} />
-                  <h3 className="text-xl font-semibold mb-2 font-headline">Ingeniería Biomédica</h3>
-                  <p className="text-muted-foreground text-sm">Gestión tecnológica hospitalaria y mantenimiento de equipos médicos.</p>
-                </CardContent>
-              </Card>
-            </div>
-        </div>
-      </section>
-
-      {/* --- ESTADÍSTICAS RÁPIDAS --- */}
-      <section className="py-12 bg-secondary/20 border-y border-border">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="text-center">
-            <div className="text-5xl font-bold gradient-text font-headline">1+</div>
-            <div className="text-sm text-muted-foreground uppercase tracking-widest font-semibold mt-2">Año Exp. Clínica</div>
+      <footer className="py-20 px-6 border-t border-border">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="text-center md:text-left">
+            <h2 className="text-2xl font-bold tracking-tight">Bio<span className="text-primary">AI</span></h2>
+            <p className="text-muted-foreground mt-2 max-w-sm">
+              Ingeniería Biomédica potenciada por IA para transformar el futuro de la salud.
+            </p>
           </div>
-          <div className="text-center">
-            <div className="text-5xl font-bold gradient-text font-headline">95%</div>
-            <div className="text-sm text-muted-foreground uppercase tracking-widest font-semibold mt-2">Disponibilidad Equipos</div>
+
+          <div className="flex flex-col items-center md:items-end gap-2">
+            <p className="text-sm font-medium">© {new Date().getFullYear()} {cvData.name}</p>
+            <p className="text-xs text-muted-foreground">
+              Built with Next.js, Framer Motion & BioAI Precision.
+            </p>
           </div>
-          <div className="text-center">
-            <div className="text-5xl font-bold gradient-text font-headline">40%</div>
-            <div className="text-sm text-muted-foreground uppercase tracking-widest font-semibold mt-2">Reducción Tiempos</div>
-          </div>
-          <div className="text-center">
-            <div className="text-5xl font-bold gradient-text font-headline">5+</div>
-            <div className="text-sm text-muted-foreground uppercase tracking-widest font-semibold mt-2">Proyectos IA</div>
-          </div>
-        </div>
-      </section>
-
-      <AnimatedSection id="educacion">
-        <div className="max-w-6xl mx-auto w-full">
-            <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center font-headline gradient-text">
-                <GraduationCap className="inline mr-3 text-accent" size={40} />
-                Educación
-            </h2>
-            <Card className="bg-gradient-to-r from-primary/10 to-accent/10 backdrop-blur-sm p-8 border-border">
-              <CardContent className="p-0">
-                <div className="grid md:grid-cols-2 gap-8">
-                  {cvData.education.map((edu, i) => (
-                    <div key={i} className="bg-card/50 p-6 rounded-lg animated-gradient-border hover:shadow-lg hover:shadow-accent/10 transition-all">
-                      <h3 className="text-xl font-bold text-accent mb-2 font-headline">{edu.degree}</h3>
-                      <p className="text-lg text-foreground mb-1">{edu.institution}</p>
-                      <p className="text-md text-muted-foreground">{edu.period}</p>
-                      {edu.honor && <p className="text-accent text-sm mt-2 flex items-center gap-2"><Star size={16} /> {edu.honor}</p>}
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-        </div>
-      </AnimatedSection>
-      
-      <AnimatedSection id="experiencia">
-        <div className="max-w-4xl mx-auto w-full">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center font-headline gradient-text">
-            <Briefcase className="inline mr-3 text-accent" size={40} />
-            Experiencia Profesional
-          </h2>
-          <div className="w-full space-y-4">
-            {experienceData.map((exp, index) => (
-              <ExperienceCard key={index} experience={exp} />
-            ))}
-          </div>
-        </div>
-      </AnimatedSection>
-      
-      <AnimatedSection id="proyectos">
-        <div className="max-w-7xl mx-auto w-full">
-            <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center font-headline gradient-text">
-                <Code className="inline mr-3 text-accent" size={40} />
-                Proyectos Destacados
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {projectsData.map((project) => {
-                  const image = getImage(project.imageUrlId);
-
-                  const cardContent = (
-                    <>
-                      {image && <Image
-                        src={image.imageUrl}
-                        alt={`visual del proyecto ${project.title}`}
-                        width={600}
-                        height={400}
-                        className="w-full h-auto aspect-video object-cover rounded-t-lg"
-                        data-ai-hint={image.imageHint}
-                      />}
-                      <CardContent className="p-6 flex-1 flex flex-col">
-                          <h3 className="text-xl font-bold text-accent mb-2 font-headline">{project.title}</h3>
-                          <p className="text-muted-foreground text-sm mb-4 flex-1">{project.description}</p>
-                          <div className="flex flex-wrap gap-2 mt-auto">
-                            {project.tags.map((tag) => (
-                              <div key={tag} className="text-xs bg-primary/20 text-primary-foreground border border-primary/30 rounded-full px-3 py-1 transition-all hover:bg-primary/40 hover:scale-105">{tag}</div>
-                            ))}
-                          </div>
-                      </CardContent>
-                    </>
-                  );
-
-                  if (project.embedUrl) {
-                    return (
-                      <Dialog key={project.id}>
-                        <DialogTrigger asChild>
-                          <Card className="bg-card/50 border-border transition-all duration-300 transform hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-2 flex flex-col animated-gradient-border h-full cursor-pointer group relative">
-                            {cardContent}
-                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100">
-                                <div className="bg-background/80 text-foreground p-3 rounded-full shadow-lg">
-                                    <ExternalLink className="h-6 w-6" />
-                                </div>
-                            </div>
-                          </Card>
-                        </DialogTrigger>
-                        <DialogContent className="max-w-6xl w-full h-[90vh] flex flex-col p-0">
-                          <DialogHeader className="p-4 border-b">
-                            <DialogTitle>{project.title}</DialogTitle>
-                          </DialogHeader>
-                          <div className="flex-1 p-4 bg-muted/20">
-                            <iframe
-                                src={project.embedUrl}
-                                className="w-full h-full bg-white"
-                                frameBorder="0"
-                                style={{ border: 0 }}
-                                allowFullScreen
-                                sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
-                            </iframe>
-                          </div>
-                        </DialogContent>
-                      </Dialog>
-                    );
-                  }
-
-                  return (
-                    <Card key={project.id} className="bg-card/50 border-border transition-all duration-300 transform hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-2 flex flex-col animated-gradient-border h-full">
-                      {cardContent}
-                    </Card>
-                  );
-                })}
-            </div>
-        </div>
-      </AnimatedSection>
-
-      <AnimatedSection id="habilidades">
-        <div className="max-w-6xl mx-auto w-full">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center font-headline gradient-text">
-            <Cpu className="inline mr-3 text-accent" size={40} />
-            Habilidades Técnicas
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {Object.entries(skillsData).map(([category, skills]) => {
-              const Icon = skillIcons[category as keyof typeof skillIcons];
-              return (
-                <Card key={category} className="bg-card/50 border-border transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 animated-gradient-border">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      {Icon && <Icon className="text-accent h-8 w-8 mt-1 flex-shrink-0" />}
-                      <div>
-                        <h3 className="text-xl font-bold text-accent mb-2 font-headline">{skills.title}</h3>
-                        <p className="text-sm text-muted-foreground">
-                          {skills.items.join(' · ')}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </AnimatedSection>
-
-      <AnimatedSection id="certificaciones">
-        <div className="max-w-6xl mx-auto w-full">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center font-headline gradient-text">
-            <Award className="inline mr-3 text-accent" size={40} />
-            Certificaciones y Logros
-          </h2>
-
-          <Carousel
-            plugins={[autoplayPlugin.current]}
-            className="w-full"
-            opts={{
-                align: "start",
-                loop: true,
-            }}
-          >
-            <CarouselContent>
-                {certificationsData.map((cert, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                    <div className="p-1 h-full">
-                        <Card className="bg-card/50 border-border animated-gradient-border transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 flex flex-col h-full">
-                            <CardContent className="p-6 flex-1 flex items-center">
-                                <div className="flex items-start gap-4">
-                                <Award className="text-accent flex-shrink-0 mt-1" size={20} />
-                                <p className="text-foreground text-sm">{cert}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    </div>
-                </CarouselItem>
-                ))}
-            </CarouselContent>
-          </Carousel>
-        </div>
-      </AnimatedSection>
-
-      <AnimatedSection id="contacto">
-        <div className="max-w-4xl mx-auto w-full">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center font-headline gradient-text">
-            <Mail className="inline mr-3 text-accent" size={40} />
-            Contacto
-          </h2>
-
-          <Card className="bg-card/50 backdrop-blur-sm p-8 md:p-12 border-border">
-            <CardContent className="p-0">
-              <div className="text-center mb-8">
-                <p className="text-xl text-muted-foreground mb-6">
-                  ¿Interesado en colaborar en proyectos de IA, análisis de datos o ingeniería biomédica?
-                </p>
-                <p className="text-2xl text-accent font-headline">¡Hablemos!</p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <Button asChild className="h-auto text-left justify-start transition-transform duration-300 hover:scale-105" size="lg">
-                    <a href={`mailto:${cvData.contact.email}`} className="flex items-center gap-4 p-6 rounded-lg">
-                      <Mail size={32} className="flex-shrink-0" />
-                      <div>
-                        <p className="font-semibold">Email</p>
-                        <p className="text-sm font-normal text-primary-foreground/80">{cvData.contact.email}</p>
-                      </div>
-                    </a>
-                </Button>
-                
-                <Button asChild variant="secondary" className="h-auto text-left justify-start transition-transform duration-300 hover:scale-105" size="lg">
-                  <a href={`tel:${cvData.contact.phone}`} className="flex items-center gap-4 p-6 rounded-lg">
-                    <Phone size={32} className="flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold">Teléfono</p>
-                      <p className="text-sm font-normal text-secondary-foreground/80">{cvData.contact.phone}</p>
-                    </div>
-                  </a>
-                </Button>
-
-                <Button asChild variant="secondary" className="h-auto text-left justify-start transition-transform duration-300 hover:scale-105" size="lg">
-                  <a href={`https://wa.me/${cvData.contact.phone.replace(/\\+/g, '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-6 rounded-lg">
-                    <MessageCircle size={32} className="flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold">WhatsApp</p>
-                      <p className="text-sm font-normal text-secondary-foreground/80">{cvData.contact.phone}</p>
-                    </div>
-                  </a>
-                </Button>
-
-                <Button asChild variant="secondary" className="h-auto text-left justify-start transition-transform duration-300 hover:scale-105" size="lg">
-                  <a href={cvData.contact.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-6 rounded-lg">
-                    <Github size={32} className="flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold">GitHub</p>
-                      <p className="text-sm font-normal text-secondary-foreground/80">@{cvData.contact.github.split('/').pop()}</p>
-                    </div>
-                  </a>
-                </Button>
-                
-                <div className="flex items-center gap-4 bg-muted p-6 rounded-lg md:col-span-2">
-                  <MapPin size={32} className="flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold">Ubicación</p>
-                    <p className="text-muted-foreground">{cvData.location}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 text-center">
-                <p className="text-muted-foreground text-sm">
-                  Idiomas: Español (Nativo) | Inglés (Avanzado)
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </AnimatedSection>
-
-      <footer className="bg-background py-8 px-4 border-t border-border">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-muted-foreground">
-            © {new Date().getFullYear()} {cvData.name}. Todos los derechos reservados.
-          </p>
-          <p className="text-muted-foreground/50 text-sm mt-2">
-            Diseñado con Next.js y Tailwind CSS en Firebase Studio.
-          </p>
         </div>
       </footer>
-      {showFloatingButton && (
-        <div className="fixed bottom-8 left-8 z-50 animate-in fade-in duration-300">
-            <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                    <Button size="icon" className="rounded-full h-14 w-14 shadow-lg transition-transform duration-300 hover:scale-110">
-                        <Download className="h-6 w-6" />
-                        <span className="sr-only">Descargar CV</span>
-                    </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent side="top" align="start">
-                    <DropdownMenuItem asChild>
-                        <a href="https://drive.google.com/uc?export=download&id=1tXlXo8psiKUyFIF75CWkFhvZu1OrfxNX" download>
-                            <FileText className="mr-2" /> CV Analista de Datos
-                        </a>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                        <a href="https://drive.google.com/uc?export=download&id=1r9OgNObhdZu3niT-rHVqfJ1LMPZBlx2k" download>
-                            <Activity className="mr-2" /> CV Ing. Biomédico
-                        </a>
-                    </DropdownMenuItem>
-                </DropdownMenuContent>
-            </DropdownMenu>
-        </div>
-      )}
+
+      <FloatingCV />
+
+      {/* ConvAI Widget */}
       <elevenlabs-convai ref={convaiRef}></elevenlabs-convai>
       <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async />
     </div>

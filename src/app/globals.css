@@ -2,54 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 210 28% 10%;
-    --card: 210 40% 100%;
-    --card-foreground: 210 28% 10%;
-    --popover: 210 40% 100%;
-    --popover-foreground: 210 28% 10%;
-    --primary: 205 75% 35%; /* Azul principal */
-    --primary-foreground: 210 20% 98%;
-    --secondary: 210 28% 92%;
-    --secondary-foreground: 210 28% 20%;
-    --muted: 210 28% 92%;
+    --background: 220 33% 98%;
+    --foreground: 224 71% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 180 65% 40%; /* Verde azulado */
-    --accent-foreground: 210 20% 98%;
+    --accent: 180 65% 45%;
+    --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 210 28% 88%;
-    --input: 210 28% 88%;
-    --ring: 205 75% 35%;
-    --radius: 0.5rem;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+    --radius: 1rem;
   }
 
   .dark {
-    --background: 210 28% 10%;
-    --foreground: 215 28% 83%;
-    --card: 210 28% 14%;
-    --card-foreground: 215 28% 83%;
-    --popover: 210 28% 14%;
-    --popover-foreground: 215 28% 83%;
-    --primary: 205 70% 40%; /* Azul principal */
-    --primary-foreground: 210 20% 98%;
-    --secondary: 217.2 32.6% 17.5%;
+    --background: 224 71% 2%;
+    --foreground: 213 31% 91%;
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+    --popover: 224 71% 2%;
+    --popover-foreground: 213 31% 91%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 222.2 47.4% 11.2%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
+    --muted: 223 47% 11%;
     --muted-foreground: 215.4 16.3% 56.9%;
-    --accent: 180 75% 45%; /* Verde azulado */
-    --accent-foreground: 210 20% 98%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 210 28% 22%;
-    --input: 210 28% 22%;
-    --ring: 180 75% 45%;
+    --accent: 180 75% 50%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 224 71% 45%;
   }
 }
 
@@ -57,43 +53,55 @@ body {
   * {
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
     scroll-behavior: smooth;
   }
 }
 
 @layer utilities {
-  .fade-in-up {
-    animation: fade-in-up 0.8s ease-in-out forwards;
-    opacity: 0;
-    transform: translateY(20px);
+  .glass {
+    @apply bg-background/60 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0, 0, 0, 0.37)];
   }
 
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .glass-card {
+    @apply bg-card/40 backdrop-blur-md border border-border/50 hover:border-primary/50 transition-all duration-500;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .bento-card {
+    @apply relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 transition-all duration-500 hover:bg-white/10;
+  }
+
+  .bento-card-header {
+    @apply flex flex-col gap-2;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px hsla(var(--primary), 0.5), 0 0 20px hsla(var(--primary), 0.3);
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
     background-size: 200% auto;
-    animation: gradient-animation 3s linear infinite;
+    animation: gradient-animation 4s linear infinite;
   }
-  
+
   @keyframes gradient-animation {
     0% {
       background-position: 0% 50%;
     }
+
     50% {
       background-position: 100% 50%;
     }
+
     100% {
       background-position: 0% 50%;
     }
@@ -102,33 +110,126 @@ body {
   .animated-gradient-border {
     position: relative;
   }
+
   .animated-gradient-border::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: -1.5px;
+    background: linear-gradient(95deg, hsl(var(--primary)), hsl(var(--accent)), #f43f5e, hsl(var(--primary)));
+    background-size: 300% 300%;
+    animation: gradient-move 4s linear infinite;
     border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(120deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)));
-    background-size: 200% 200%;
-    animation: gradient-spin 3s linear infinite;
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box, 
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    z-index: -1;
+    opacity: 0.3;
+    transition: opacity 0.5s ease;
   }
+
   .animated-gradient-border:hover::before {
     opacity: 1;
   }
 
-  @keyframes gradient-spin {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  @keyframes gradient-move {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
   }
+
+  .fade-in-up {
+    animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  .noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    opacity: 0.03;
+    z-index: 9999;
+    pointer-events: none;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+  }
+
+  .bg-grid {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(var(--primary), 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(var(--primary), 0.05) 1px, transparent 1px);
+  }
+
+  .glass-badge {
+    @apply bg-primary/10 text-primary border-primary/20 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all hover:bg-primary/20 hover:border-primary/40;
+  }
+
+  .scanline {
+    width: 100%;
+    height: 100px;
+    z-index: 10;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(var(--primary), 0.05) 50%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0.1;
+    position: absolute;
+    bottom: 100%;
+    pointer-events: none;
+    animation: scanline 8s linear infinite;
+  }
+
+  @keyframes scanline {
+    0% {
+      bottom: 100%;
+    }
+
+    100% {
+      bottom: -100px;
+    }
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/40 transition-colors;
 }
