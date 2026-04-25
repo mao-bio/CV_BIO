@@ -14,6 +14,7 @@ const navItems = [
     { name: 'Proyectos', id: 'proyectos' },
     { name: 'Habilidades', id: 'habilidades' },
     { name: 'Certificaciones', id: 'certificaciones' },
+    { name: 'Inspiración', id: 'inspiracion' },
     { name: 'Contacto', id: 'contacto' },
 ];
 

@@ -9,6 +9,7 @@ import { EducationSection } from '@/components/sections/Education';
 import { ProjectsSection } from '@/components/sections/Projects';
 import { SkillsSection } from '@/components/sections/Skills';
 import { CertificationsSection } from '@/components/sections/Certifications';
+import { Inspiration } from '@/components/sections/Inspiration';
 import { ContactSection } from '@/components/sections/Contact';
 import { FloatingCV } from '@/components/sections/FloatingCV';
 import { ScrollProgress } from '@/components/ScrollProgress';
@@ -65,6 +66,7 @@ export default function Portfolio() {
         <ProjectsSection />
         <SkillsSection />
         <CertificationsSection />
+        <Inspiration />
         <ContactSection />
       </main>
 

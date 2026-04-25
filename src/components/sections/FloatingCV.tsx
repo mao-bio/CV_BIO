@@ -33,13 +33,13 @@ export const FloatingCV = () => {
                         </DropdownMenuTrigger>
                         <DropdownMenuContent side="top" align="start" className="rounded-2xl p-2 mb-4 border-none bg-background/80 backdrop-blur-xl shadow-2xl">
                             <DropdownMenuItem asChild>
-                                <a href="https://drive.google.com/uc?export=download&id=1tXlXo8psiKUyFIF75CWkFhvZu1OrfxNX" className="flex items-center gap-2 p-3 rounded-xl cursor-pointer">
+                                <a href="/CV_MARIO_H_DATA_A.pdf" download="CV_Mario_Hernandez_Data_Analyst.pdf" className="flex items-center gap-2 p-3 rounded-xl cursor-pointer">
                                     <FileText className="h-4 w-4 text-primary" />
                                     <span className="font-medium text-sm">Analista de Datos</span>
                                 </a>
                             </DropdownMenuItem>
                             <DropdownMenuItem asChild>
-                                <a href="https://drive.google.com/uc?export=download&id=1r9OgNObhdZu3niT-rHVqfJ1LMPZBlx2k" className="flex items-center gap-2 p-3 rounded-xl cursor-pointer">
+                                <a href="/CV_MARIO_2026.pdf" download="CV_Mario_Hernandez_Biomedical_Eng.pdf" className="flex items-center gap-2 p-3 rounded-xl cursor-pointer">
                                     <Activity className="h-4 w-4 text-accent" />
                                     <span className="font-medium text-sm">Ing. Biomédico</span>
                                 </a>

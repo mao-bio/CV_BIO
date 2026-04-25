@@ -74,12 +74,12 @@ export const Hero = () => {
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="center" className="rounded-xl p-2">
                                 <DropdownMenuItem asChild>
-                                    <a href="https://drive.google.com/uc?export=download&id=1tXlXo8psiKUyFIF75CWkFhvZu1OrfxNX" className="flex items-center gap-2 cursor-pointer">
+                                    <a href="/CV_MARIO_H_DATA_A.pdf" download="CV_Mario_Hernandez_Data_Analyst.pdf" className="flex items-center gap-2 cursor-pointer">
                                         <FileText className="h-4 w-4" /> Analista de Datos
                                     </a>
                                 </DropdownMenuItem>
                                 <DropdownMenuItem asChild>
-                                    <a href="https://drive.google.com/uc?export=download&id=1r9OgNObhdZu3niT-rHVqfJ1LMPZBlx2k" className="flex items-center gap-2 cursor-pointer">
+                                    <a href="/CV_MARIO_2026.pdf" download="CV_Mario_Hernandez_Biomedical_Eng.pdf" className="flex items-center gap-2 cursor-pointer">
                                         <Activity className="h-4 w-4" /> Ing. Biomédico
                                     </a>
                                 </DropdownMenuItem>
