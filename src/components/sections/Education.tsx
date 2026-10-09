@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { GraduationCap, Calendar, Award, School } from 'lucide-react';
+import { GraduationCap, Calendar, Award, School, Languages } from 'lucide-react';
 import { Section } from '@/components/Section';
 import { cvData } from '@/lib/data';
 import { formatMarkdown } from '@/lib/format-text';
@@ -73,6 +73,29 @@ export const EducationSection = () => {
                         </span>
                     </motion.div>
                 ))}
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 p-6 rounded-[2rem] border border-border/50 bg-card/40 backdrop-blur-md"
+                >
+                    <div className="flex items-center gap-3">
+                        <div className="p-3 rounded-xl bg-accent/10 text-accent">
+                            <Languages className="h-5 w-5" />
+                        </div>
+                        <span className="text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">Idiomas</span>
+                    </div>
+                    <div className="flex flex-wrap gap-3">
+                        {cvData.languages.map((lang) => (
+                            <span key={lang.name} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted text-sm">
+                                <span className="font-bold">{lang.name}</span>
+                                <span className="text-muted-foreground">{lang.level}</span>
+                            </span>
+                        ))}
+                    </div>
+                </motion.div>
             </div>
         </Section>
     );

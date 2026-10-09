@@ -2,6 +2,7 @@ import { Header } from '@/components/sections/Header';
 import { Hero } from '@/components/sections/Hero';
 import { ExperienceSection } from '@/components/sections/Experience';
 import { EducationSection } from '@/components/sections/Education';
+import { AwardsSection } from '@/components/sections/Awards';
 import { ProjectsSection } from '@/components/sections/Projects';
 import { SkillsSection } from '@/components/sections/Skills';
 import { CertificationsSection } from '@/components/sections/Certifications';
@@ -42,6 +43,7 @@ export default function Portfolio() {
 
         <ExperienceSection />
         <EducationSection />
+        <AwardsSection />
         <ProjectsSection />
         <SkillsSection />
         <CertificationsSection />

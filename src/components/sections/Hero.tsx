@@ -46,7 +46,10 @@ export const Hero = () => {
             >
                 <div className="flex flex-col gap-8 items-center max-w-3xl">
                     <motion.div variants={itemVariants} className="space-y-4">
-                        <h2 className="text-accent font-medium tracking-wider uppercase text-sm">Bio-Engineering x AI</h2>
+                        <p className="text-lg md:text-xl font-semibold text-foreground">
+                            Hola, soy <span className="text-primary">{cvData.name}</span>
+                        </p>
+                        <h2 className="text-accent font-medium tracking-wider uppercase text-sm">{cvData.title}</h2>
                         <h1 className="text-4xl md:text-7xl font-bold tracking-tight">
                             Transformando <br />
                             <span className="gradient-text text-glow">Datos en Vida</span>

@@ -9,7 +9,7 @@ export const CertificationsSection = () => {
     return (
         <Section id="certificaciones" className="relative">
             <div className="text-center mb-16 space-y-4">
-                <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em]">Reconocimientos</h2>
+                <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em]">Formación Continua</h2>
                 <h3 className="text-4xl md:text-5xl font-bold">Certificaciones</h3>
             </div>
 

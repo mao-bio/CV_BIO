@@ -11,10 +11,10 @@ const navItems = [
     { name: 'Inicio', id: 'inicio' },
     { name: 'Experiencia', id: 'experiencia' },
     { name: 'Educación', id: 'educacion' },
+    { name: 'Logros', id: 'logros' },
     { name: 'Proyectos', id: 'proyectos' },
     { name: 'Habilidades', id: 'habilidades' },
     { name: 'Certificaciones', id: 'certificaciones' },
-    { name: 'Inspiración', id: 'inspiracion' },
     { name: 'Contacto', id: 'contacto' },
 ];
 

@@ -48,6 +48,10 @@ export const cvData = {
     github: "https://github.com/mao-bio",
   },
   location: "Pasto, Nariño / Ipiales, Nariño, Colombia",
+  languages: [
+    { name: "Español", level: "Nativo" },
+    { name: "Inglés", level: "Avanzado (B2/C1)" },
+  ],
   education: [
     {
       degree: "Especialización en Inteligencia Artificial",
@@ -112,10 +116,18 @@ export const experienceData: Experience[] = [
       '#### Gestión de Operaciones:',
       '- Gestión de inventarios de equipos y suministros en clínicas e IPS del sector odontológico, asegurando disponibilidad y trazabilidad.',
       '- Ejecución de mantenimientos preventivos y correctivos, logrando un **95% de disponibilidad operativa**.',
+      '- Calibración de equipos biomédicos conforme a estándares de calidad y normativas técnicas.',
+      '#### Normativa y Habilitación:',
+      '- Apoyo a la implementación del estándar de dotación y a procesos de **habilitación de servicios de salud**.',
+      '- Gestión documental de procesos técnicos y de mantenimiento, facilitando auditorías y controles.',
+      '#### Datos e Inteligencia Artificial:',
+      '- Dashboards en **Power BI** para el monitoreo de indicadores de mantenimiento.',
+      '- Automatización de la gestión documental con **Python y AppSheet**, reduciendo los tiempos de procesamiento en un **40%**.',
       '## TECNOLOGÍAS CLAVE',
-      'Mantenimiento Preventivo/Correctivo, Gestión de Inventarios, Equipos Odontológicos.',
+      'Mantenimiento Preventivo/Correctivo, Calibración, Gestión de Inventarios, Habilitación, Power BI, Python, AppSheet, Equipos Odontológicos.',
       '## IMPACTO',
       '✅ 95% de disponibilidad operativa de equipos en clínicas e IPS.',
+      '✅ 40% menos tiempo de procesamiento documental gracias a la automatización.',
     ]
   },
   {
@@ -153,7 +165,7 @@ export const experienceData: Experience[] = [
       '#### Investigación (Nanociencia y Nanotecnología):',
       '- Desarrollé un algoritmo de **Simulación de Nanopartículas de Magnetita** por Dinámica Molecular usando **Python y C++**.',
       '- Realicé análisis estadístico avanzado de terabytes de datos de simulación.',
-      '- Presenté resultados en el XIV Encuentro Departamental de Semilleros de Investigación RREDSI.',
+      '- Presenté resultados en el XIV Encuentro Departamental de Semilleros de Investigación RREDSI, obteniendo el reconocimiento a **Mejor Ponencia**.',
       '#### Monitor Académico (Diseño Biomédico y Circuitos):',
       '- Impartí tutorías en diseño de circuitos (**Multisim**) y programación con **Arduino y Python**.',
       '- Instruí en análisis de circuitos y procesamiento de señales biomédicas.',
@@ -259,7 +271,6 @@ export const certificationsData = [
   'Seminario de Metrología Biomédica (2025)',
   'Curso de Primeros Auxilios Psicológicos (2025)',
   'Gestión de Datos Clínicos con IA - UAM (2024)',
-  'Participación en el Verano de Investigación - Programa DELFIN (2023)',
   'Fundamentos en Analítica de Datos - Correlation One (2022)',
   'Machine Learning with MATLAB - MathWorks',
   'MATLAB Fundamentals - MathWorks',
@@ -359,6 +370,53 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com/mao-bio/sistema_clientes-alianzanet-pro",
     embedUrl: "https://sistema-clientes-alianzanet-pro.vercel.app",
     category: 'otros'
+  },
+];
+
+export type Award = {
+  title: string;
+  issuer: string;
+  description: string;
+  year?: string;
+  category: 'investigacion' | 'academico';
+  icon: 'trophy' | 'globe' | 'medal' | 'star';
+  imageUrlId?: string;
+};
+
+// Sourced from the PDF CVs in /public and the award photo (mario-investigador.jpg).
+export const awardsData: Award[] = [
+  {
+    title: 'Mejor Ponencia',
+    issuer: 'XIV Encuentro Departamental de Semilleros de Investigación RREDSI',
+    description: 'Reconocimiento a la mejor ponencia por la presentación de resultados del Semillero de Nanociencia y Nanotecnología de la Universidad Autónoma de Manizales.',
+    category: 'investigacion',
+    icon: 'trophy',
+    imageUrlId: 'exp-research',
+  },
+  {
+    title: 'Estancia de Investigación Internacional – Programa DELFIN',
+    issuer: 'Universidad de Guadalajara, México',
+    description: 'Seleccionado para el XXVIII Verano de la Investigación Científica y Tecnológica del Pacífico, en el proyecto "Reaprovechamiento del residuo bagazo de agave en bio-productos funcionales en aplicaciones biomédicas".',
+    year: '2023',
+    category: 'investigacion',
+    icon: 'globe',
+    imageUrlId: 'exp-delfin',
+  },
+  {
+    title: 'Mención de Honor',
+    issuer: 'Ingeniería Biomédica · Universidad Autónoma de Manizales',
+    description: 'Distinción por el desempeño académico sobresaliente durante todo el programa.',
+    year: '2023',
+    category: 'academico',
+    icon: 'medal',
+  },
+  {
+    title: 'Matrícula de Honor',
+    issuer: 'Ingeniería Biomédica · Universidad Autónoma de Manizales',
+    description: 'Reconocimiento por rendimiento académico sobresaliente en el décimo semestre.',
+    year: '2023',
+    category: 'academico',
+    icon: 'star',
   },
 ];
 

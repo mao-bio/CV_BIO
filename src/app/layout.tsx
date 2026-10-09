@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
-import { cvData } from '@/lib/data';
+import { awardsData, cvData } from '@/lib/data';
 import { siteConfig } from '@/lib/site';
 
 const inter = Inter({
@@ -59,6 +59,8 @@ const personJsonLd = {
   alumniOf: { '@type': 'CollegeOrUniversity', name: 'Universidad Autónoma de Manizales' },
   knowsAbout: ['Ingeniería Biomédica', 'Inteligencia Artificial', 'Machine Learning', 'Análisis de Datos', 'Tecnovigilancia'],
   sameAs: [cvData.contact.linkedin, cvData.contact.github],
+  award: awardsData.map((a) => `${a.title} - ${a.issuer}`),
+  knowsLanguage: cvData.languages.map((l) => l.name),
 };
 
 export default function RootLayout({
