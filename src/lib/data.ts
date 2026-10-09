@@ -100,27 +100,6 @@ export const experienceData: Experience[] = [
     ]
   },
   {
-    puesto: 'Tutor de Inglés',
-    empresa: 'Smart English Academy',
-    periodo: 'Marzo 2024 – Actualidad',
-    ubicacion: 'Ipiales, Nariño, Colombia',
-    icon: 'academic',
-    imageUrlId: 'exp-smart',
-    logros: [
-      '## RESPONSABILIDADES Y LOGROS',
-      'Diseñé un currículo de inglés personalizado, integrando metodologías modernas y herramientas de IA para optimizar el aprendizaje y el seguimiento del progreso estudiantil.',
-      '#### Diseño Pedagógico y Tecnológico:',
-      '- Desarrollé materiales didácticos adaptativos y apliqué estrategias innovadoras como **gamificación**.',
-      '- Utilicé herramientas de IA (ChatGPT, Gemini) para diseñar actividades y automatizar la retroalimentación.',
-      '#### Análisis de Datos y Personalización:',
-      '- Realicé análisis de datos de desempeño para identificar áreas de mejora y personalizar las estrategias de enseñanza.',
-      '## TECNOLOGÍAS CLAVE',
-      'IA (ChatGPT, Gemini), Google Workspace, Canva, y plataformas de gamificación.',
-      '## IMPACTO',
-      '✅ Mejora medible en competencias lingüísticas y alta tasa de retención estudiantil.',
-    ]
-  },
-  {
     puesto: 'Ingeniero de Servicio y Coordinación de Gestión Biomédica',
     empresa: 'Bimtho Ingeniería S.A.S',
     periodo: 'Marzo 2025 – Enero 2026',
@@ -222,8 +201,31 @@ export const experienceData: Experience[] = [
       '#### Tecnovigilancia y Digitalización:',
       '- Impartí capacitaciones en tecnovigilancia y participé en rondas de seguridad en áreas críticas.',
       '- Fui pionero en la **digitalización de inventarios médicos**, mejorando la trazabilidad.',
+      '## TECNOLOGÍAS CLAVE',
+      'Hemodinamia, Ventilación Mecánica, Tecnovigilancia, Normativa INVIMA, Gestión de Inventarios.',
       '## IMPACTO',
       '✅ Cero eventos adversos relacionados con equipos y 100% de equipos con hojas de vida actualizadas.',
+    ]
+  },
+  {
+    puesto: 'Tutor de Inglés',
+    empresa: 'Smart English Academy',
+    periodo: 'Marzo 2024 – Actualidad',
+    ubicacion: 'Ipiales, Nariño, Colombia',
+    icon: 'academic',
+    imageUrlId: 'exp-smart',
+    logros: [
+      '## RESPONSABILIDADES Y LOGROS',
+      'Diseñé un currículo de inglés personalizado, integrando metodologías modernas y herramientas de IA para optimizar el aprendizaje y el seguimiento del progreso estudiantil.',
+      '#### Diseño Pedagógico y Tecnológico:',
+      '- Desarrollé materiales didácticos adaptativos y apliqué estrategias innovadoras como **gamificación**.',
+      '- Utilicé herramientas de IA (ChatGPT, Gemini) para diseñar actividades y automatizar la retroalimentación.',
+      '#### Análisis de Datos y Personalización:',
+      '- Realicé análisis de datos de desempeño para identificar áreas de mejora y personalizar las estrategias de enseñanza.',
+      '## TECNOLOGÍAS CLAVE',
+      'IA (ChatGPT, Gemini), Google Workspace, Canva, Plataformas de Gamificación.',
+      '## IMPACTO',
+      '✅ Mejora medible en competencias lingüísticas y alta tasa de retención estudiantil.',
     ]
   },
 ];
@@ -358,4 +360,12 @@ export const projectsData: Project[] = [
     embedUrl: "https://sistema-clientes-alianzanet-pro.vercel.app",
     category: 'otros'
   },
+];
+
+// Every figure here is backed by an experience entry or the project list above.
+export const statsData = [
+  { value: '2+', label: 'Años Exp. Clínica' },
+  { value: '3.000+', label: 'Equipos Gestionados' },
+  { value: '95%', label: 'Disponibilidad Equipos' },
+  { value: `${projectsData.length}`, label: 'Proyectos Datos & IA' },
 ];

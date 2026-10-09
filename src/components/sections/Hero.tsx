@@ -33,8 +33,8 @@ export const Hero = () => {
         <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-36 pb-20">
             {/* Background elements */}
             <div className="absolute inset-0 -z-10">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px] animate-pulse delay-700" />
+                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] motion-safe:animate-pulse" />
+                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px] motion-safe:animate-pulse delay-700" />
                 <div className="scanline opacity-[0.05]" />
             </div>
 
@@ -87,10 +87,10 @@ export const Hero = () => {
                         </DropdownMenu>
 
                         <div className="flex items-center gap-3">
-                            <a href={cvData.contact.github} target="_blank" rel="noopener noreferrer" className="p-3 bg-card hover:bg-accent/10 border border-border rounded-full transition-colors group">
+                            <a href={cvData.contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="p-3 bg-card hover:bg-accent/10 border border-border rounded-full transition-colors group">
                                 <Github className="h-5 w-5 group-hover:text-accent transition-colors" />
                             </a>
-                            <a href={cvData.contact.linkedin} target="_blank" rel="noopener noreferrer" className="p-3 bg-card hover:bg-accent/10 border border-border rounded-full transition-colors group">
+                            <a href={cvData.contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-3 bg-card hover:bg-accent/10 border border-border rounded-full transition-colors group">
                                 <Linkedin className="h-5 w-5 group-hover:text-accent transition-colors" />
                             </a>
                         </div>

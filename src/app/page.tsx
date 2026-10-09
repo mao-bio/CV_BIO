@@ -1,7 +1,3 @@
-'use client';
-
-import React, { useEffect, useRef } from 'react';
-import Script from 'next/script';
 import { Header } from '@/components/sections/Header';
 import { Hero } from '@/components/sections/Hero';
 import { ExperienceSection } from '@/components/sections/Experience';
@@ -14,20 +10,13 @@ import { ContactSection } from '@/components/sections/Contact';
 import { FloatingCV } from '@/components/sections/FloatingCV';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { SpecialtiesSection } from '@/components/sections/Specialties';
-import { cvData } from '@/lib/data';
-
-
+import { ConvaiWidget } from '@/components/ConvaiWidget';
+import { MotionProvider } from '@/components/MotionProvider';
+import { cvData, statsData } from '@/lib/data';
 
 export default function Portfolio() {
-  const convaiRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    if (convaiRef.current) {
-      convaiRef.current.setAttribute('agent-id', 'agent_2601kf4fhhr2ecmteasabjm1d6kr');
-    }
-  }, []);
-
   return (
+    <MotionProvider>
     <div className="min-h-screen bg-background text-foreground relative selection:bg-primary/20 bg-grid">
       {/* Noise texture overlay */}
       <div className="noise" />
@@ -42,22 +31,12 @@ export default function Portfolio() {
         {/* Statistics or Social Proof Section */}
         <section className="py-12 border-y border-border bg-muted/50">
           <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center group">
-              <div className="text-4xl md:text-5xl font-bold gradient-text">1+</div>
-              <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-2 group-hover:text-primary transition-colors italic">Año Exp. Clínica</p>
-            </div>
-            <div className="text-center group">
-              <div className="text-4xl md:text-5xl font-bold gradient-text">95%</div>
-              <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-2 group-hover:text-primary transition-colors italic">Disponibilidad Equipos</p>
-            </div>
-            <div className="text-center group">
-              <div className="text-4xl md:text-5xl font-bold gradient-text">40%</div>
-              <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-2 group-hover:text-primary transition-colors italic">Reducción Tiempos</p>
-            </div>
-            <div className="text-center group">
-              <div className="text-4xl md:text-5xl font-bold gradient-text">5+</div>
-              <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-2 group-hover:text-primary transition-colors italic">Proyectos IA</p>
-            </div>
+            {statsData.map((stat) => (
+              <div key={stat.label} className="text-center group">
+                <div className="text-4xl md:text-5xl font-bold gradient-text">{stat.value}</div>
+                <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-2 group-hover:text-primary transition-colors italic">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -90,9 +69,8 @@ export default function Portfolio() {
 
       <FloatingCV />
 
-      {/* ConvAI Widget */}
-      <elevenlabs-convai ref={convaiRef}></elevenlabs-convai>
-      <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async />
+      <ConvaiWidget />
     </div>
+    </MotionProvider>
   );
 }

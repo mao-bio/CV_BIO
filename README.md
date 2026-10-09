@@ -4,7 +4,7 @@
 
 Bienvenido a mi portafolio profesional y currículum vitae interactivo. Este proyecto presenta mi trayectoria como **Ingeniero Biomédico y Especialista en IA**, fusionando la ingeniería clínica con el poder de los datos para transformar la salud.
 
-**[🚀 Visita la versión en vivo aquí](https://biocore-cv.vercel.app)** (o tu URL de Vercel)
+**[🚀 Visita la versión en vivo aquí](https://bioai-cv-mario-hernandez.vercel.app)**
 
 ---
 
@@ -20,7 +20,7 @@ Bienvenido a mi portafolio profesional y currículum vitae interactivo. Este pro
 
 ## 👨‍💻 Sobre Mí
 
-Ingeniero Biomédico con especialización en IA y más de un año de experiencia en gestión tecnológica hospitalaria, mantenimiento de equipos y tecnovigilancia. Mi enfoque se centra en optimizar la seguridad y eficiencia en entornos de salud mediante el análisis de datos clínicos, el desarrollo de algoritmos de IA y la ejecución de proyectos de investigación.
+Ingeniero Biomédico con especialización en IA y más de dos años de experiencia en gestión tecnológica hospitalaria, mantenimiento de equipos y tecnovigilancia. Mi enfoque se centra en optimizar la seguridad y eficiencia en entornos de salud mediante el análisis de datos clínicos, el desarrollo de algoritmos de IA y la ejecución de proyectos de investigación.
 
 Me apasiona la innovación que permite conectar la ingeniería clínica con soluciones inteligentes de alto impacto.
 

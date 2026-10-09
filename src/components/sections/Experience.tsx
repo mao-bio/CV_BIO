@@ -63,7 +63,8 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
             } else if (trimmedLine.startsWith('✅') || (trimmedLine.includes('✅'))) {
                 impact.push(trimmedLine.replace('✅ ', '').replace('✅', ''));
             } else if (captureTech && trimmedLine !== "" && !trimmedLine.startsWith('#')) {
-                technologies = trimmedLine.split(',').map(t => t.trim());
+                // Split only on commas outside parentheses, e.g. "Python (NumPy, SciPy), C++"
+                technologies = trimmedLine.replace(/\.$/, '').split(/,(?![^()]*\))/).map(t => t.trim()).filter(Boolean);
             } else if (!trimmedLine.startsWith('#') && trimmedLine !== "" && !currentSection && summary === "" && !captureTech) {
                 summary = trimmedLine;
             } else if (!trimmedLine.startsWith('#') && currentSection && trimmedLine !== "") {
@@ -117,7 +118,7 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
                                     {exp.puesto}
                                 </h3>
                                 <div className="flex items-center gap-2 text-muted-foreground/80 font-bold italic">
-                                    <span className="text-primary/70 not-italic">at</span>
+                                    <span className="text-primary/70 not-italic">en</span>
                                     <span>{exp.empresa}</span>
                                 </div>
                             </div>

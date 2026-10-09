@@ -1,11 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Phone, MessageCircle, Github, MapPin, Send, ArrowRight } from 'lucide-react';
+import { Mail, MessageCircle, Github, Linkedin, MapPin, ArrowRight } from 'lucide-react';
 import { Section } from '@/components/Section';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { cvData } from '@/lib/data';
+import { cn } from '@/lib/utils';
 
 export const ContactSection = () => {
     const contactLinks = [
@@ -27,7 +28,7 @@ export const ContactSection = () => {
             label: 'LinkedIn',
             value: 'Mario Hernández',
             href: cvData.contact.linkedin,
-            icon: Send,
+            icon: Linkedin,
             color: 'bg-sky-500/10 text-sky-500'
         },
         {
@@ -95,5 +96,3 @@ export const ContactSection = () => {
         </Section>
     );
 };
-
-import { cn } from '@/lib/utils';

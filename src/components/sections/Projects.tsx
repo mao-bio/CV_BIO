@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Code, Layout, Database, Brain, ChevronLeft, ChevronRight, X, Download } from 'lucide-react';
@@ -172,7 +174,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                                         onClick={() => { setCurrentImageIndex(i); setIsGalleryOpen(true); }}
                                         className="relative w-12 h-12 rounded-lg overflow-hidden border border-border/50 hover:border-primary/50 transition-colors"
                                     >
-                                        <Image src={img} alt="Vista previa" fill className="object-cover" />
+                                        <Image src={img} alt={`${project.title} — vista ${i + 1}`} fill className="object-cover" />
                                         {i === 3 && allImages.length > 4 && (
                                             <div className="absolute inset-0 bg-black/60 flex items-center justify-center text-[10px] font-bold text-white">
                                                 +{allImages.length - 4}
@@ -205,7 +207,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                         <div className="relative w-full max-w-6xl aspect-[4/3] md:aspect-video rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-border/50">
                             <Image
                                 src={allImages[currentImageIndex]}
-                                alt="Vista ampliada"
+                                alt={`${project.title} — vista ${currentImageIndex + 1} de ${allImages.length}`}
                                 fill
                                 className="object-contain p-2 md:p-0"
                             />
