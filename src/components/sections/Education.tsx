@@ -62,6 +62,8 @@ export const EducationSection = ({ education, languages, t }: EducationProps) =>
                                 {edu.institution}
                             </div>
 
+                            {edu.note && <p className="text-sm text-muted-foreground">{edu.note}</p>}
+
                             {edu.honor && (
                                 <div className="pt-2 flex flex-wrap gap-2">
                                     {edu.honor.split('|').map((h, i) => (

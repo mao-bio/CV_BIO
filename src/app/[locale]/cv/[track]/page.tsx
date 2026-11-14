@@ -139,6 +139,7 @@ export default async function CvPage({ params }: Props) {
             <span aria-hidden>|</span>
             <a href={`tel:${contact.phone}`}>{contact.phoneDisplay}</a>
           </p>
+          <p className="text-[9.5pt] text-slate-700">{content.person.availability}</p>
           <p className="flex flex-wrap justify-center gap-x-3 gap-y-0.5 text-[9.5pt] text-slate-700">
             <a href={contact.linkedin}>{stripUrl(contact.linkedin)}</a>
             <span aria-hidden>|</span>
@@ -161,7 +162,7 @@ export default async function CvPage({ params }: Props) {
           <ExperienceEntry key={item.id} item={item} />
         ))}
 
-        {track === 'data' && featured.length > 0 && (
+        {featured.length > 0 && (
           <>
             <SectionTitle>{t.projects}</SectionTitle>
             {featured.map((project) => (
@@ -210,6 +211,7 @@ export default async function CvPage({ params }: Props) {
               {item.institution}
               {item.honor && ` · ${item.honor.split('|').map((honor) => honor.trim()).join(' · ')}`}
             </p>
+            {item.note && <p className="text-slate-600">{item.note}</p>}
           </div>
         ))}
 

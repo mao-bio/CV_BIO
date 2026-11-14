@@ -94,7 +94,7 @@ export default async function HomePage({ params }: Props) {
           <AwardsSection awards={content.awards} t={t.awards} />
           <EducationSection education={content.person.education} languages={content.person.languages} t={t.education} />
           <Inspiration quotes={content.quotes} nextLabel={t.inspiration.next} />
-          <ContactSection contact={contact} location={content.person.location} t={t.contact} />
+          <ContactSection contact={contact} location={content.person.location} availability={content.person.availability} t={t.contact} />
         </main>
 
         <SiteFooter name={content.person.name} tagline={t.footer.tagline} built={t.footer.built} />

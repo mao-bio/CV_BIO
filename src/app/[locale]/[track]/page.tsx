@@ -125,7 +125,7 @@ export default async function TrackPage({ params }: Props) {
             cta={t.switchTrack.cta}
             href={trackPath(locale, other)}
           />
-          <ContactSection contact={contact} location={content.person.location} t={t.contact} />
+          <ContactSection contact={contact} location={content.person.location} availability={content.person.availability} t={t.contact} />
         </main>
 
         <SiteFooter name={content.person.name} tagline={t.footer.tagline} built={t.footer.built} />

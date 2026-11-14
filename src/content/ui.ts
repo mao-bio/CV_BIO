@@ -36,7 +36,7 @@ const es = {
     view: 'Ver perfil completo',
     cv: 'Descargar CV',
   },
-  stats: { projects: 'Proyectos de datos e IA', demos: 'Demos en vivo' },
+  stats: { projects: 'Proyectos de datos, IA y desarrollo', demos: 'Demos en vivo', certifications: 'Certificaciones y cursos' },
   experience: {
     eyebrow: 'Mi Trayectoria',
     titleA: 'Experiencia',
@@ -60,7 +60,7 @@ const es = {
   projects: {
     eyebrow: 'Portafolio',
     title: 'Proyectos Destacados',
-    salud: 'Salud e Investigación Biomédica',
+    salud: 'Salud y Gestión Biomédica',
     datos: 'Datos, IA y Desarrollo',
     repo: 'Ver repositorio',
     quickView: 'Vista rápida',
@@ -99,6 +99,7 @@ const es = {
     titleB: 'o un proyecto?',
     text: 'Escríbeme por el canal que prefieras. Respondo rápido y con gusto te comparto más detalles de mi experiencia.',
     location: 'Ubicación',
+    availability: 'Disponibilidad',
     connect: 'CONECTAR',
     email: 'Email',
   },
@@ -161,7 +162,7 @@ const en: UI = {
     view: 'View full profile',
     cv: 'Download CV',
   },
-  stats: { projects: 'Data & AI projects', demos: 'Live demos' },
+  stats: { projects: 'Data, AI and development projects', demos: 'Live demos', certifications: 'Certifications and courses' },
   experience: {
     eyebrow: 'My Career',
     titleA: 'Professional',
@@ -185,7 +186,7 @@ const en: UI = {
   projects: {
     eyebrow: 'Portfolio',
     title: 'Featured Projects',
-    salud: 'Health and Biomedical Research',
+    salud: 'Health and Biomedical Management',
     datos: 'Data, AI and Development',
     repo: 'View repository',
     quickView: 'Quick view',
@@ -224,6 +225,7 @@ const en: UI = {
     titleB: 'or a project?',
     text: 'Reach me on whichever channel you prefer. I reply quickly and will gladly share more about my experience.',
     location: 'Location',
+    availability: 'Availability',
     connect: 'CONNECT',
     email: 'Email',
   },

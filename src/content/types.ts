@@ -57,7 +57,9 @@ export type Project = {
   id: string;
   title: string;
   description: string;
-  imageUrlId: string;
+  /** Real picture of the project. Without one the card shows a drawn cover instead. */
+  imageUrlId?: string;
+  cover?: 'app' | 'chart' | 'model' | 'web';
   images?: string[];
   tags: string[];
   category: 'salud' | 'datos';
@@ -94,7 +96,7 @@ export type Award = {
   imageUrlId?: string;
 };
 
-export type Education = { degree: string; institution: string; period: string; honor: string };
+export type Education = { degree: string; institution: string; period: string; honor: string; note?: string };
 
 export type Quote = { text: string; author: string; icon: 'heart' | 'brain' | 'sparkles' };
 
@@ -104,6 +106,7 @@ export type Content = {
     fullName: string;
     title: string;
     location: string;
+    availability: string;
     languages: { name: string; level: string }[];
     education: Education[];
   };

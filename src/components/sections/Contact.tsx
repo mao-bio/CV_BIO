@@ -19,10 +19,11 @@ type ContactProps = {
         githubLabel: string;
     };
     location: string;
+    availability: string;
     t: UI['contact'];
 };
 
-export const ContactSection = ({ contact, location, t }: ContactProps) => {
+export const ContactSection = ({ contact, location, availability, t }: ContactProps) => {
     const contactLinks = [
         {
             label: t.email,
@@ -77,6 +78,7 @@ export const ContactSection = ({ contact, location, t }: ContactProps) => {
                             <div>
                                 <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{t.location}</p>
                                 <p className="font-medium">{location}</p>
+                                <p className="text-sm text-muted-foreground mt-1">{availability}</p>
                             </div>
                         </div>
                     </div>

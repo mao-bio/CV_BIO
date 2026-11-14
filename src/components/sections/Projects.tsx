@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Layout, Database, ChevronLeft, ChevronRight, X, Download } from 'lucide-react';
+import { ExternalLink, Github, Layout, Database, ChevronLeft, ChevronRight, X, Download, Smartphone, BarChart3, BrainCircuit, Globe } from 'lucide-react';
 import { Section } from '@/components/Section';
 import type { Project, UI } from '@/content';
 import Image from 'next/image';
@@ -12,7 +12,10 @@ import { cn } from '@/lib/utils';
 import { formatMarkdown } from '@/lib/format-text';
 import { Button } from '@/components/ui/button';
 
-const getImage = (id: string) => PlaceHolderImages.find(p => p.id === id);
+const getImage = (id?: string) => (id ? PlaceHolderImages.find(p => p.id === id) : undefined);
+
+// Drawn cover for projects that have no screenshot to show.
+const coverIcons = { app: Smartphone, chart: BarChart3, model: BrainCircuit, web: Globe };
 
 type T = UI['projects'];
 
@@ -20,7 +23,8 @@ const ProjectCard = ({ project, index, t }: { project: Project; index: number; t
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isGalleryOpen, setIsGalleryOpen] = useState(false);
     const image = getImage(project.imageUrlId);
-    const isLarge = index === 0 || index === 3; // Bento pattern
+    const CoverIcon = coverIcons[project.cover ?? 'app'];
+    const isLarge = Boolean(image) && (index === 0 || index === 3); // Bento pattern
 
     const allImages = project.images ? [image?.imageUrl, ...project.images].filter(Boolean) as string[] : [image?.imageUrl].filter(Boolean) as string[];
 
@@ -43,11 +47,20 @@ const ProjectCard = ({ project, index, t }: { project: Project; index: number; t
                     {/* Project Image Area */}
                     <div
                         className={cn(
-                            "relative overflow-hidden cursor-zoom-in",
+                            "relative overflow-hidden",
+                            image ? "cursor-zoom-in" : "bg-gradient-to-br from-primary/15 via-accent/10 to-primary/5",
                             isLarge ? "h-64 md:h-[400px]" : "h-48"
                         )}
-                        onClick={() => setIsGalleryOpen(true)}
+                        onClick={image ? () => setIsGalleryOpen(true) : undefined}
                     >
+                        {!image && (
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <CoverIcon className="absolute -right-4 -bottom-6 h-40 w-40 text-primary/10 rotate-12" />
+                                <div className="p-5 rounded-3xl bg-background/80 text-primary shadow-lg">
+                                    <CoverIcon className="h-10 w-10" />
+                                </div>
+                            </div>
+                        )}
                         {image && (
                             <Image
                                 src={image.imageUrl}

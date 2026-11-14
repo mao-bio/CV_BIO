@@ -35,13 +35,16 @@ export const getTrackContent = (locale: Locale, track: Track) => {
         ]
       : [];
 
+  const certifications = content.certifications.filter((item) => item.tracks.includes(track));
+  const certificationStat: Stat = { value: String(certifications.length), label: ui[locale].stats.certifications };
+
   return {
     profile,
-    stats: [...counted, ...profile.stats],
+    stats: [...counted, ...profile.stats, certificationStat],
     experience: experience.filter((item) => !item.secondary),
     otherExperience: experience.filter((item) => item.secondary),
     projects,
     skills: content.skills.filter((item) => item.tracks.includes(track)),
-    certifications: content.certifications.filter((item) => item.tracks.includes(track)),
+    certifications,
   };
 };
