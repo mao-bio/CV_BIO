@@ -5,26 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Quote, Sparkles, Zap, Brain, HeartPulse } from 'lucide-react';
 import { Section } from '@/components/Section';
 import { Button } from '@/components/ui/button';
+import type { Quote as QuoteItem } from '@/content';
 
-const quotes = [
-    {
-        text: "La tecnología más avanzada es la que se vuelve invisible y se enfoca en lo que realmente importa: la vida humana.",
-        author: "Visión BioAI",
-        icon: HeartPulse
-    },
-    {
-        text: "En la intersección entre la ingeniería clínica y la IA, no solo procesamos datos, salvamos futuros.",
-        author: "Propósito Profesional",
-        icon: Brain
-    },
-    {
-        text: "La verdadera innovación no es crear máquinas que piensen como humanos, sino herramientas que permitan a los humanos sanar mejor.",
-        author: "Filosofía Técnica",
-        icon: Sparkles
-    }
-];
+const icons = { heart: HeartPulse, brain: Brain, sparkles: Sparkles };
 
-export const Inspiration = () => {
+export const Inspiration = ({ quotes, nextLabel }: { quotes: QuoteItem[]; nextLabel: string }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
 
@@ -37,7 +22,7 @@ export const Inspiration = () => {
         return () => clearInterval(timer);
     }, []);
 
-    const CurrentIcon = quotes[currentIndex].icon;
+    const CurrentIcon = icons[quotes[currentIndex].icon];
 
     return (
         <Section id="inspiracion" className="py-24 relative overflow-hidden">
@@ -101,7 +86,7 @@ export const Inspiration = () => {
                                 </div>
 
                                 <h3 className="text-2xl md:text-4xl font-bold tracking-tight leading-tight italic text-foreground/90">
-                                    "{quotes[currentIndex].text}"
+                                    &ldquo;{quotes[currentIndex].text}&rdquo;
                                 </h3>
 
                                 <div className="flex flex-col items-center gap-2">
@@ -121,7 +106,7 @@ export const Inspiration = () => {
                                 className="rounded-full px-6 hover:bg-primary/10 text-[10px] font-black uppercase tracking-widest border border-primary/5"
                             >
                                 <Zap className="w-3 h-3 mr-2 text-primary" />
-                                Generar Inspiración
+                                {nextLabel}
                             </Button>
                         </div>
                     </div>

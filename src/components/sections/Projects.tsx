@@ -2,11 +2,9 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Code, Layout, Database, Brain, ChevronLeft, ChevronRight, X, Download } from 'lucide-react';
+import { ExternalLink, Github, Layout, Database, ChevronLeft, ChevronRight, X, Download } from 'lucide-react';
 import { Section } from '@/components/Section';
-import { projectsData, type Project } from '@/lib/data';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import type { Project, UI } from '@/content';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
@@ -16,7 +14,9 @@ import { Button } from '@/components/ui/button';
 
 const getImage = (id: string) => PlaceHolderImages.find(p => p.id === id);
 
-const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+type T = UI['projects'];
+
+const ProjectCard = ({ project, index, t }: { project: Project; index: number; t: T }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isGalleryOpen, setIsGalleryOpen] = useState(false);
     const image = getImage(project.imageUrlId);
@@ -53,6 +53,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                                 src={image.imageUrl}
                                 alt={project.title}
                                 fill
+                                sizes={isLarge ? "(min-width: 768px) 66vw, 100vw" : "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"}
                                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                             />
                         )}
@@ -62,7 +63,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                         {allImages.length > 1 && (
                             <div className="absolute bottom-4 left-4 z-10 px-3 py-1 bg-black/50 backdrop-blur-md rounded-full text-[10px] text-white flex items-center gap-1.5 border border-white/10">
                                 <Layout className="h-3 w-3" />
-                                {allImages.length} vistas
+                                {allImages.length} {t.views}
                             </div>
                         )}
                     </div>
@@ -85,7 +86,8 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="p-2.5 bg-card text-foreground border border-border rounded-xl hover:bg-primary hover:text-primary-foreground transition-all shadow-sm"
-                                        title="Ver Repositorio"
+                                        title={t.repo}
+                                        aria-label={`${t.repo}: ${project.title}`}
                                     >
                                         <Github className="h-4 w-4" />
                                     </a>
@@ -95,7 +97,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                                     <>
                                         <Dialog>
                                             <DialogTrigger asChild>
-                                                <button className="p-2.5 bg-primary/10 text-primary border border-primary/20 rounded-xl hover:bg-primary hover:text-primary-foreground transition-all shadow-sm" title="Vista rápida">
+                                                <button className="p-2.5 bg-primary/10 text-primary border border-primary/20 rounded-xl hover:bg-primary hover:text-primary-foreground transition-all shadow-sm" title={t.quickView} aria-label={`${t.quickView}: ${project.title}`}>
                                                     <ExternalLink className="h-4 w-4" />
                                                 </button>
                                             </DialogTrigger>
@@ -117,7 +119,8 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="p-2.5 bg-card text-primary border border-primary/20 rounded-xl hover:bg-primary hover:text-primary-foreground transition-all shadow-sm"
-                                            title="Abrir en pestaña nueva"
+                                            title={t.openNew}
+                                            aria-label={`${t.openNew}: ${project.title}`}
                                         >
                                             <Layout className="h-4 w-4" />
                                         </a>
@@ -127,7 +130,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                                 {project.downloadUrl && (
                                     <Dialog>
                                         <DialogTrigger asChild>
-                                            <button className="p-2.5 bg-accent/10 text-accent border border-accent/20 rounded-xl hover:bg-accent hover:text-white transition-all shadow-sm" title="Descargar archivos">
+                                            <button className="p-2.5 bg-accent/10 text-accent border border-accent/20 rounded-xl hover:bg-accent hover:text-white transition-all shadow-sm" title={t.download} aria-label={`${t.download}: ${project.title}`}>
                                                 <Download className="h-4 w-4" />
                                             </button>
                                         </DialogTrigger>
@@ -135,16 +138,16 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                                             <DialogHeader>
                                                 <DialogTitle className="flex items-center gap-2">
                                                     <Database className="h-5 w-5 text-accent" />
-                                                    Descargar Proyecto
+                                                    {t.downloadTitle}
                                                 </DialogTitle>
                                             </DialogHeader>
                                             <div className="py-6 space-y-4">
                                                 <p className="text-muted-foreground text-sm">
-                                                    Estás a punto de descargar los archivos fuente de <strong>{project.title}</strong> desde Google Drive.
+                                                    {t.downloadText} <strong>{project.title}</strong>.
                                                 </p>
                                                 <Button asChild className="w-full rounded-xl bg-accent hover:bg-accent/90">
                                                     <a href={project.downloadUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                                                        <ExternalLink className="h-4 w-4" /> Confirmar Descarga
+                                                        <ExternalLink className="h-4 w-4" /> {t.confirmDownload}
                                                     </a>
                                                 </Button>
                                             </div>
@@ -165,6 +168,17 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                             {formatMarkdown(project.description)}
                         </p>
 
+                        {project.caseStudy && (
+                            <dl className="mt-5 grid gap-2 text-sm border-l-2 border-primary/20 pl-4">
+                                {(['problem', 'solution', 'result'] as const).map((key) => (
+                                    <div key={key}>
+                                        <dt className="inline font-bold text-foreground">{t[key]}: </dt>
+                                        <dd className="inline text-muted-foreground">{project.caseStudy![key]}</dd>
+                                    </div>
+                                ))}
+                            </dl>
+                        )}
+
                         {/* Image Preview strip */}
                         {project.images && (
                             <div className="flex gap-2 mt-6">
@@ -174,7 +188,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                                         onClick={() => { setCurrentImageIndex(i); setIsGalleryOpen(true); }}
                                         className="relative w-12 h-12 rounded-lg overflow-hidden border border-border/50 hover:border-primary/50 transition-colors"
                                     >
-                                        <Image src={img} alt={`${project.title} — vista ${i + 1}`} fill className="object-cover" />
+                                        <Image src={img} sizes="48px" alt={`${project.title} — ${t.view} ${i + 1}`} fill className="object-cover" />
                                         {i === 3 && allImages.length > 4 && (
                                             <div className="absolute inset-0 bg-black/60 flex items-center justify-center text-[10px] font-bold text-white">
                                                 +{allImages.length - 4}
@@ -199,6 +213,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                     >
                         <button
                             onClick={() => setIsGalleryOpen(false)}
+                            aria-label={t.close}
                             className="absolute top-6 right-6 p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all"
                         >
                             <X className="h-6 w-6" />
@@ -207,8 +222,9 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                         <div className="relative w-full max-w-6xl aspect-[4/3] md:aspect-video rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-border/50">
                             <Image
                                 src={allImages[currentImageIndex]}
-                                alt={`${project.title} — vista ${currentImageIndex + 1} de ${allImages.length}`}
+                                alt={`${project.title} — ${t.view} ${currentImageIndex + 1} / ${allImages.length}`}
                                 fill
+                                sizes="100vw"
                                 className="object-contain p-2 md:p-0"
                             />
 
@@ -216,12 +232,14 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                                 <>
                                     <button
                                         onClick={prevImage}
+                                        aria-label={t.previous}
                                         className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 p-2 md:p-3 rounded-full bg-black/40 hover:bg-primary backdrop-blur-md text-white transition-all z-10"
                                     >
                                         <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
                                     </button>
                                     <button
                                         onClick={nextImage}
+                                        aria-label={t.next}
                                         className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 p-2 md:p-3 rounded-full bg-black/40 hover:bg-primary backdrop-blur-md text-white transition-all z-10"
                                     >
                                         <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
@@ -240,50 +258,32 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
     );
 };
 
-export const ProjectsSection = () => {
-    const saludProjects = projectsData.filter(p => p.category === 'salud');
-    const otrosProjects = projectsData.filter(p => p.category === 'otros');
+export type ProjectGroup = { category: Project['category']; projects: Project[] };
 
+export const ProjectsSection = ({ groups, t }: { groups: ProjectGroup[]; t: T }) => {
     return (
         <Section id="proyectos" className="relative">
             <div className="text-center mb-16 space-y-4">
-                <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em]">Portfolio</h2>
-                <h3 className="text-4xl md:text-5xl font-bold">Proyectos Destacados</h3>
+                <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em]">{t.eyebrow}</h2>
+                <h3 className="text-4xl md:text-5xl font-bold">{t.title}</h3>
             </div>
 
-            {/* Proyectos de Salud */}
-            <div className="mb-20">
-                <div className="flex items-center gap-3 mb-8">
-                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-                    <h4 className="text-2xl md:text-3xl font-bold text-primary flex items-center gap-2">
-                        <span className="text-3xl">🏥</span>
-                        Salud & Biomedicina
-                    </h4>
-                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+            {groups.map((group, groupIndex) => (
+                <div key={group.category} className={groupIndex > 0 ? 'mt-20' : undefined}>
+                    {groups.length > 1 && (
+                        <div className="flex items-center gap-3 mb-8">
+                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+                            <h4 className="text-2xl md:text-3xl font-bold text-primary text-center">{t[group.category]}</h4>
+                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+                        </div>
+                    )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
+                        {group.projects.map((project, index) => (
+                            <ProjectCard key={project.id} project={project} index={index} t={t} />
+                        ))}
+                    </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
-                    {saludProjects.map((project, index) => (
-                        <ProjectCard key={project.id} project={project} index={index} />
-                    ))}
-                </div>
-            </div>
-
-            {/* Otros Proyectos */}
-            <div>
-                <div className="flex items-center gap-3 mb-8">
-                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
-                    <h4 className="text-2xl md:text-3xl font-bold text-accent flex items-center gap-2">
-                        <span className="text-3xl">💼</span>
-                        Otros Proyectos
-                    </h4>
-                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
-                    {otrosProjects.map((project, index) => (
-                        <ProjectCard key={project.id} project={project} index={index} />
-                    ))}
-                </div>
-            </div>
+            ))}
         </Section>
     );
 };

@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Download, FileText, Activity } from 'lucide-react';
+import { Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from '@/components/ui/dropdown-menu';
+import { CvMenuItems, type CvLink } from '@/components/CvMenu';
 
-export const FloatingCV = () => {
+export const FloatingCV = ({ links, label }: { links: CvLink[]; label: string }) => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -28,22 +29,11 @@ export const FloatingCV = () => {
                         <DropdownMenuTrigger asChild>
                             <Button size="icon" className="h-14 w-14 rounded-full shadow-2xl shadow-primary/40 hover:scale-110 active:scale-95 transition-transform duration-300">
                                 <Download className="h-6 w-6" />
-                                <span className="sr-only">Descargar CV</span>
+                                <span className="sr-only">{label}</span>
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent side="top" align="start" className="rounded-2xl p-2 mb-4 border-none bg-background/80 backdrop-blur-xl shadow-2xl">
-                            <DropdownMenuItem asChild>
-                                <a href="/CV_MARIO_H_DATA_A.pdf" download="CV_Mario_Hernandez_Data_Analyst.pdf" className="flex items-center gap-2 p-3 rounded-xl cursor-pointer">
-                                    <FileText className="h-4 w-4 text-primary" />
-                                    <span className="font-medium text-sm">Analista de Datos</span>
-                                </a>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
-                                <a href="/CV_MARIO_2026.pdf" download="CV_Mario_Hernandez_Biomedical_Eng.pdf" className="flex items-center gap-2 p-3 rounded-xl cursor-pointer">
-                                    <Activity className="h-4 w-4 text-accent" />
-                                    <span className="font-medium text-sm">Ing. Biomédico</span>
-                                </a>
-                            </DropdownMenuItem>
+                            <CvMenuItems links={links} />
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </motion.div>

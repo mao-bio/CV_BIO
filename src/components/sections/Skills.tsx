@@ -1,33 +1,36 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Code, Brain, Briefcase, MessageCircle, Database, ChevronRight, Zap } from 'lucide-react';
+import { Code, Brain, Briefcase, MessageCircle, Database, ChevronRight, Cloud, Zap } from 'lucide-react';
 import { Section } from '@/components/Section';
-import { skillsData } from '@/lib/data';
+import type { SkillGroup, UI } from '@/content';
 import { cn } from '@/lib/utils';
 
 const iconMap: { [key: string]: any } = {
-    programacion: Code,
+    clinica: Briefcase,
+    herramientas: Database,
+    lenguajes: Code,
     ia: Brain,
-    profesionales: Briefcase,
+    desarrollo: Cloud,
     blandas: MessageCircle,
 };
 
-export const SkillsSection = () => {
+export const SkillsSection = ({ groups, intro, t }: { groups: SkillGroup[]; intro: string; t: UI['skills'] }) => {
     return (
         <Section id="habilidades" className="relative">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div className="space-y-4">
-                    <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em]">Competencias</h2>
-                    <h3 className="text-4xl md:text-5xl font-bold">Stack Tecnológico</h3>
+                    <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em]">{t.eyebrow}</h2>
+                    <h3 className="text-4xl md:text-5xl font-bold">{t.title}</h3>
                 </div>
                 <p className="text-muted-foreground max-w-md md:text-right">
-                    Sinergia entre la ingeniería biomédica y la inteligencia artificial para resolver problemas complejos.
+                    {intro}
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {Object.entries(skillsData).map(([key, category], index) => {
+            <div className={cn("grid grid-cols-1 md:grid-cols-2 gap-6", groups.length >= 4 ? "lg:grid-cols-4" : "lg:grid-cols-3")}>
+                {groups.map((category, index) => {
+                    const key = category.id;
                     const Icon = iconMap[key] || Zap;
                     return (
                         <motion.div

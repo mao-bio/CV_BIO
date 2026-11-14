@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Trophy, Globe2, Medal, Star, Calendar, FlaskConical, GraduationCap } from 'lucide-react';
 import { Section } from '@/components/Section';
-import { awardsData, type Award } from '@/lib/data';
+import type { Award, UI } from '@/content';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const getImage = (id: string) => PlaceHolderImages.find(p => p.id === id);
@@ -16,18 +16,20 @@ const iconMap = {
     star: Star,
 };
 
-const categoryMeta = {
-    investigacion: { label: 'Investigación', icon: FlaskConical },
-    academico: { label: 'Académico', icon: GraduationCap },
+const categoryIcons = {
+    investigacion: FlaskConical,
+    academico: GraduationCap,
 };
 
-const AwardMeta = ({ award }: { award: Award }) => {
-    const category = categoryMeta[award.category];
+type T = UI['awards'];
+
+const AwardMeta = ({ award, t }: { award: Award; t: T }) => {
+    const CategoryIcon = categoryIcons[award.category];
     return (
         <div className="flex flex-wrap items-center gap-2">
             <span className="glass-badge inline-flex items-center gap-1">
-                <category.icon className="h-3 w-3" />
-                {category.label}
+                <CategoryIcon className="h-3 w-3" />
+                {t[award.category]}
             </span>
             {award.year && (
                 <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-muted text-muted-foreground text-[10px] font-bold uppercase tracking-wider">
@@ -39,19 +41,19 @@ const AwardMeta = ({ award }: { award: Award }) => {
     );
 };
 
-export const AwardsSection = () => {
-    const featured = awardsData.filter(a => a.imageUrlId);
-    const others = awardsData.filter(a => !a.imageUrlId);
+export const AwardsSection = ({ awards, t }: { awards: Award[]; t: T }) => {
+    const featured = awards.filter(a => a.imageUrlId);
+    const others = awards.filter(a => !a.imageUrlId);
 
     return (
         <Section id="logros" className="relative">
             <div className="absolute top-1/3 -left-24 w-72 h-72 bg-accent/5 rounded-full blur-3xl -z-10" />
 
             <div className="text-center mb-16 space-y-4">
-                <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em]">Reconocimientos</h2>
-                <h3 className="text-4xl md:text-5xl font-bold">Logros y Premios</h3>
+                <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em]">{t.eyebrow}</h2>
+                <h3 className="text-4xl md:text-5xl font-bold">{t.title}</h3>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
-                    Distinciones académicas y de investigación que respaldan mi trayectoria.
+                    {t.subtitle}
                 </p>
             </div>
 
@@ -73,7 +75,7 @@ export const AwardsSection = () => {
                                 <div className="relative aspect-[16/9] w-full overflow-hidden">
                                     <Image
                                         src={image.imageUrl}
-                                        alt={image.description}
+                                        alt={`${award.title} · ${award.issuer}`}
                                         fill
                                         sizes="(min-width: 1024px) 50vw, 100vw"
                                         className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
@@ -85,7 +87,7 @@ export const AwardsSection = () => {
                                 </div>
                             )}
                             <div className="flex flex-1 flex-col gap-3 p-6 md:p-8">
-                                <AwardMeta award={award} />
+                                <AwardMeta award={award} t={t} />
                                 <h4 className="text-2xl font-bold tracking-tight group-hover:text-primary transition-colors">
                                     {award.title}
                                 </h4>
@@ -116,7 +118,7 @@ export const AwardsSection = () => {
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <AwardMeta award={award} />
+                                <AwardMeta award={award} t={t} />
                                 <h4 className="text-xl font-bold group-hover:text-primary transition-colors">{award.title}</h4>
                                 <p className="text-sm font-semibold text-accent">{award.issuer}</p>
                                 <p className="text-sm text-muted-foreground leading-relaxed">{award.description}</p>

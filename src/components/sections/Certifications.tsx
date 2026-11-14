@@ -3,18 +3,18 @@
 import { motion } from 'framer-motion';
 import { Award, CheckCircle } from 'lucide-react';
 import { Section } from '@/components/Section';
-import { certificationsData } from '@/lib/data';
+import type { Certification, UI } from '@/content';
 
-export const CertificationsSection = () => {
+export const CertificationsSection = ({ items, t }: { items: Certification[]; t: UI['certifications'] }) => {
     return (
         <Section id="certificaciones" className="relative">
             <div className="text-center mb-16 space-y-4">
-                <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em]">Formación Continua</h2>
-                <h3 className="text-4xl md:text-5xl font-bold">Certificaciones</h3>
+                <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em]">{t.eyebrow}</h2>
+                <h3 className="text-4xl md:text-5xl font-bold">{t.title}</h3>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {certificationsData.map((cert, index) => (
+                {items.map((cert, index) => (
                     <motion.div
                         key={index}
                         initial={{ opacity: 0, y: 10 }}
@@ -26,7 +26,12 @@ export const CertificationsSection = () => {
                         <div className="p-3 rounded-xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-500">
                             <Award className="h-5 w-5" />
                         </div>
-                        <p className="text-sm font-medium leading-tight">{cert}</p>
+                        <div>
+                            <p className="text-sm font-semibold leading-tight">{cert.title}</p>
+                            <p className="text-xs text-muted-foreground mt-1">
+                                {[cert.issuer, cert.date].filter(Boolean).join(' · ')}
+                            </p>
+                        </div>
                     </motion.div>
                 ))}
             </div>

@@ -1,26 +1,29 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Brain, Database, Briefcase } from 'lucide-react';
+import { Brain, Database, Briefcase, Code, ShieldCheck, Wrench } from 'lucide-react';
 import { Section } from '@/components/Section';
-import { cvData } from '@/lib/data';
 import { formatMarkdown } from '@/lib/format-text';
+import type { Specialty, Stat } from '@/content';
 
-const iconMap: { [key: string]: any } = {
+const iconMap = {
     brain: Brain,
     database: Database,
     briefcase: Briefcase,
+    code: Code,
+    shield: ShieldCheck,
+    wrench: Wrench,
 };
 
-export const SpecialtiesSection = () => {
+export const SpecialtiesSection = ({ specialties }: { specialties: Specialty[] }) => {
     return (
         <Section id="especialidades" className="relative py-12">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {cvData.specialties.map((spec, index) => {
-                    const Icon = iconMap[spec.icon] || Brain;
+                {specialties.map((spec, index) => {
+                    const Icon = iconMap[spec.icon];
                     return (
                         <motion.div
-                            key={index}
+                            key={spec.title}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -50,3 +53,18 @@ export const SpecialtiesSection = () => {
         </Section>
     );
 };
+
+export const StatsStrip = ({ stats }: { stats: Stat[] }) => (
+    <section className="py-12 border-y border-border bg-muted/50">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat) => (
+                <div key={stat.label} className="text-center group">
+                    <div className="text-4xl md:text-5xl font-bold gradient-text">{stat.value}</div>
+                    <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-2 group-hover:text-primary transition-colors">
+                        {stat.label}
+                    </p>
+                </div>
+            ))}
+        </div>
+    </section>
+);

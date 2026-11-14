@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "cv:pdf": "next build && node scripts/export-cv.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.6",
@@ -27,6 +28,7 @@
     "@types/node": "^20",
     "@types/react": "^19.2.1",
     "@types/react-dom": "^19.2.1",
+    "playwright-core": "^1.65.1",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

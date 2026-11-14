@@ -3,22 +3,28 @@
 import { motion } from 'framer-motion';
 import { GraduationCap, Calendar, Award, School, Languages } from 'lucide-react';
 import { Section } from '@/components/Section';
-import { cvData } from '@/lib/data';
+import type { Education, UI } from '@/content';
 import { formatMarkdown } from '@/lib/format-text';
 
-export const EducationSection = () => {
+type EducationProps = {
+    education: Education[];
+    languages: { name: string; level: string }[];
+    t: UI['education'];
+};
+
+export const EducationSection = ({ education, languages, t }: EducationProps) => {
     return (
         <Section id="educacion" className="relative overflow-hidden">
             {/* Background Accent */}
             <div className="absolute top-1/2 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10" />
 
             <div className="text-center mb-16 space-y-4">
-                <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em]">Formación Académica</h2>
-                <h3 className="text-4xl md:text-5xl font-bold">Educación</h3>
+                <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em]">{t.eyebrow}</h2>
+                <h3 className="text-4xl md:text-5xl font-bold">{t.title}</h3>
             </div>
 
             <div className="max-w-4xl mx-auto space-y-8">
-                {cvData.education.map((edu, index) => (
+                {education.map((edu, index) => (
                     <motion.div
                         key={index}
                         initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
@@ -85,10 +91,10 @@ export const EducationSection = () => {
                         <div className="p-3 rounded-xl bg-accent/10 text-accent">
                             <Languages className="h-5 w-5" />
                         </div>
-                        <span className="text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">Idiomas</span>
+                        <span className="text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">{t.languages}</span>
                     </div>
                     <div className="flex flex-wrap gap-3">
-                        {cvData.languages.map((lang) => (
+                        {languages.map((lang) => (
                             <span key={lang.name} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted text-sm">
                                 <span className="font-bold">{lang.name}</span>
                                 <span className="text-muted-foreground">{lang.level}</span>

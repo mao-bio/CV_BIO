@@ -234,3 +234,20 @@
 ::-webkit-scrollbar-thumb {
   @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/40 transition-colors;
 }
+/* Printable CV (/[locale]/cv/[track]) */
+@page {
+  size: A4;
+  margin: 13mm 14mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  .cv-sheet a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
