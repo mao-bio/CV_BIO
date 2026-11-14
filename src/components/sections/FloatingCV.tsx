@@ -23,7 +23,7 @@ export const FloatingCV = ({ links, label }: { links: CvLink[]; label: string })
                     initial={{ opacity: 0, scale: 0.8, y: 20 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.8, y: 20 }}
-                    className="fixed bottom-8 left-8 z-40"
+                    className="fixed bottom-24 left-4 sm:bottom-8 sm:left-8 z-40"
                 >
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>

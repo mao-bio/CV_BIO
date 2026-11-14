@@ -1,81 +1,52 @@
-# Portafolio y CV Interactivo de Mario Andrés Hernández Moreno
+# Portafolio y CV de Mario Andrés Hernández Moreno
 
-![Encabezado del Portafolio](https://drive.google.com/uc?export=view&id=1kk3UyCjmz1SQpJdVucjCx-mpMV-OYlxN)
+Sitio personal con **dos perfiles profesionales**, en español e inglés:
 
-Bienvenido a mi portafolio profesional y currículum vitae interactivo. Este proyecto presenta mi trayectoria como **Ingeniero Biomédico y Especialista en IA**, fusionando la ingeniería clínica con el poder de los datos para transformar la salud.
+| Perfil | Español | English |
+|---|---|---|
+| Ingeniería Biomédica | [/es/biomedico](https://bioai-cv-mario-hernandez.vercel.app/es/biomedico) | [/en/biomedical](https://bioai-cv-mario-hernandez.vercel.app/en/biomedical) |
+| Datos, IA y Desarrollo | [/es/datos](https://bioai-cv-mario-hernandez.vercel.app/es/datos) | [/en/data-ai](https://bioai-cv-mario-hernandez.vercel.app/en/data-ai) |
 
-**[🚀 Visita la versión en vivo aquí](https://bioai-cv-mario-hernandez.vercel.app)**
+La portada ([/es](https://bioai-cv-mario-hernandez.vercel.app/es), [/en](https://bioai-cv-mario-hernandez.vercel.app/en)) presenta ambos perfiles. Cada perfil tiene su propia experiencia, proyectos, habilidades, certificaciones y hoja de vida en PDF.
 
----
+## Cómo actualizar el contenido
 
-## ✨ Características Destacadas
+Todo el contenido vive en `src/content/`:
 
-- **Experiencia Inmersiva (Bento Grid):** Secciones de trayectoria profesional rediseñadas con un despliegue detallado, fotos de evidencia técnica y un diseño bento-box moderno.
-- **Evidencia Profesional:** Inclusión de registros fotográficos de laboratorios, premiaciones (Mejor Ponencia) y estancias internacionales (Programa DELFIN).
-- **Diseño de Vanguardia:** Interfaz premium construida con **Next.js 15**, **React 19**, **Tailwind CSS** y **ShadCN UI**, con un sistema de diseño "Glassmorphism".
-- **Asistente Virtual con IA:** Integración de un chatbot conversacional avanzado para responder consultas sobre mi perfil técnico y experiencia.
-- **Optimización de Imágenes:** Uso de técnicas de `object-position` para garantizar que las fotos profesionales se vean perfectas en cualquier dispositivo.
+- `es.ts` y `en.ts`: textos en cada idioma (experiencia, proyectos, habilidades, certificaciones, reconocimientos).
+- `shared.ts`: datos que no cambian con el idioma (contacto y enlaces).
+- `ui.ts`: textos de la interfaz (menús, botones, títulos).
 
----
+Cada experiencia, proyecto, grupo de habilidades y certificación indica en `tracks` a qué perfil pertenece (`'bio'`, `'data'` o ambos). Una experiencia puede tener viñetas distintas para cada perfil en `bullets`.
 
-## 👨‍💻 Sobre Mí
+Al cambiar un texto, hazlo en `es.ts` **y** en `en.ts`.
 
-Ingeniero Biomédico con especialización en IA y más de dos años de experiencia en gestión tecnológica hospitalaria, mantenimiento de equipos y tecnovigilancia. Mi enfoque se centra en optimizar la seguridad y eficiencia en entornos de salud mediante el análisis de datos clínicos, el desarrollo de algoritmos de IA y la ejecución de proyectos de investigación.
+## Hojas de vida en PDF
 
-Me apasiona la innovación que permite conectar la ingeniería clínica con soluciones inteligentes de alto impacto.
+Los cuatro PDF de `public/cv/` se generan desde las páginas `/[idioma]/cv/[perfil]`, que usan el mismo contenido del sitio. Después de editar el contenido, regenéralos con:
 
----
+```bash
+npm run cv:pdf
+```
 
-## 🚀 Áreas de Especialización
+El comando compila el sitio y exporta los PDF con el Chrome o Edge instalado en el equipo. Luego hay que hacer commit de los PDF nuevos.
 
-- **Inteligencia Artificial y Machine Learning:** Modelado predictivo aplicado a datos clínicos.
-- **Análisis de Datos y BI:** Transformación de datos en insights con Python, Power BI y SQL.
-- **Gestión Tecnológica:** Mantenimiento biomédico, tecnovigilancia y normativa (Res. 3100).
-- **Investigación Biomédica:** Trayectoria en nanotecnología y simulación de materiales.
+## Desarrollo local
 
----
+```bash
+npm install
+npm run dev
+```
 
-## 🛠️ Stack Tecnológico
+El sitio queda en `http://localhost:9002`.
 
-- **Frontend:** Next.js 15 (App Router), React 19, TypeScript.
-- **UI/UX:** Tailwind CSS, Framer Motion, ShadCN UI, Lucide Icons.
-- **IA/ML:** Genkit, Integration with Convai/ElevenLabs.
-- **Herramientas:** Python, SQL, Power BI, Google Workspace, AppSheet.
-- **Deployment:** Vercel (Optimizado para CI/CD).
+Otros comandos: `npm run build` (compilación de producción) y `npm run typecheck`.
 
----
+## Tecnología
 
-## 🔧 Configuración Local
+Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS, Framer Motion y componentes de shadcn/ui. Desplegado en Vercel: la rama `main` es producción y las demás ramas generan una vista previa.
 
-1.  **Clona el repositorio:**
-    ```bash
-    git clone https://github.com/mao-bio/CV_BIO.git
-    cd CV_BIO
-    ```
+## Contacto
 
-2.  **Instala las dependencias:**
-    ```bash
-    npm install
-    ```
-
-3.  **Configura las variables de entorno (.env.local):**
-    ```env
-    GEMINI_API_KEY=tu_clave_aqui
-    ```
-
-4.  **Inicia el entorno de desarrollo:**
-    ```bash
-    npm run dev
-    ```
-    Visita `http://localhost:9002`
-
----
-
-## 📄 Contacto
-
-- **Email:** [marioandretybio@gmail.com](mailto:marioandretybio@gmail.com)
-- **LinkedIn:** [Mario Hernández](https://www.linkedin.com/in/mario-hernández-/)
-- **GitHub:** [mao-bio](https://github.com/mao-bio)
-
----
-*Desarrollado con pasión por la innovación biomédica y la inteligencia artificial.*
+- Email: marioandretybio@gmail.com
+- GitHub: [mao-bio](https://github.com/mao-bio)

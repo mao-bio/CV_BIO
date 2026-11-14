@@ -49,7 +49,7 @@ export const en: Content = {
         'I currently coordinate the technical management of more than **3,000 medical devices** at IPS Municipal de Ipiales, and use **data and AI** to make maintenance more traceable and efficient.',
       ],
       cvHeadline:
-        'Biomedical Engineer | Medical Technology Coordination | Clinical Engineering | Artificial Intelligence Specialist',
+        'Biomedical Engineer | Medical Technology Coordination | Clinical Engineering | AI Specialist',
       cvProfile:
         'Biomedical Engineer specialized in hospital technology management, medical equipment coordination and healthcare accreditation processes. I coordinate the technical management of more than 3,000 medical devices across multiple sites. Experienced in preventive and corrective maintenance, medical device vigilance, calibration, technology assessment and regulatory compliance. As an Artificial Intelligence Specialist, I apply data analysis and automation to improve maintenance traceability and efficiency. Known for assertive communication, collaborative leadership and a results-driven approach.',
       cardText:

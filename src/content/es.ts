@@ -49,7 +49,7 @@ export const es: Content = {
         'Hoy coordino la gestión técnica de más de **3.000 equipos médicos** en la IPS Municipal de Ipiales, y uso **datos e IA** para que el mantenimiento sea más trazable y eficiente.',
       ],
       cvHeadline:
-        'Ingeniero Biomédico | Coordinación de Tecnología Médica | Ingeniería Clínica | Especialista en Inteligencia Artificial',
+        'Ingeniero Biomédico | Coordinación de Tecnología Médica | Ingeniería Clínica | Especialista en IA',
       cvProfile:
         'Ingeniero Biomédico especializado en gestión de tecnología hospitalaria, coordinación de equipos médicos y procesos de habilitación en instituciones de salud. Coordino la gestión técnica de más de 3.000 equipos médicos en múltiples sedes. Experiencia en mantenimiento preventivo y correctivo, tecnovigilancia, calibración, evaluación tecnológica y cumplimiento normativo. Especialista en Inteligencia Artificial, aplico análisis de datos y automatización para mejorar la trazabilidad y la eficiencia del mantenimiento. Me caracterizo por la comunicación asertiva, el liderazgo colaborativo y la orientación a resultados.',
       cardText:
