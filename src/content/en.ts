@@ -307,21 +307,19 @@ export const en: Content = {
       },
       tech: ['High-Complexity Equipment', 'Device Vigilance', 'INVIMA Regulations', 'AppSheet', 'Looker Studio'],
     },
-    // TODO(Mario): confirm the institute's full name and duties. The consolidated profile still
-    // lists Smart English as current; this follows what Mario said (CRES since August 2026).
     {
       id: 'cres',
       role: 'English Teacher',
-      company: 'CRES · Technical Institute',
+      company: 'Corporación CRES (CorpoCres)',
       period: 'Aug 2026 – Present',
       location: 'Ipiales, Nariño, Colombia',
       icon: 'academic',
       tracks: ['bio', 'data'],
       secondary: true,
-      summary: 'English teacher in technical training programs.',
+      summary: 'English teacher at an institution offering professional technical programs.',
       bullets: {
         bio: [
-          'Plan and teach English classes for students in technical programs.',
+          'Plan and teach English classes for students in professional technical programs.',
           'Assess and track student progress.',
         ],
       },
@@ -356,9 +354,9 @@ export const en: Content = {
       id: 'finanzasbot',
       title: 'FinanzasBot · Personal finance assistant with an LLM',
       description:
-        'Web app (PWA) to record and query personal finances in natural language: an LLM interprets text, voice notes and receipt photos, and the app computes budgets, savings goals and simulations.',
+        'Web app (PWA) to keep personal accounts by talking in everyday language. It runs on **Cloudflare Workers**: an LLM (Llama on Workers AI) interprets messages and receipt photos, Whisper transcribes voice notes, and the app computes budgets, savings goals and simulations.',
       imageUrlId: 'proj-finanzasbot',
-      tags: ['TypeScript', 'React', 'LLM', 'SQL', 'Cloudflare'],
+      tags: ['TypeScript', 'React + Vite', 'Cloudflare Workers (Hono)', 'D1 (SQLite)', 'Workers AI', 'Whisper'],
       category: 'datos',
       tracks: ['data'],
       featured: true,
@@ -641,7 +639,7 @@ export const en: Content = {
         'Firebase',
         'REST APIs',
         'Streamlit',
-        'Vercel and Cloudflare',
+        'Vercel and Cloudflare (Workers, D1)',
         'Git / GitHub',
         'AppSheet and Google Apps Script',
       ],

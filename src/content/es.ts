@@ -309,21 +309,19 @@ export const es: Content = {
       },
       tech: ['Equipos de Alta Complejidad', 'Tecnovigilancia', 'Normativa INVIMA', 'AppSheet', 'Looker Studio'],
     },
-    // TODO(Mario): confirmar nombre completo del instituto y funciones. El perfil consolidado aún
-    // muestra Smart English como actual; aquí se usa lo que Mario indicó (CRES desde agosto de 2026).
     {
       id: 'cres',
       role: 'Docente de Inglés',
-      company: 'CRES · Instituto Técnico',
+      company: 'Corporación CRES (CorpoCres)',
       period: 'Ago 2026 – Actualidad',
       location: 'Ipiales, Nariño, Colombia',
       icon: 'academic',
       tracks: ['bio', 'data'],
       secondary: true,
-      summary: 'Docente de inglés en programas de formación técnica.',
+      summary: 'Docente de inglés en una institución con programas técnicos profesionales.',
       bullets: {
         bio: [
-          'Planeación y desarrollo de clases de inglés para estudiantes de programas técnicos.',
+          'Planeación y desarrollo de clases de inglés para estudiantes de programas técnicos profesionales.',
           'Evaluación y seguimiento del progreso de los estudiantes.',
         ],
       },
@@ -358,9 +356,9 @@ export const es: Content = {
       id: 'finanzasbot',
       title: 'FinanzasBot · Asistente de finanzas personales con LLM',
       description:
-        'Aplicación web (PWA) para registrar y consultar las finanzas personales en lenguaje natural: un LLM interpreta texto, notas de voz y fotos de recibos, y la app calcula presupuestos, metas de ahorro y simulaciones.',
+        'Aplicación web (PWA) para llevar las cuentas personales hablando en lenguaje normal. Corre en **Cloudflare Workers**: un LLM (Llama en Workers AI) interpreta mensajes y fotos de recibos, Whisper transcribe las notas de voz y la app calcula presupuestos, metas de ahorro y simulaciones.',
       imageUrlId: 'proj-finanzasbot',
-      tags: ['TypeScript', 'React', 'LLM', 'SQL', 'Cloudflare'],
+      tags: ['TypeScript', 'React + Vite', 'Cloudflare Workers (Hono)', 'D1 (SQLite)', 'Workers AI', 'Whisper'],
       category: 'datos',
       tracks: ['data'],
       featured: true,
@@ -644,7 +642,7 @@ export const es: Content = {
         'Firebase',
         'APIs REST',
         'Streamlit',
-        'Vercel y Cloudflare',
+        'Vercel y Cloudflare (Workers, D1)',
         'Git / GitHub',
         'AppSheet y Google Apps Script',
       ],
