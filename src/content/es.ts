@@ -429,8 +429,9 @@ export const es: Content = {
       title: 'Sitio web · Distridentales de Nariño',
       description:
         'Landing migrada de HTML a **Next.js**, con dominio en Cloudflare, medición con Google Analytics y catálogo para WhatsApp.',
-      cover: 'web',
+      imageUrlId: 'proj-distridentales',
       tags: ['Next.js', 'Cloudflare', 'Google Analytics'],
+      embedUrl: 'https://distridentalesnarino.com',
       category: 'datos',
       tracks: ['data'],
     },

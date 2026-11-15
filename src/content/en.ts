@@ -427,8 +427,9 @@ export const en: Content = {
       title: 'Website · Distridentales de Nariño',
       description:
         'Landing page migrated from HTML to **Next.js**, with its domain on Cloudflare, Google Analytics tracking and a catalog for WhatsApp.',
-      cover: 'web',
+      imageUrlId: 'proj-distridentales',
       tags: ['Next.js', 'Cloudflare', 'Google Analytics'],
+      embedUrl: 'https://distridentalesnarino.com',
       category: 'datos',
       tracks: ['data'],
     },
