@@ -2,6 +2,7 @@
 
 import { Activity, Database, Download, Eye } from 'lucide-react';
 import Link from 'next/link';
+import { track } from '@vercel/analytics';
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
 
 export type CvLink = {
@@ -22,7 +23,12 @@ export const CvMenuItems = ({ links }: { links: CvLink[] }) => (
             return (
                 <DropdownMenuItem key={link.href} asChild>
                     {link.download ? (
-                        <a href={link.href} download={link.download} className={className}>
+                        <a
+                            href={link.href}
+                            download={link.download}
+                            className={className}
+                            onClick={() => track('descarga_cv', { archivo: link.download ?? '' })}
+                        >
                             <Icon className="h-4 w-4 text-primary" />
                             <span className="font-medium text-sm">{link.label}</span>
                         </a>

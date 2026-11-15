@@ -38,6 +38,24 @@ export const es: Content = {
       'Soy **Ingeniero Biomédico y Especialista en Inteligencia Artificial**. Trabajo en dos frentes que se refuerzan entre sí: la **gestión de tecnología biomédica** en clínicas y hospitales, y el **análisis de datos y desarrollo de soluciones con IA**.',
       'Elige abajo el perfil que estás buscando.',
     ],
+    now: {
+      eyebrow: 'Disponibilidad',
+      title: 'Qué busco ahora',
+      intro: 'Estoy abierto a oportunidades en cualquiera de mis dos perfiles.',
+      items: [
+        {
+          title: 'Ingeniería biomédica',
+          text: 'Cargos de gestión de tecnología biomédica, mantenimiento, tecnovigilancia o ingeniería clínica.',
+        },
+        {
+          title: 'Datos, IA y desarrollo',
+          text: 'Cargos de analista de datos o de desarrollo de IA aplicada: SQL, Power BI, Python, LLMs y productos web.',
+        },
+        { title: 'Modalidad', text: 'Trabajo remoto, con posibilidad de reubicarme en Manizales.' },
+        { title: 'Idiomas de trabajo', text: 'Español nativo e inglés avanzado.' },
+      ],
+      contact: 'Escríbeme',
+    },
     seoTitle: 'Mario Hernández | Ingeniero Biomédico y Especialista en IA',
     seoDescription:
       'Portafolio de Mario Andrés Hernández Moreno: Ingeniero Biomédico (gestión de tecnología biomédica) y Especialista en IA (análisis de datos, machine learning y desarrollo).',
@@ -734,21 +752,4 @@ export const es: Content = {
     },
   ],
 
-  quotes: [
-    {
-      text: 'La tecnología más avanzada es la que se vuelve invisible y se enfoca en lo que realmente importa: la vida humana.',
-      author: 'Visión',
-      icon: 'heart',
-    },
-    {
-      text: 'En la intersección entre la ingeniería clínica y la IA, no solo procesamos datos, salvamos futuros.',
-      author: 'Propósito profesional',
-      icon: 'brain',
-    },
-    {
-      text: 'La verdadera innovación no es crear máquinas que piensen como humanos, sino herramientas que permitan a los humanos sanar mejor.',
-      author: 'Filosofía técnica',
-      icon: 'sparkles',
-    },
-  ],
 };

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { track } from '@vercel/analytics';
 import { Activity, ArrowRight, BrainCircuit, CheckCircle2, Download } from 'lucide-react';
 import { Section } from '@/components/Section';
 import { cn } from '@/lib/utils';
@@ -91,6 +92,7 @@ export const PathCards = ({ cards, t }: { cards: PathCard[]; t: UI['paths'] }) =
                             <a
                                 href={card.cvHref}
                                 download={card.cvDownload}
+                                onClick={() => track('descarga_cv', { archivo: card.cvDownload })}
                                 className="inline-flex items-center gap-2 rounded-full px-6 h-12 font-semibold text-sm border border-border bg-card hover:bg-muted transition-colors"
                             >
                                 <Download className="h-4 w-4" /> {t.cv}

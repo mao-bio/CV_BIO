@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Download, Languages } from 'lucide-react';
 import { PrintButton } from '@/components/PrintButton';
+import { TrackedLink } from '@/components/TrackedLink';
 import { contact, getContent, getTrackContent, ui, type ExperienceView } from '@/content';
 import { formatMarkdown } from '@/lib/format-text';
 import {
@@ -45,33 +46,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const stripUrl = (url: string) => decodeURI(url).replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
 
+// The CV must fit on two pages: the two most recent roles get the most room,
+// research stays brief, and the web profile keeps the full detail.
+const bulletLimit = (item: ExperienceView, index: number) => (index < 2 ? 4 : item.icon === 'research' ? 2 : 3);
+
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="mt-5 mb-2 flex items-center gap-3 text-[13pt] font-bold text-[#17468a] break-after-avoid">
+  <h2 className="mt-3 mb-1 flex items-center gap-3 text-[11.5pt] font-bold text-[#17468a] break-after-avoid">
     {children}
     <span className="h-px flex-1 bg-[#17468a]" />
   </h2>
 );
 
-const ExperienceEntry = ({ item, compact }: { item: ExperienceView; compact?: boolean }) => (
-  <div className={compact ? 'mb-3 break-inside-avoid' : 'mb-3'}>
+const ExperienceEntry = ({ item, index }: { item: ExperienceView; index: number }) => (
+  <div className="mb-1.5">
     <div className="flex items-baseline justify-between gap-4 break-after-avoid">
       <p>
         <strong>{item.company}</strong>, {item.role}
       </p>
       <p className="flex-shrink-0 text-right text-slate-600">{item.period}</p>
     </div>
-    <p className="text-slate-600 break-after-avoid">{item.location}</p>
-    {compact ? (
-      <p className="mt-1">{formatMarkdown(item.summary)}</p>
-    ) : (
-      <ul className="mt-1 list-disc pl-5 space-y-0.5">
-        {item.bullets.map((bullet) => (
-          <li key={bullet} className="break-inside-avoid">
-            {formatMarkdown(bullet)}
-          </li>
-        ))}
-      </ul>
-    )}
+    <ul className="list-disc pl-5">
+      {item.bullets.slice(0, bulletLimit(item, index)).map((bullet) => (
+        <li key={bullet} className="break-inside-avoid">
+          {formatMarkdown(bullet)}
+        </li>
+      ))}
+    </ul>
   </div>
 );
 
@@ -90,12 +90,14 @@ export default async function CvPage({ params }: Props) {
   const skillsBlock = (
     <>
       <SectionTitle>{t.skills}</SectionTitle>
-      <div className="space-y-1">
-        {skills.map((group) => (
-          <p key={group.id} className="break-inside-avoid">
-            <strong>{group.title}:</strong> {group.items.join(' | ')}
-          </p>
-        ))}
+      <div>
+        {skills
+          .filter((group) => group.id !== 'blandas')
+          .map((group) => (
+            <p key={group.id} className="break-inside-avoid">
+              <strong>{group.title}:</strong> {group.items.join(' | ')}
+            </p>
+          ))}
         <p>
           <strong>{t.languages}:</strong>{' '}
           {content.person.languages.map((language) => `${language.name}: ${language.level}`).join(' | ')}
@@ -118,38 +120,37 @@ export default async function CvPage({ params }: Props) {
             <Languages className="h-4 w-4" /> {ui[locale].nav.langCode}
           </Link>
           <PrintButton label={t.print} />
-          <a
+          <TrackedLink
+            event="descarga_cv"
+            data={{ archivo: cvPdfName[locale][track] }}
             href={cvPdfPath(locale, track)}
             download={cvPdfName[locale][track]}
             className="inline-flex items-center gap-2 rounded-full bg-[#17468a] px-4 h-10 text-sm font-semibold text-white hover:bg-[#123a73] transition-colors"
           >
             <Download className="h-4 w-4" /> {t.download}
-          </a>
+          </TrackedLink>
         </div>
       </div>
 
-      <article className="cv-sheet mx-auto max-w-[210mm] bg-white p-[14mm] text-[10pt] leading-[1.4] text-slate-900 shadow-xl print:max-w-none print:p-0 print:shadow-none">
+      <article className="cv-sheet mx-auto max-w-[210mm] bg-white p-[12mm] text-[9.5pt] leading-[1.35] text-slate-900 shadow-xl print:max-w-none print:p-0 print:shadow-none">
         <header className="text-center">
-          <h1 className="text-[22pt] font-extrabold uppercase tracking-tight text-[#17468a]">{content.person.fullName}</h1>
-          <p className="mt-1 text-[10pt] font-medium text-[#17468a]">{profile.cvHeadline}</p>
-          <p className="mt-2 flex flex-wrap justify-center gap-x-3 gap-y-0.5 text-[9.5pt] text-slate-700">
+          <h1 className="text-[20pt] font-extrabold uppercase tracking-tight text-[#17468a]">{content.person.fullName}</h1>
+          <p className="text-[9.5pt] font-medium text-[#17468a]">{profile.cvHeadline}</p>
+          <p className="mt-1 flex flex-wrap justify-center gap-x-3 text-[9pt] text-slate-700">
             <span>{content.person.location}</span>
             <span aria-hidden>|</span>
             <a href={`mailto:${contact.email}`}>{contact.email}</a>
             <span aria-hidden>|</span>
             <a href={`tel:${contact.phone}`}>{contact.phoneDisplay}</a>
           </p>
-          <p className="text-[9.5pt] text-slate-700">{content.person.availability}</p>
-          <p className="flex flex-wrap justify-center gap-x-3 gap-y-0.5 text-[9.5pt] text-slate-700">
+          <p className="flex flex-wrap justify-center gap-x-3 text-[9pt] text-slate-700">
             <a href={contact.linkedin}>{stripUrl(contact.linkedin)}</a>
             <span aria-hidden>|</span>
             <a href={contact.github}>{stripUrl(contact.github)}</a>
+            <span aria-hidden>|</span>
+            <a href={portfolioUrl}>{stripUrl(portfolioUrl)}</a>
           </p>
-          <p className="text-[9.5pt] text-slate-700">
-            <a href={portfolioUrl}>
-              {t.portfolio}: {stripUrl(portfolioUrl)}
-            </a>
-          </p>
+          <p className="text-[9pt] text-slate-700">{content.person.availability}</p>
         </header>
 
         <SectionTitle>{t.profile}</SectionTitle>
@@ -158,84 +159,75 @@ export default async function CvPage({ params }: Props) {
         {track === 'data' && skillsBlock}
 
         <SectionTitle>{t.experience}</SectionTitle>
-        {experience.map((item) => (
-          <ExperienceEntry key={item.id} item={item} />
+        {experience.map((item, index) => (
+          <ExperienceEntry key={item.id} item={item} index={index} />
+        ))}
+        {otherExperience.map((item) => (
+          <div key={item.id} className="flex items-baseline justify-between gap-4 break-inside-avoid">
+            <p>
+              <strong>{item.company}</strong>, {item.role}
+            </p>
+            <p className="flex-shrink-0 text-right text-slate-600">{item.period}</p>
+          </div>
         ))}
 
         {featured.length > 0 && (
           <>
             <SectionTitle>{t.projects}</SectionTitle>
-            {featured.map((project) => (
-              <div key={project.id} className="mb-2 break-inside-avoid">
-                <p>
-                  <strong>{project.title}</strong>
-                  <span className="text-slate-600"> · {project.tags.slice(0, 5).join(', ')}</span>
-                </p>
-                <p>{formatMarkdown(project.description)}</p>
-                {(project.githubUrl || (project.embedUrl && !project.embedUrl.includes('htmlpreview'))) && (
-                  <p className="text-[9pt] text-[#17468a]">
-                    {[project.githubUrl, project.embedUrl && !project.embedUrl.includes('htmlpreview') ? project.embedUrl : undefined]
-                      .filter((url): url is string => Boolean(url))
-                      .map((url, index) => (
-                        <span key={url}>
-                          {index > 0 && ' | '}
-                          <a href={url}>{stripUrl(url).replace(/\/?\?embed=true$/, '')}</a>
-                        </span>
-                      ))}
-                  </p>
-                )}
-              </div>
-            ))}
-          </>
-        )}
-
-        {otherExperience.length > 0 && (
-          <>
-            <SectionTitle>{t.otherExperience}</SectionTitle>
-            {otherExperience.map((item) => (
-              <ExperienceEntry key={item.id} item={item} compact />
-            ))}
+            <ul className="list-disc pl-5">
+              {featured.map((project) => {
+                const link = project.githubUrl ?? (project.embedUrl?.includes('htmlpreview') ? undefined : project.embedUrl);
+                return (
+                  <li key={project.id} className="break-inside-avoid">
+                    <strong>{project.title}</strong>
+                    <span className="text-slate-600"> · {project.tags.slice(0, 4).join(', ')}</span>
+                    {link && (
+                      <>
+                        {' · '}
+                        <a href={link} className="text-[#17468a]">
+                          {stripUrl(link).replace(/\/?\?embed=true$/, '')}
+                        </a>
+                      </>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
           </>
         )}
 
         <SectionTitle>{t.education}</SectionTitle>
         {content.person.education.map((item) => (
-          <div key={item.degree} className="mb-2 break-inside-avoid">
+          <div key={item.degree} className="break-inside-avoid">
             <div className="flex items-baseline justify-between gap-4">
               <p>
-                <strong>{item.degree}</strong>
+                <strong>{item.degree}</strong> · {item.institution}
+                {item.honor && ` · ${item.honor.split('|').map((honor) => honor.trim()).join(' · ')}`}
               </p>
               <p className="flex-shrink-0 text-slate-600">{item.period}</p>
             </div>
-            <p>
-              {item.institution}
-              {item.honor && ` · ${item.honor.split('|').map((honor) => honor.trim()).join(' · ')}`}
-            </p>
             {item.note && <p className="text-slate-600">{item.note}</p>}
           </div>
         ))}
 
         <SectionTitle>{t.certifications}</SectionTitle>
-        <ul className="list-disc pl-5 space-y-0.5">
-          {certifications.map((item) => (
-            <li key={item.title} className="break-inside-avoid">
-              <strong>{item.title}</strong>
-              {[item.issuer, item.date].filter(Boolean).length > 0 && ` · ${[item.issuer, item.date].filter(Boolean).join(', ')}`}
-            </li>
-          ))}
-        </ul>
+        <p>
+          {certifications
+            .map((item) => {
+              const source = [item.issuer, item.date].filter(Boolean).join(', ');
+              return source ? `${item.title} (${source})` : item.title;
+            })
+            .join(' · ')}
+        </p>
 
         {track === 'bio' && skillsBlock}
 
         <SectionTitle>{t.awards}</SectionTitle>
-        <ul className="list-disc pl-5 space-y-0.5">
-          {content.awards.map((award) => (
-            <li key={award.title} className="break-inside-avoid">
-              <strong>{award.title}</strong> · {award.issuer}
-              {award.year && `, ${award.year}`}
-            </li>
-          ))}
-        </ul>
+        <p>
+          {content.awards
+            .map((award) => `${award.title}, ${award.issuer}${award.year ? ` (${award.year})` : ''}`)
+            .join(' · ')}
+        </p>
       </article>
     </div>
   );

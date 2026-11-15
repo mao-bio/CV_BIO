@@ -80,7 +80,6 @@ const es = {
   },
   skills: { eyebrow: 'Competencias', title: 'Habilidades y Herramientas' },
   certifications: { eyebrow: 'Formación Continua', title: 'Certificaciones' },
-  inspiration: { next: 'Siguiente frase' },
   switchTrack: {
     eyebrow: 'El otro camino',
     bio: {
@@ -206,7 +205,6 @@ const en: UI = {
   },
   skills: { eyebrow: 'Competencies', title: 'Skills and Tools' },
   certifications: { eyebrow: 'Continuing Education', title: 'Certifications' },
-  inspiration: { next: 'Next quote' },
   switchTrack: {
     eyebrow: 'The other path',
     bio: {

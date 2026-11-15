@@ -38,6 +38,24 @@ export const en: Content = {
       "I'm a **Biomedical Engineer and Artificial Intelligence Specialist**. I work on two fronts that reinforce each other: **biomedical technology management** in clinics and hospitals, and **data analysis and AI solution development**.",
       'Choose below the profile you are looking for.',
     ],
+    now: {
+      eyebrow: 'Availability',
+      title: "What I'm looking for",
+      intro: 'I am open to opportunities in either of my two profiles.',
+      items: [
+        {
+          title: 'Biomedical engineering',
+          text: 'Roles in biomedical technology management, maintenance, medical device vigilance or clinical engineering.',
+        },
+        {
+          title: 'Data, AI and development',
+          text: 'Data analyst or applied AI developer roles: SQL, Power BI, Python, LLMs and web products.',
+        },
+        { title: 'Work mode', text: 'Remote work, and open to relocating to Manizales.' },
+        { title: 'Working languages', text: 'Native Spanish and advanced English.' },
+      ],
+      contact: 'Contact me',
+    },
     seoTitle: 'Mario Hernández | Biomedical Engineer and AI Specialist',
     seoDescription:
       'Portfolio of Mario Andrés Hernández Moreno: Biomedical Engineer (biomedical technology management) and AI Specialist (data analysis, machine learning and development).',
@@ -731,21 +749,4 @@ export const en: Content = {
     },
   ],
 
-  quotes: [
-    {
-      text: 'The most advanced technology is the one that becomes invisible and focuses on what truly matters: human life.',
-      author: 'Vision',
-      icon: 'heart',
-    },
-    {
-      text: 'At the intersection of clinical engineering and AI, we do not just process data, we save futures.',
-      author: 'Professional purpose',
-      icon: 'brain',
-    },
-    {
-      text: 'True innovation is not building machines that think like humans, but tools that let humans heal better.',
-      author: 'Technical philosophy',
-      icon: 'sparkles',
-    },
-  ],
 };

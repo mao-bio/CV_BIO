@@ -237,7 +237,7 @@
 /* Printable CV (/[locale]/cv/[track]) */
 @page {
   size: A4;
-  margin: 13mm 14mm;
+  margin: 11mm 13mm;
 }
 
 @media print {

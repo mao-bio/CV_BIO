@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { track } from '@vercel/analytics';
 import { Mail, MessageCircle, Github, Linkedin, MapPin, ArrowRight } from 'lucide-react';
 import { Section } from '@/components/Section';
 import { Button } from '@/components/ui/button';
@@ -28,6 +29,7 @@ type ContactProps = {
 export const ContactSection = ({ contact, location, availability, t }: ContactProps) => {
     const contactLinks = [
         {
+            channel: 'email',
             label: t.email,
             value: contact.email,
             href: `mailto:${contact.email}`,
@@ -35,6 +37,7 @@ export const ContactSection = ({ contact, location, availability, t }: ContactPr
             color: 'bg-blue-500/10 text-blue-500'
         },
         {
+            channel: 'whatsapp',
             label: 'WhatsApp',
             value: contact.whatsappDisplay,
             href: `https://wa.me/${contact.whatsapp}`,
@@ -42,6 +45,7 @@ export const ContactSection = ({ contact, location, availability, t }: ContactPr
             color: 'bg-green-500/10 text-green-500'
         },
         {
+            channel: 'linkedin',
             label: 'LinkedIn',
             value: contact.linkedinLabel,
             href: contact.linkedin,
@@ -49,6 +53,7 @@ export const ContactSection = ({ contact, location, availability, t }: ContactPr
             color: 'bg-sky-500/10 text-sky-500'
         },
         {
+            channel: 'github',
             label: 'GitHub',
             value: contact.githubLabel,
             href: contact.github,
@@ -93,6 +98,7 @@ export const ContactSection = ({ contact, location, availability, t }: ContactPr
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => track('contacto', { canal: link.channel })}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}

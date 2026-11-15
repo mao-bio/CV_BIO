@@ -5,7 +5,7 @@ import { Hero } from '@/components/sections/Hero';
 import { PathCards, type PathCard } from '@/components/sections/PathCards';
 import { EducationSection } from '@/components/sections/Education';
 import { AwardsSection } from '@/components/sections/Awards';
-import { Inspiration } from '@/components/sections/Inspiration';
+import { NowSection } from '@/components/sections/Now';
 import { ContactSection } from '@/components/sections/Contact';
 import { FloatingCV } from '@/components/sections/FloatingCV';
 import { SiteFooter } from '@/components/sections/TrackSwitch';
@@ -93,7 +93,13 @@ export default async function HomePage({ params }: Props) {
           <PathCards cards={cards} t={t.paths} />
           <AwardsSection awards={content.awards} t={t.awards} />
           <EducationSection education={content.person.education} languages={content.person.languages} t={t.education} />
-          <Inspiration quotes={content.quotes} nextLabel={t.inspiration.next} />
+          <NowSection
+            now={content.home.now}
+            links={[
+              ...tracks.map((track) => ({ label: content.tracks[track].label, href: trackPath(locale, track) })),
+              { label: content.home.now.contact, href: '#contacto' },
+            ]}
+          />
           <ContactSection contact={contact} location={content.person.location} availability={content.person.availability} t={t.contact} />
         </main>
 

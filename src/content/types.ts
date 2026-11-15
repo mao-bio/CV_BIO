@@ -98,8 +98,6 @@ export type Award = {
 
 export type Education = { degree: string; institution: string; period: string; honor: string; note?: string };
 
-export type Quote = { text: string; author: string; icon: 'heart' | 'brain' | 'sparkles' };
-
 export type Content = {
   person: {
     name: string;
@@ -113,6 +111,8 @@ export type Content = {
   home: {
     headline: [string, string];
     summary: string[];
+    /** "What I'm looking for now" block on the home page. */
+    now: { eyebrow: string; title: string; intro: string; items: { title: string; text: string }[]; contact: string };
     seoTitle: string;
     seoDescription: string;
   };
@@ -122,5 +122,4 @@ export type Content = {
   skills: SkillGroup[];
   certifications: Certification[];
   awards: Award[];
-  quotes: Quote[];
 };
