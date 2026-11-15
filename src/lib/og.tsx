@@ -1,18 +1,12 @@
 import { ImageResponse } from 'next/og';
-import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { ogPhoto } from '@/lib/og-photo';
 import { siteConfig } from '@/lib/site';
 
 export const ogSize = { width: 1200, height: 630 };
 
 type OgCard = { eyebrow: string; lines: string[]; footer: string };
 
-export async function renderOgImage({ eyebrow, lines, footer }: OgCard) {
-  const photo = await readFile(join(process.cwd(), 'public/mario-perfil.jpg'));
-  // The profile photo is PNG data despite its .jpg name; label it by its real signature.
-  const mime = photo[0] === 0x89 ? 'image/png' : 'image/jpeg';
-  const photoSrc = `data:${mime};base64,${photo.toString('base64')}`;
-
+export function renderOgImage({ eyebrow, lines, footer }: OgCard) {
   return new ImageResponse(
     (
       <div
@@ -43,11 +37,11 @@ export async function renderOgImage({ eyebrow, lines, footer }: OgCard) {
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={photoSrc}
+          src={ogPhoto}
           width={360}
           height={360}
           alt=""
-          style={{ borderRadius: 9999, objectFit: 'cover', objectPosition: 'top', border: '10px solid white' }}
+          style={{ borderRadius: 9999, objectFit: 'cover', border: '10px solid white' }}
         />
       </div>
     ),
