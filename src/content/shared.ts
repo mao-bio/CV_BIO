@@ -1,9 +1,8 @@
 // Facts that do not change with the language.
 export const contact = {
   email: 'marioandretybio@gmail.com',
-  phone: '+573188189647',
-  phoneDisplay: '+57 318 818 9647',
-  // WhatsApp uses a different number from the phone line.
+  phone: '+573126080022',
+  phoneDisplay: '+57 312 608 0022',
   whatsapp: '573126080022',
   whatsappDisplay: '+57 312 608 0022',
   linkedin: 'https://www.linkedin.com/in/mario-hern%C3%A1ndez-/',
