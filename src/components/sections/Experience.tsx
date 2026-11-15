@@ -86,6 +86,19 @@ const ExperienceCard = ({ exp, index, t }: { exp: ExperienceView; index: number;
                             {formatMarkdown(exp.summary)}
                         </p>
 
+                        {/* Photo of the workplace, visible without expanding */}
+                        {!isExpanded && expImage && (
+                            <div className="mb-6 relative aspect-video w-full rounded-xl overflow-hidden border border-primary/10 shadow-sm">
+                                <Image
+                                    src={expImage.imageUrl}
+                                    alt={`${exp.role} · ${exp.company}`}
+                                    fill
+                                    sizes="(min-width: 768px) 40vw, 90vw"
+                                    className={cn("object-cover", imagePosition)}
+                                />
+                            </div>
+                        )}
+
                         {/* Achievements stay visible without expanding */}
                         {exp.impact && exp.impact.length > 0 && (
                             <div className="relative overflow-hidden rounded-2xl border border-primary/10 bg-primary/5 p-5 mb-6">

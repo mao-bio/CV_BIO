@@ -291,21 +291,22 @@ export const en: Content = {
       imageUrlId: 'exp-pabon',
       tracks: ['bio', 'data'],
       summary:
-        'Maintenance of high-complexity equipment, device vigilance and inventories, with a mobile app and a dashboard to control them.',
+        'Internship at a cardio-neurovascular clinic: maintenance of high-complexity equipment (hemodynamics, mechanical ventilation), device vigilance and inventories, with a mobile app and a dashboard to control them.',
       bullets: {
         bio: [
-          'Preventive and corrective maintenance of high-complexity equipment.',
-          'Updated equipment records in line with INVIMA regulations and wrote quick guides for safe operation.',
-          'Device vigilance training and hospital rounds.',
-          'Verification of biomedical equipment inventories.',
-          'Built an inventory mobile app in **AppSheet** and a dashboard in Google Sheets and Looker Studio.',
+          'Preventive and corrective maintenance of high-complexity equipment, such as **hemodynamics systems and mechanical ventilators**.',
+          'Updated equipment records in line with **INVIMA regulations** and wrote quick guides for safe operation.',
+          'Trained staff on device vigilance and took part in hospital safety rounds in critical areas.',
+          'Verified and **digitized the inventory** of biomedical equipment, improving its traceability.',
+          'Built an **inventory mobile app in AppSheet** and an inventory dashboard in Google Sheets and Looker Studio.',
         ],
         data: [
-          'Built an inventory mobile app in **AppSheet**.',
+          "Built an **inventory mobile app in AppSheet** for the clinic's biomedical equipment.",
           'Inventory dashboard in **Google Sheets and Looker Studio**.',
+          'Digitized and verified the biomedical equipment inventory, improving its traceability.',
         ],
       },
-      tech: ['High-Complexity Equipment', 'Device Vigilance', 'INVIMA Regulations', 'AppSheet', 'Looker Studio'],
+      tech: ['Hemodynamics', 'Mechanical Ventilation', 'Device Vigilance', 'INVIMA Regulations', 'Inventories', 'AppSheet', 'Looker Studio'],
     },
     {
       id: 'cres',
@@ -516,6 +517,16 @@ export const en: Content = {
       category: 'salud',
       tracks: ['bio', 'data'],
       downloadUrl: links.birthsDownload,
+    },
+    {
+      id: 'pabon-inventory',
+      title: 'Inventory mobile app · Clínica Pabón',
+      description:
+        'Mobile app in **AppSheet** for the biomedical equipment inventory of Clínica Cardioneurovascular Pabón, with a dashboard in Google Sheets and Looker Studio. Built during the Biomedical Engineering internship.',
+      cover: 'app',
+      tags: ['AppSheet', 'Google Sheets', 'Looker Studio'],
+      category: 'salud',
+      tracks: ['bio', 'data'],
     },
     {
       id: 'eda-outbreak',

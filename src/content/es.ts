@@ -293,21 +293,22 @@ export const es: Content = {
       imageUrlId: 'exp-pabon',
       tracks: ['bio', 'data'],
       summary:
-        'Mantenimiento de equipos de alta complejidad, tecnovigilancia e inventarios, con una app móvil y un tablero para su control.',
+        'Práctica en una clínica cardioneurovascular: mantenimiento de equipos de alta complejidad (hemodinamia, ventilación mecánica), tecnovigilancia e inventarios, con una app móvil y un tablero para su control.',
       bullets: {
         bio: [
-          'Mantenimientos preventivos y correctivos de equipos de alta complejidad.',
-          'Actualización de hojas de vida según la normativa INVIMA y guías rápidas de operación segura.',
-          'Capacitación en tecnovigilancia y rondas hospitalarias.',
-          'Verificación de inventarios de equipos biomédicos.',
-          'Desarrollo de una app móvil de inventario en **AppSheet** y de un tablero en Google Sheets y Looker Studio.',
+          'Mantenimientos preventivos y correctivos de equipos de alta complejidad, como **sistemas de hemodinamia y ventiladores mecánicos**.',
+          'Actualización de las hojas de vida de los equipos según la **normativa INVIMA** y elaboración de guías rápidas de operación segura.',
+          'Capacitación al personal en tecnovigilancia y participación en rondas hospitalarias de seguridad en áreas críticas.',
+          'Verificación y **digitalización del inventario** de equipos biomédicos, mejorando su trazabilidad.',
+          'Desarrollo de una **app móvil de inventario en AppSheet** y de un tablero de inventario en Google Sheets y Looker Studio.',
         ],
         data: [
-          'Desarrollo de una app móvil de inventario en **AppSheet**.',
+          'Desarrollo de una **app móvil de inventario en AppSheet** para los equipos biomédicos de la clínica.',
           'Tablero de inventario en **Google Sheets y Looker Studio**.',
+          'Digitalización y verificación del inventario de equipos biomédicos, mejorando su trazabilidad.',
         ],
       },
-      tech: ['Equipos de Alta Complejidad', 'Tecnovigilancia', 'Normativa INVIMA', 'AppSheet', 'Looker Studio'],
+      tech: ['Hemodinamia', 'Ventilación Mecánica', 'Tecnovigilancia', 'Normativa INVIMA', 'Inventarios', 'AppSheet', 'Looker Studio'],
     },
     {
       id: 'cres',
@@ -518,6 +519,16 @@ export const es: Content = {
       category: 'salud',
       tracks: ['bio', 'data'],
       downloadUrl: links.birthsDownload,
+    },
+    {
+      id: 'pabon-inventory',
+      title: 'App móvil de inventario · Clínica Pabón',
+      description:
+        'App móvil en **AppSheet** para el inventario de equipos biomédicos de la Clínica Cardioneurovascular Pabón, con un tablero en Google Sheets y Looker Studio. Desarrollada durante la práctica de Ingeniería Biomédica.',
+      cover: 'app',
+      tags: ['AppSheet', 'Google Sheets', 'Looker Studio'],
+      category: 'salud',
+      tracks: ['bio', 'data'],
     },
     {
       id: 'eda-outbreak',
