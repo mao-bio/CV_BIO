@@ -10,7 +10,7 @@ export const en: Content = {
     fullName: 'Mario Andrés Hernández Moreno',
     title: 'Biomedical Engineer | AI Specialist',
     location: 'Ipiales / Pasto, Nariño, Colombia',
-    availability: 'Available for remote work · Open to relocating to Manizales',
+    availability: 'Available for remote work',
     languages: [
       { name: 'Spanish', level: 'Native' },
       { name: 'English', level: 'Advanced (professional level)' },
@@ -51,7 +51,7 @@ export const en: Content = {
           title: 'Data, AI and development',
           text: 'Data analyst or applied AI developer roles: SQL, Power BI, Python, LLMs and web products.',
         },
-        { title: 'Work mode', text: 'Remote work, and open to relocating to Manizales.' },
+        { title: 'Work mode', text: 'Available for remote work.' },
         { title: 'Working languages', text: 'Native Spanish and advanced English.' },
       ],
       contact: 'Contact me',

@@ -10,7 +10,7 @@ export const es: Content = {
     fullName: 'Mario Andrés Hernández Moreno',
     title: 'Ingeniero Biomédico | Especialista en IA',
     location: 'Ipiales / Pasto, Nariño, Colombia',
-    availability: 'Disponible para trabajo remoto · Posible reubicación a Manizales',
+    availability: 'Disponible para trabajo remoto',
     languages: [
       { name: 'Español', level: 'Nativo' },
       { name: 'Inglés', level: 'Avanzado (nivel profesional)' },
@@ -51,7 +51,7 @@ export const es: Content = {
           title: 'Datos, IA y desarrollo',
           text: 'Cargos de analista de datos o de desarrollo de IA aplicada: SQL, Power BI, Python, LLMs y productos web.',
         },
-        { title: 'Modalidad', text: 'Trabajo remoto, con posibilidad de reubicarme en Manizales.' },
+        { title: 'Modalidad', text: 'Disponible para trabajo remoto.' },
         { title: 'Idiomas de trabajo', text: 'Español nativo e inglés avanzado.' },
       ],
       contact: 'Escríbeme',
