@@ -13,6 +13,8 @@ type ContactProps = {
         email: string;
         phone: string;
         phoneDisplay: string;
+        whatsapp: string;
+        whatsappDisplay: string;
         linkedin: string;
         linkedinLabel: string;
         github: string;
@@ -34,8 +36,8 @@ export const ContactSection = ({ contact, location, availability, t }: ContactPr
         },
         {
             label: 'WhatsApp',
-            value: contact.phoneDisplay,
-            href: `https://wa.me/${contact.phone.replace(/\+/g, '')}`,
+            value: contact.whatsappDisplay,
+            href: `https://wa.me/${contact.whatsapp}`,
             icon: MessageCircle,
             color: 'bg-green-500/10 text-green-500'
         },
